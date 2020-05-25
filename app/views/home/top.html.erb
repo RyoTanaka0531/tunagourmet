@@ -1,5 +1,18 @@
+<div class="container">
 <div class="eyecatch">
     ようこそ　つなグルメへ！<br>
     生産者の方々と都会の飲食店・小売店(バイヤー)の方々が繋がりあえるようにマッチングするサイトです。<br>
     ご利用には生産者の方、バイヤーの方に新規登録を行っていただく必要がございます。
+</div>
+<div class="index">
+    <% if produer_sign_in? %>
+        <h2>バイヤー一覧</h2>
+    <% elsif buyer_sign_in? %>
+        <h2>生産者一覧</h2>
+    <% else %>
+        <h2>品目一覧</h2>
+        <h2>生産者一覧</h2>
+        <h2>バイヤー一覧</h2>
+    <% end%>
+</div>
 </div>

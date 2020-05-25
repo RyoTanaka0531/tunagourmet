@@ -2,7 +2,7 @@
     <h2>つなグルメ</h2>
 <% if producer_signed_in? %>
     <nav>
-        <ul>
+        <ul class="nav nav-pills">
             <li>トップ</li>
             <li>マイページ</li>
             <li>受注一覧</li>
@@ -12,7 +12,7 @@
     </nav>
 <% elsif buyer_signed_in? %>
     <nav>
-        <ul>
+        <ul class="nav nav-pills">
             <li>トップ</li>
             <li>マイページ</li>
             <li>発注</li>
@@ -23,9 +23,10 @@
     </nav>
 <% else %>
     <nav>
-        <ul>
-            <li>ログイン</li>
-            <li>新規登録</li>
+        <ul class="nav nav-pills">
+            <li><%= link_to "生産者でログイン", new_producer_session_path %></li>
+            <li><%= link_to "バイヤーでログイン", new_buyer_session_path %></li>
+            <li><%= link_to "新規登録", sign_up_path %></li>
         </ul>
     </nav>
 <% end %>
