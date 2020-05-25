@@ -1,0 +1,32 @@
+<header>
+    <h2>つなグルメ</h2>
+<% if producer_signed_in? %>
+    <nav>
+        <ul>
+            <li>トップ</li>
+            <li>マイページ</li>
+            <li>受注一覧</li>
+            <li>チャット</li>
+            <li>ログアウト</li>
+        </ul>
+    </nav>
+<% elsif buyer_signed_in? %>
+    <nav>
+        <ul>
+            <li>トップ</li>
+            <li>マイページ</li>
+            <li>発注</li>
+            <li>発注一覧</li>
+            <li>チャット</li>
+            <li>ログアウト</li>
+        </ul>
+    </nav>
+<% else %>
+    <nav>
+        <ul>
+            <li>ログイン</li>
+            <li>新規登録</li>
+        </ul>
+    </nav>
+<% end %>
+</header>
