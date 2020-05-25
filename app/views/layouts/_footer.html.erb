@@ -3,10 +3,15 @@
     © 2020　つなグルメ
     </p>
     <div class='footer-list'>
-        <%= link_to "登録情報変更", "#"%>
-        <%= link_to "生産者一覧", "#"%>
-        <%= link_to "バイヤー一覧", "#"%>
+    <% if producer_signed_in? %>
+        <%= link_to "登録情報変更", edit_producer_path(current_producer) %>
+    <% elsif buyer_signed_in? %>
+        <%= link_to "登録情報変更", edit_buyer_path(current_buyer) %>
+    <% else %>
+    <% end %>
+        <%= link_to "生産者一覧", producers_path%>
+        <%= link_to "バイヤー一覧", buyers_path%>
         <%= link_to "品目一覧", "#"%>
-        <%= link_to "トップ", "#"%>
+        <%= link_to "トップ", root_path%>
     </div>
 </footer>

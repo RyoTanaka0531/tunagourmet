@@ -1,24 +1,32 @@
 <header>
-    <h2>つなグルメ</h2>
+    <h2><%= link_to "つなグルメ", root_path %></h2>
 <% if producer_signed_in? %>
     <nav>
         <ul class="nav nav-pills">
-            <li>トップ</li>
-            <li>マイページ</li>
-            <li>受注一覧</li>
-            <li>チャット</li>
-            <li>ログアウト</li>
+            <li><%= link_to "トップ", root_path %></li>
+            <li><%= link_to "マイページ", producer_path(current_producer)%></li>
+            <li><%= link_to "受注一覧", "#"%></li>
+            <li><%= link_to "チャット", "#"%></li>
+            <li><%= link_to "ログアウト", destroy_producer_session_path, method: :delete %></li>
         </ul>
     </nav>
 <% elsif buyer_signed_in? %>
     <nav>
         <ul class="nav nav-pills">
-            <li>トップ</li>
-            <li>マイページ</li>
-            <li>発注</li>
-            <li>発注一覧</li>
-            <li>チャット</li>
-            <li>ログアウト</li>
+            <li><%= link_to "トップ", root_path %></li>
+            <li><%= link_to "マイページ", buyer_path(current_buyer) %></li>
+            <li><%= link_to "発注", "#"%></li>
+            <li><%= link_to "発注一覧", "#"%></li>
+            <li><%= link_to "チャット", "#"%></li>
+            <li><%= link_to "ログアウト", destroy_buyer_session_path, method: :delete %></li>
+        </ul>
+    </nav>
+<% elsif admin_signed_in? %>
+    <nav>
+        <ul class="nav nav-pills">
+            <li><%= link_to "トップ", root_path %></li>
+            <li><%= link_to "カテゴリ追加", "#" %></li>
+            <li><%= link_to "ログアウト", destroy_amin_session_path, method: :delete %></li>
         </ul>
     </nav>
 <% else %>

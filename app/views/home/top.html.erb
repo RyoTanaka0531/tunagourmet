@@ -5,9 +5,9 @@
     ご利用には生産者の方、バイヤーの方に新規登録を行っていただく必要がございます。
 </div>
 <div class="index">
-    <% if produer_sign_in? %>
+    <% if producer_signed_in? %>
         <h2>バイヤー一覧</h2>
-    <% elsif buyer_sign_in? %>
+    <% elsif buyer_signed_in? %>
         <h2>生産者一覧</h2>
     <% else %>
         <h2>品目一覧</h2>

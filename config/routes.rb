@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'home#top'
+  # selectアクションで生産者かバイヤーか選択しルートを変える
   get 'sign_up' => 'home#select'
   get 'about' => 'home#about'
   devise_for :admins, skip: :all
