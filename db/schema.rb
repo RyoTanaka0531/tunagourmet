@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_143443) do
+ActiveRecord::Schema.define(version: 2020_05_26_093801) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -48,6 +48,45 @@ ActiveRecord::Schema.define(version: 2020_05_24_143443) do
     t.index ["reset_password_token"], name: "index_buyers_on_reset_password_token", unique: true
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "chats", force: :cascade do |t|
+    t.integer "producer_id", null: false
+    t.integer "buyer_id", null: false
+    t.string "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "producer_id", null: false
+    t.integer "buyer_id", null: false
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "producer_id", null: false
+    t.integer "buyer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "producer_id", null: false
+    t.integer "buyer_id", null: false
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "producers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -69,6 +108,18 @@ ActiveRecord::Schema.define(version: 2020_05_24_143443) do
     t.index ["company_name"], name: "index_producers_on_company_name"
     t.index ["email"], name: "index_producers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_producers_on_reset_password_token", unique: true
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name", null: false
+    t.string "product_image_id", null: false
+    t.text "description", null: false
+    t.integer "price", null: false
+    t.string "timing", null: false
+    t.integer "producer_id", null: false
+    t.integer "category_id", null: false
   end
 
 end

@@ -1,1 +1,57 @@
-<h1>バイヤー詳細</h1>
+<div class="container">
+    <% if @buyer == current_buyer %>
+    <h1>マイページ</h1>
+    <% else %>
+    <h1>バイヤー情報</h1>
+    <% end %>
+
+    <table>
+        <tr>
+            <th>担当者名</th>
+            <td><%= @buyer.name %></td>
+        </tr>
+        <tr>
+            <th>担当者名(フリガナ)</th>
+            <td><%= @buyer.kana_name %></td>
+        </tr>
+        <tr>
+            <th>屋号/社名</th>
+            <td><%= @buyer.company_name %></td>
+        </tr>
+        <tr>
+            <th>屋号/社名(フリガナ)</th>
+            <td><%= @buyer.kana_company_name %></td>
+        </tr>
+        <tr>
+            <th>業種・業態</th>
+            <td>飲食</td>
+        </tr>
+        <tr>
+            <th>メールアドレス</th>
+            <td><%= @buyer.email %></td>
+        </tr>
+        <tr>
+            <th>電話番号</th>
+            <td><%= @buyer.phone_number %></td>
+        </tr>
+        <tr>
+            <th>郵便番号</th>
+            <td><%= @buyer.postcode %></td>
+        </tr>
+        <tr>
+            <th>住所</th>
+            <td><%= @buyer.address %></td>
+        </tr>
+        <tr>
+            <th>ホームページ</th>
+            <td><%= @buyer.hp %></td>
+        </tr>
+        <tr>
+            <th>プロフィール</th>
+            <td><%= @buyer.description %></td>
+        </tr>
+    </table>
+    <% if @buyer == current_buyer %>
+        <%= link_to "編集する", edit_buyer_path %>
+    <% end %>
+</div>

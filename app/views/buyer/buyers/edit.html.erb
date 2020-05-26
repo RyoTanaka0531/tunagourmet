@@ -1,1 +1,53 @@
-<h1>バイヤー編集</h1>
+<div class="container">
+<h1>情報編集ページ</h1>
+<%= form_for(@buyer) do |f| %>
+    <table>
+    <tr>
+        <th><%= f.label "担当者名" %></th>
+        <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "担当者名(フリガナ)" %></th>
+        <td><%= f.text_field :kana_name %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "屋号/社名" %></th>
+        <td><%= f.text_field :company_name %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "屋号/社名(フリガナ)" %></th>
+        <td><%= f.text_field :kana_company_name %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "業種・業態" %></th>
+        <td>飲食</td>
+    </tr>
+    <tr>
+        <th><%= f.label "メールアドレス" %></th>
+        <td><%= f.email_field :email %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "電話番号" %></th>
+        <td><%= f.text_field :phone_number %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "郵便番号" %></th>
+        <td><%= f.text_field :postcode %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "住所" %></th>
+        <td><%= f.text_field :address %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "ホームページ" %></th>
+        <td><%= f.text_field :hp %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "プロフィール"%></th>
+        <td><%= f.text_field :description %></td>
+    </tr>
+    </table>
+    <%= f.submit "登録する"%>
+    <%= link_to "退会する", buyer_quit_path %>
+<% end %>
+</div>

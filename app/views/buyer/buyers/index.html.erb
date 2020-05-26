@@ -1,1 +1,21 @@
-<h1>バイヤー一覧</h1>
+<div class="container">
+    <h1>バイヤー一覧</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>写真</th>
+            <th>屋号</th>
+            <th>メールアドレス</th>
+            <th>プロフィール</th>
+        </tr>
+        <% @buyers.each do |buyer|%>
+        <tr>
+            <td><%= link_to buyer.id, buyer_path(buyer) %></td>
+            <td></td>
+            <td><%= link_to buyer.company_name, buyer_path(buyer) %></td>
+            <td><%= buyer.email %><td>
+            <td><%= buyer.description %></td>
+        </tr>
+        <% end %>
+    </table>
+</div>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'products/index'
+  get 'products/show'
   root 'home#top'
   # selectアクションで生産者かバイヤーか選択しルートを変える
   get 'sign_up' => 'home#select'
@@ -25,33 +27,39 @@ Rails.application.routes.draw do
     get 'producers/sign_up' => 'producers/registrations#new', as: 'new_producer_registrartion'
     post 'producers/sign_up' => 'producers/registrations#create', as: 'producer_registration'
   end
+
   namespace :producer do
     resources :producers, only:[:show, :edit, :update, :quit, :index]
+    resources :products, only:[:index, :show, :edit, :update]
   end
+
   namespace :buyer do
     resources :buyers, only:[:show, :edit, :update, :quit, :index]
   end
 
   get 'producers' => 'producer/producers#index', as: 'producers'
   get 'producers/:id' => 'producer/producers#show', as: 'producer'
-  get 'producers/:id' => 'producer/producers#edit', as: 'edit_producer'
+  get 'producers/:id/edit' => 'producer/producers#edit', as: 'edit_producer'
   patch 'producers/:id' => 'producer/producers#update'
-  get 'quit' => 'producer/producers#quit', as: 'producer_quit'
+  get 'producers/:id/quit' => 'producer/producers#quit', as: 'producer_quit'
 
   get 'buyers' => 'buyer/buyers#index', as: 'buyers'
   get 'buyers/:id' => 'buyer/buyers#show', as: 'buyer'
-  get 'buyers/:id' => 'buyer/buyers#edit', as: 'edit_buyer'
+  get 'buyers/:id/edit' => 'buyer/buyers#edit', as: 'edit_buyer'
   patch 'buyers/:id' => 'buyer/buyers#update'
-  get 'quit' => 'buyer/buyers#quit', as: 'buyer_quit'
-  # namespace :buyer do
-    # get 'orders/new'
-    # get 'orders/create'
+  get 'buyers/:id/quit' => 'buyer/buyers#quit', as: 'buyer_quit'
+
+  resources :products, only:[:index, :show]
+
+  namespace :buyer do
+    get 'orders/new'
+    get 'orders/create'
     # get 'orders/confirm'
     # get 'orders/completed'
     # get 'orders/index'
     # get 'orders/show'
     # get 'orders/update'
-  # end
+  end
   # namespace :producer do
     # get 'orders/index'
     # get 'orders/show'
