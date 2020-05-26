@@ -1,24 +1,26 @@
-<h1>品目一覧</h1>
-<% @products.each do |product| %>
-<table>
-    <tr>
-    <th>品目名</th>
-    <th><%= product.name %></th>
-    </tr>
+<div class="container">
+    <h1>品目一覧</h1>
+    <% @products.each do |product| %>
+    <table>
+        <tr>
+        <th>品目名</th>
+        <th><%= link_to product.name, product_path(product) %></th>
+        </tr>
 
-    <tr>
-    <th>売価</th>
-    <th><%= product.price %></th>
-    </tr>
+        <tr>
+        <th>売価</th>
+        <th><%= product.price %>円/kg</th>
+        </tr>
 
-    <tr>
-    <th>出荷時期</th>
-    <th><%= product.timing %></th>
-    </tr>
+        <tr>
+        <th>出荷時期</th>
+        <th><%= product.timing %></th>
+        </tr>
 
-    <tr>
-    <th>品目説明</th>
-    <th><%= product.description %></th>
-    </tr>
-</table>
-<% end %>
+        <tr>
+        <th>品目説明</th>
+        <th><%= product.description %></th>
+        </tr>
+    </table>
+    <% end %>
+</div>

@@ -7,12 +7,72 @@
 <div class="index">
     <% if producer_signed_in? %>
         <h2>バイヤー一覧</h2>
+        <% @buyers.each do |buyer| %>
+            <table>
+            <tr>
+                <th>バイヤー名</th>
+                <td><%= link_to buyer.company_name, buyer_path(buyer) %></td>
+            </tr>
+            <tr>
+                <th>プロフィール</th>
+                <td><%= buyer.description %></td>
+            </tr>
+            </table>
+        <% end %>
     <% elsif buyer_signed_in? %>
         <h2>生産者一覧</h2>
+        <% @producers.each do |producer| %>
+            <table>
+            <tr>
+                <th>生産者名</th>
+                <td><%= link_to producer.company_name, producer_path(producer) %></td>
+            </tr>
+            <tr>
+                <th>プロフィール</th>
+                <td><%= producer.description %></td>
+            </tr>
+            </table>
+        <% end %>
     <% else %>
         <h2>品目一覧</h2>
+        <% @products.each do |product| %>
+            <table>
+            <tr>
+                <th>品目名</th>
+                <td><%= link_to product.name, product_path(product) %></td>
+            </tr>
+            <tr>
+                <th>品目説明</th>
+                <td><%= product.description %></td>
+            </tr>
+            </table>
+        <% end %>
         <h2>生産者一覧</h2>
+        <% @producers.each do |producer| %>
+            <table>
+            <tr>
+                <th>生産者名</th>
+                <td><%= link_to producer.company_name, producer_path(producer) %></td>
+            </tr>
+            <tr>
+                <th>プロフィール</th>
+                <td><%= producer.description %></td>
+            </tr>
+            </table>
+        <% end %>
         <h2>バイヤー一覧</h2>
+        <% @buyers.each do |buyer| %>
+            <table>
+            <tr>
+                <th>バイヤー名</th>
+                <td><%= link_to buyer.company_name, buyer_path(buyer) %></td>
+            </tr>
+            <tr>
+                <th>プロフィール</th>
+                <td><%= buyer.description %></td>
+            </tr>
+            </table>
+        <% end %>
     <% end%>
 </div>
 </div>

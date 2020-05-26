@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     resources :buyers, only:[:show, :edit, :update, :quit, :index]
   end
   resources :products, only:[:new, :create, :index, :show, :edit, :update, :destroy]
-  resources :categories, only:[:index, :create]
+  resources :categories, only:[:index, :create, :destroy]
   get 'producers' => 'producer/producers#index', as: 'producers'
   get 'producers/:id' => 'producer/producers#show', as: 'producer'
   get 'producers/:id/edit' => 'producer/producers#edit', as: 'edit_producer'
