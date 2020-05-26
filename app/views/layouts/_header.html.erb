@@ -5,6 +5,7 @@
         <ul class="nav nav-pills">
             <li><%= link_to "トップ", root_path %></li>
             <li><%= link_to "マイページ", producer_path(current_producer)%></li>
+            <li><%= link_to "品目登録", new_product_path %></li>
             <li><%= link_to "受注一覧", "#"%></li>
             <li><%= link_to "チャット", "#"%></li>
             <li><%= link_to "ログアウト", destroy_producer_session_path, method: :delete %></li>
@@ -25,7 +26,7 @@
     <nav>
         <ul class="nav nav-pills">
             <li><%= link_to "トップ", root_path %></li>
-            <li><%= link_to "カテゴリ追加", "#" %></li>
+            <li><%= link_to "カテゴリ追加", categories_path %></li>
             <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
         </ul>
     </nav>

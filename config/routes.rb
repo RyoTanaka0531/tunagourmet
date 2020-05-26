@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'categories/create'
+  get 'categories/index'
   get 'products/index'
   get 'products/show'
   root 'home#top'
@@ -27,16 +29,15 @@ Rails.application.routes.draw do
     get 'producers/sign_up' => 'producers/registrations#new', as: 'new_producer_registrartion'
     post 'producers/sign_up' => 'producers/registrations#create', as: 'producer_registration'
   end
-
   namespace :producer do
     resources :producers, only:[:show, :edit, :update, :quit, :index]
-    resources :products, only:[:index, :show, :edit, :update]
   end
-
+  
   namespace :buyer do
     resources :buyers, only:[:show, :edit, :update, :quit, :index]
   end
-
+  resources :products, only:[:new, :create, :index, :show, :edit, :update, :destroy]
+  resources :categories, only:[:index, :create]
   get 'producers' => 'producer/producers#index', as: 'producers'
   get 'producers/:id' => 'producer/producers#show', as: 'producer'
   get 'producers/:id/edit' => 'producer/producers#edit', as: 'edit_producer'
