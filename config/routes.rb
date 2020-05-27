@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'posts/new'
+  get 'posts/create'
+  get 'posts/index'
+  get 'posts/show'
+  get 'posts/destroy'
   get 'categories/create'
   get 'categories/index'
   get 'products/index'
@@ -32,12 +37,16 @@ Rails.application.routes.draw do
   namespace :producer do
     resources :producers, only:[:show, :edit, :update, :quit, :index]
   end
-  
+
   namespace :buyer do
     resources :buyers, only:[:show, :edit, :update, :quit, :index]
   end
-  resources :products, only:[:new, :create, :index, :show, :edit, :update, :destroy]
+
+  resources :products
   resources :categories, only:[:index, :create, :destroy]
+  resources :posts, except:[:update, :edit]
+
+
   get 'producers' => 'producer/producers#index', as: 'producers'
   get 'producers/:id' => 'producer/producers#show', as: 'producer'
   get 'producers/:id/edit' => 'producer/producers#edit', as: 'edit_producer'
@@ -49,8 +58,6 @@ Rails.application.routes.draw do
   get 'buyers/:id/edit' => 'buyer/buyers#edit', as: 'edit_buyer'
   patch 'buyers/:id' => 'buyer/buyers#update'
   get 'buyers/:id/quit' => 'buyer/buyers#quit', as: 'buyer_quit'
-
-  resources :products, only:[:index, :show]
 
   namespace :buyer do
     get 'orders/new'

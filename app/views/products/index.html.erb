@@ -4,22 +4,27 @@
     <table>
         <tr>
         <th>品目名</th>
-        <th><%= link_to product.name, product_path(product) %></th>
+        <td><%= link_to product.name, product_path(product) %></td>
         </tr>
 
         <tr>
         <th>売価</th>
-        <th><%= product.price %>円/kg</th>
+        <td><%= product.price %>円/kg</td>
         </tr>
 
         <tr>
         <th>出荷時期</th>
-        <th><%= product.timing %></th>
+        <td><%= product.timing %></td>
         </tr>
 
         <tr>
         <th>品目説明</th>
-        <th><%= product.description %></th>
+        <td><%= product.description %></td>
+        </tr>
+        <tr>
+        <% if product.producer.id == current_producer.id %>
+            <th><%= link_to "編集する", edit_product_path(product) %></th>
+        <% end %>
         </tr>
     </table>
     <% end %>

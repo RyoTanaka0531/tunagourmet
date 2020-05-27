@@ -44,7 +44,7 @@
         </tr>
         <tr>
             <th>ホームページ</th>
-            <td><%= @buyer.hp %></td>
+            <td><%= link_to @buyer.hp, @buyer.hp %></td>
         </tr>
         <tr>
             <th>プロフィール</th>
@@ -54,4 +54,6 @@
     <% if @buyer == current_buyer %>
         <%= link_to "編集する", edit_buyer_path %>
     <% end %>
+    <p><%= link_to "バイヤー一覧に戻る", buyers_path %></p>
+
 </div>

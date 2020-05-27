@@ -1,0 +1,17 @@
+<div class="container">
+    <h3>投稿する</h3>
+    <%= form_for(@post) do |f| %>
+        <%= f.label "題名" %>
+        <%= f.text_field :heading %><br>
+        <%= f.label "本文" %>
+        <%= f.text_field :content%>
+        <%= f.submit "登録" %>
+    <% end %>
+    <ul>投稿一覧</ul>
+    <% @posts.each do |post| %>
+    <li>
+        <%= link_to post.heading, post_path(@post) %>
+        <%= link_to post.content, post_path(@post) %>
+    </li>
+    <% end %>
+</div>

@@ -1,9 +1,16 @@
 <div class="container">
     <h3><%= @product.name%></h3>
+    <p><strong>生産者名</strong></p>
+    <p><%= link_to @producer.name, producer_path(@producer) %></h4>
     <p><%= @product.description %></p>
     <h3>売価</h3>
     <%= @product.price %>円/kg
     <h3>出荷可能時期</h3>
     <%= @product.timing%>
-    <p><%= link_to "品目一覧に戻る", products_path %></p>
+    <div class="link">
+    <% if @product.producer.id == current_producer.id %>
+        <%= link_to "編集", edit_product_path %>
+    <% end %>
+        <%= link_to "品目一覧に戻る", products_path %>
+    </div>
 </div>

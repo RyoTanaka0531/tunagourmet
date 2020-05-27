@@ -1,6 +1,7 @@
 class Producer::ProducersController < ApplicationController
   def show
     @producer = Producer.find(params[:id])
+    @products = @producer.products
   end
 
   def create

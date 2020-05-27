@@ -1,22 +1,40 @@
-<h2>品目登録</h2>
-<%= form_for(@product) do |f| %>
-<table>
-<tr>
-    <th><%= f.label "品目名" %></th>
-    <td><%= f.text_field :name %></td>
-</tr>
-<tr>
-    <th><%= f.label "売価" %></th>
-    <td><%= f.text_field :price %>円/kg</td>
-</tr>
-<tr>
-    <th><%= f.label "出荷時期" %></th>
-    <td><%= f.text_field :timing %></td>
-</tr>
-<tr>
-    <th><%= f.label "品目説明" %></th>
-    <td><%= f.text_field :description %></td>
-</tr>
-</table>
-<%= f.submit "登録する"%>
-<% end %>
+<div class="container">
+    <div class="error">
+        <% if @product.errors.any? %>
+        <div id="error_explanation">
+            <h3><%= pluralize(@product.errors.count, "error")  %> prohibited this obj being saved:</h3>
+            <ul>
+                <%= @product.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+        <% end %>
+    </div>
+    <h2>品目登録</h2>
+    <%= form_for(@product) do |f| %>
+    <table>
+    <tr>
+        <th><%= f.label "品目名" %></th>
+        <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "カテゴリー" %></th>
+        <td><%= f.collection_select :category_id, Category.all, :id, :name %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "売価" %></th>
+        <td><%= f.text_field :price %>円/kg</td>
+    </tr>
+    <tr>
+        <th><%= f.label "出荷時期" %></th>
+        <td><%= f.text_field :timing %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "品目説明" %></th>
+        <td><%= f.text_field :description %></td>
+    </tr>
+    </table>
+    <%= f.submit "登録する"%>
+    <% end %>
+</div>

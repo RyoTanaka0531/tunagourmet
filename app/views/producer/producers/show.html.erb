@@ -40,14 +40,24 @@
         </tr>
         <tr>
             <th>ホームページ</th>
-            <td><%= @producer.hp %></td>
+            <td><%= link_to @producer.hp, @producer.hp %></td>
         </tr>
         <tr>
             <th>プロフィール</th>
             <td><%= @producer.description %></td>
         </tr>
     </table>
+
+<%# 生産者の登録している品目の表示 %>
+    <div class="products">
+    <ul>登録品目</ul>
+    <% @products.each do |product| %>
+        <li><%= link_to product.name, product_path(product) %></li>
+    <% end %>
+    </div>
+
     <% if @producer == current_producer %>
         <%= link_to "編集する", edit_producer_path(@producer) %>
     <% end %>
+    <p><%= link_to "生産者一覧に戻る", producers_path %></p>
 </div>
