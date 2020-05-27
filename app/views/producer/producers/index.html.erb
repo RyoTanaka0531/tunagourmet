@@ -1,21 +1,23 @@
 <div class="container">
     <h1>生産者一覧</h1>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>写真</th>
-            <th>屋号</th>
-            <th>メールアドレス</th>
-            <th>プロフィール</th>
-        </tr>
-        <% @producers.each do |producer|%>
-        <tr>
-            <td><%= link_to producer.id, producer_path(producer) %></td>
-            <td></td>
-            <td><%= link_to producer.company_name, producer_path(producer) %></td>
-            <td><%= producer.email %><td>
-            <td><%= producer.description %><td>
-        </tr>
-        <% end %>
-    </table>
+    <% @producers.each do |producer| %>
+        <div class="row">
+            <div class="col-lg-2 col-lg-offset-1">
+                    <%= link_to producer_path(producer) do %>
+                    <%= attachment_image_tag(producer, :profile_image, style: "width:150px; height:150px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
+                    <% end %>
+            </div>
+            <div class="col-lg-9">
+                <table>
+                    <tr>
+                        <th>屋号</th>
+                        <td><%= link_to producer.company_name, producer_path(producer) %></td>
+                    </tr>
+                        <th>プロフィール</th>
+                        <td><%= producer.description %><td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    <% end %>
 </div>

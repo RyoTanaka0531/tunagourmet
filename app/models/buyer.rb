@@ -7,5 +7,5 @@ class Buyer < ApplicationRecord
   has_many :comments
   has_many :likes
   has_many :chats
-
+  attachment :profile_image
 end

@@ -1,21 +1,24 @@
 <div class="container">
     <h1>バイヤー一覧</h1>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>写真</th>
-            <th>屋号</th>
-            <th>メールアドレス</th>
-            <th>プロフィール</th>
-        </tr>
-        <% @buyers.each do |buyer|%>
-        <tr>
-            <td><%= link_to buyer.id, buyer_path(buyer) %></td>
-            <td></td>
-            <td><%= link_to buyer.company_name, buyer_path(buyer) %></td>
-            <td><%= buyer.email %><td>
-            <td><%= buyer.description %></td>
-        </tr>
-        <% end %>
-    </table>
+    <% @buyers.each do |buyer|%>
+        <div class="row">
+            <div class="col-lg-2 col-lg-offset-1">
+                    <%= link_to buyer_path(buyer) do%>
+                    <%= attachment_image_tag(buyer, :profile_image, style: "width:150px; height:150px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
+                    <% end %>
+            </div>
+            <div class="col-lg-9">
+                <table>
+                    <tr>
+                        <th>屋号</th>
+                        <td><%= link_to buyer.company_name, buyer_path(buyer) %></td>
+                    </tr>
+                    <tr>
+                        <th>プロフィール</th>
+                        <td><%= buyer.description %></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    <% end %>
 </div>

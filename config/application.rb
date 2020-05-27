@@ -17,3 +17,4 @@ module Tunagurume
     # the framework and any gems in your application.
   end
 end
+Refile.secret_key = 'b8c77559c3b385f02150c2b0730023abc964ca05195de1e3bf010728adc8382071dccaac5fc839f4d7a9b4222688c8cb18735cc014d7503f079bae2533168033'

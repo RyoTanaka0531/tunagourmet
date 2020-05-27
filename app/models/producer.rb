@@ -8,4 +8,5 @@ class Producer < ApplicationRecord
   has_many :likes
   has_many :comments
   has_many :chats
+  attachment :profile_image
 end

@@ -1,31 +1,37 @@
 <div class="container">
     <h1>品目一覧</h1>
     <% @products.each do |product| %>
-    <table>
-        <tr>
-        <th>品目名</th>
-        <td><%= link_to product.name, product_path(product) %></td>
-        </tr>
-
-        <tr>
-        <th>売価</th>
-        <td><%= product.price %>円/kg</td>
-        </tr>
-
-        <tr>
-        <th>出荷時期</th>
-        <td><%= product.timing %></td>
-        </tr>
-
-        <tr>
-        <th>品目説明</th>
-        <td><%= product.description %></td>
-        </tr>
-        <tr>
-        <% if product.producer.id == current_producer.id %>
-            <th><%= link_to "編集する", edit_product_path(product) %></th>
-        <% end %>
-        </tr>
-    </table>
+        <div class="row">
+            <div class="col-lg-2 col-lg-offset-3">
+                <%= link_to product_path(product) do %>
+                <%= attachment_image_tag(product, :product_image, style: "width:150px; height:150px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
+                <% end %>
+            </div>
+            <div class="col-lg-3">
+                <table>
+                    <tr>
+                        <th>品目名</th>
+                        <td><%= link_to product.name, product_path(product) %></td>
+                    </tr>
+                    <tr>
+                        <th>売価</th>
+                        <td><%= product.price %>円/kg</td>
+                    </tr>
+                    <tr>
+                        <th>出荷時期</th>
+                        <td><%= product.timing %></td>
+                    </tr>
+                    <tr>
+                        <th>品目説明</th>
+                        <td><%= product.description %></td>
+                    </tr>
+                    <tr>
+                    <% if product.producer.id == current_producer.id %>
+                        <th><%= link_to "編集する", edit_product_path(product) %></th>
+                    <% end %>
+                    </tr>
+                </table>
+            </div>
+        </div>
     <% end %>
 </div>

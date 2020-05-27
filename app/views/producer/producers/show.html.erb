@@ -1,63 +1,73 @@
 <div class="container">
-    <% if @producer == current_producer %>
-    <h1>マイページ</h1>
-    <% else %>
-    <h1>生産者情報</h1>
-    <% end %>
+    <div class="row">
+            <% if @producer == current_producer %>
+            <h1>マイページ</h1>
+            <% else %>
+            <h1>生産者情報</h1>
+            <% end %>
+        <div class="col-lg-3">
+            <div class="image">
+                <%= attachment_image_tag @producer, :profile_image, style: "width:200px; height:200px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg" %>
+            </div>
+        </div>
 
-    <table>
-        <tr>
-            <th>担当者名</th>
-            <td><%= @producer.name %></td>
-        </tr>
-        <tr>
-            <th>担当者名(フリガナ)</th>
-            <td><%= @producer.kana_name %></td>
-        </tr>
-        <tr>
-            <th>屋号/社名</th>
-            <td><%= @producer.company_name %></td>
-        </tr>
-        <tr>
-            <th>屋号/社名(フリガナ)</th>
-            <td><%= @producer.kana_company_name %></td>
-        </tr>
-        <tr>
-            <th>メールアドレス</th>
-            <td><%= @producer.email %></td>
-        </tr>
-        <tr>
-            <th>電話番号</th>
-            <td><%= @producer.phone_number %></td>
-        </tr>
-        <tr>
-            <th>郵便番号</th>
-            <td><%= @producer.postcode %></td>
-        </tr>
-        <tr>
-            <th>住所</th>
-            <td><%= @producer.address %></td>
-        </tr>
-        <tr>
-            <th>ホームページ</th>
-            <td><%= link_to @producer.hp, @producer.hp %></td>
-        </tr>
-        <tr>
-            <th>プロフィール</th>
-            <td><%= @producer.description %></td>
-        </tr>
-    </table>
-
-<%# 生産者の登録している品目の表示 %>
-    <div class="products">
-    <ul>登録品目</ul>
-    <% @products.each do |product| %>
-        <li><%= link_to product.name, product_path(product) %></li>
-    <% end %>
+        <div class="col-lg-9">
+            <table>
+                <tr>
+                    <th>担当者名</th>
+                    <td><%= @producer.name %></td>
+                </tr>
+                <tr>
+                    <th>担当者名(フリガナ)</th>
+                    <td><%= @producer.kana_name %></td>
+                </tr>
+                <tr>
+                    <th>屋号/社名</th>
+                    <td><%= @producer.company_name %></td>
+                </tr>
+                <tr>
+                    <th>屋号/社名(フリガナ)</th>
+                    <td><%= @producer.kana_company_name %></td>
+                </tr>
+                <tr>
+                    <th>メールアドレス</th>
+                    <td><%= @producer.email %></td>
+                </tr>
+                <tr>
+                    <th>電話番号</th>
+                    <td><%= @producer.phone_number %></td>
+                </tr>
+                <tr>
+                    <th>郵便番号</th>
+                    <td><%= @producer.postcode %></td>
+                </tr>
+                <tr>
+                    <th>住所</th>
+                    <td><%= @producer.address %></td>
+                </tr>
+                <tr>
+                    <th>ホームページ</th>
+                    <td><%= link_to @producer.hp, @producer.hp %></td>
+                </tr>
+                <tr>
+                    <th>プロフィール</th>
+                    <td><%= @producer.description %></td>
+                </tr>
+            </table>
+        </div>
     </div>
+        <%# 生産者の登録している品目の表示 %>
+    <div class="row">
+        <div class="products">
+        <ul>登録品目</ul>
+        <% @products.each do |product| %>
+            <li><%= link_to product.name, product_path(product) %></li>
+        <% end %>
+        </div>
 
-    <% if @producer == current_producer %>
-        <%= link_to "編集する", edit_producer_path(@producer) %>
-    <% end %>
-    <p><%= link_to "生産者一覧に戻る", producers_path %></p>
+        <% if @producer == current_producer %>
+            <%= link_to "編集する", edit_producer_path(@producer) %>
+        <% end %>
+        <p><%= link_to "生産者一覧に戻る", producers_path %></p>
+    </div>
 </div>
