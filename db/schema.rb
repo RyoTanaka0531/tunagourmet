@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_074141) do
+ActiveRecord::Schema.define(version: 2020_05_28_165556) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_074141) do
     t.text "description"
     t.string "profile_image_id"
     t.string "hp"
+    t.integer "prefecture", default: 0, null: false
     t.index ["company_name"], name: "index_buyers_on_company_name"
     t.index ["email"], name: "index_buyers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_buyers_on_reset_password_token", unique: true
@@ -106,6 +107,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_074141) do
     t.string "postcode", default: "", null: false
     t.string "address", default: "", null: false
     t.string "hp"
+    t.integer "prefecture", default: 0, null: false
     t.index ["company_name"], name: "index_producers_on_company_name"
     t.index ["email"], name: "index_producers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_producers_on_reset_password_token", unique: true
@@ -121,6 +123,7 @@ ActiveRecord::Schema.define(version: 2020_05_27_074141) do
     t.string "timing", null: false
     t.integer "producer_id", null: false
     t.integer "category_id", null: false
+    t.integer "prefecture", default: 0, null: false
   end
 
 end

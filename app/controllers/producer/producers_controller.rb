@@ -27,10 +27,12 @@ class Producer::ProducersController < ApplicationController
 
   def index
     @producers = Producer.all
+    @search = Producer.ransack(params[:q])
+    @results = @search.result
   end
 
   private
   def producer_params
-    params.require(:producer).permit(:name, :kana_name, :company_name, :kana_company_name, :phone_number, :postcode, :address, :hp, :description, :profile_image)
+    params.require(:producer).permit(:name, :kana_name, :company_name, :kana_company_name, :phone_number, :postcode, :address, :hp, :description, :profile_image, :prefecture)
   end
 end

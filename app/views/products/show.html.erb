@@ -17,7 +17,7 @@
             <p><strong>説明</strong></p>
             <p><%= @product.description %></p>
             <div class="link">
-                <% if @product.producer.id == current_producer.id %>
+                <% if @product.producer == current_producer %>
                     <%= link_to "編集", edit_product_path %>
                 <% end %>
             </div>

@@ -35,7 +35,11 @@
         <td><%= f.text_field :postcode %></td>
     </tr>
     <tr>
-        <th><%= f.label "住所" %></th>
+        <th><%= f.label "都道府県" %></th>
+        <td><%= f.select :prefecture, Producer.prefectures.keys %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "住所(市区町村・番地・建物" %></th>
         <td><%= f.text_field :address %></td>
     </tr>
     <tr>

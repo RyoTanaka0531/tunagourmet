@@ -1,0 +1,20 @@
+<div class="col-lg-2 sidebar h-auto">
+    <%= search_form_for @search do |f| %>
+        <div class="form-group">
+            <%= f.label :company_name_cont, "生産者名でさがす"%>
+            <%= f.search_field :company_name_cont, class: "form-controll"%>
+        </div>
+        <div class="actions">
+            <%= f.submit "検索"%>
+        </div>
+    <% end %>
+    <%= search_form_for @search do |f| %>
+        <div class="form-group">
+            <%= f.label :prefecture_cont, "都道府県"%>
+            <%= f.select :prefecture_cont, Producer.prefectures.keys, class: "form-controll" %>
+        </div>
+        <div class="actions">
+            <%= f.submit "検索"%>
+        </div>
+    <% end %>
+</div>

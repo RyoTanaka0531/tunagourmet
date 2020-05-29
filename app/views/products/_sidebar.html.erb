@@ -1,0 +1,11 @@
+<div class="col-lg-2 sidebar h-auto">
+    <%= search_form_for @search do |f| %>
+        <div class="form-group">
+            <%= f.label :name_cont, "品目名でさがす"%>
+            <%= f.search_field :name_cont, class: "form-controll"%>
+        </div>
+        <div class="actions">
+            <%= f.submit "検索"%>
+        </div>
+    <% end %>
+</div>
