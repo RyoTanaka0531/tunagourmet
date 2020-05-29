@@ -7,7 +7,7 @@
             <li><%= link_to "マイページ", producer_path(current_producer)%></li>
             <li><%= link_to "品目登録", new_product_path %></li>
             <li><%= link_to "受注一覧", "#"%></li>
-            <li><%= link_to "チャット", "#"%></li>
+            <li><%= link_to "チャット", chats_path %></li>
             <li><%= link_to "ログアウト", destroy_producer_session_path, method: :delete %></li>
         </ul>
     </nav>
@@ -18,7 +18,7 @@
             <li><%= link_to "マイページ", buyer_path(current_buyer) %></li>
             <li><%= link_to "発注", "#"%></li>
             <li><%= link_to "発注一覧", "#"%></li>
-            <li><%= link_to "チャット", "#"%></li>
+            <li><%= link_to "チャット", chats_path %></li>
             <li><%= link_to "ログアウト", destroy_buyer_session_path, method: :delete %></li>
         </ul>
     </nav>

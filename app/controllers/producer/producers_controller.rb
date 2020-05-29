@@ -2,6 +2,13 @@ class Producer::ProducersController < ApplicationController
   def show
     @producer = Producer.find(params[:id])
     @products = @producer.products
+    if @producer != current_producer
+      chats = current_buyer.chats
+      @producer_ids = []
+      chats.each do |chat|
+        @producer_ids << chat.producer_id
+      end
+    end
   end
 
   def create

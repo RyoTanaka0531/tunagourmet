@@ -1,0 +1,12 @@
+<h2>チャットスペース</h2>
+<% if producer_signed_in? %>
+    <h3>バイヤー一覧</h3>
+    <% @buyers.each do |buyer| %>
+        <%= buyer.company_name %>
+    <% end %>
+<% elsif buyer_signed_in? %>
+    <h3>生産者一覧</h3>
+    <%= @producers.each do |producer| %>
+        <%= producer.name %>
+    <% end %>
+<% end %>

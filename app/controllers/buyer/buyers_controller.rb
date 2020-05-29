@@ -1,6 +1,13 @@
 class Buyer::BuyersController < ApplicationController
   def show
     @buyer = Buyer.find(params[:id])
+    if @buyer != current_buyer
+      chats = current_producer.chats
+      @buyer_ids = []
+      chats.each do |chat|
+        @buyer_ids << chat.buyer_id
+      end
+    end
   end
 
   def create

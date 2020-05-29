@@ -45,7 +45,9 @@ Rails.application.routes.draw do
   resources :products
   resources :categories, only:[:index, :create, :destroy]
   resources :posts, except:[:update, :edit]
-
+  resources :chats, only:[:show, :create, :index] do
+    resources :messages, only:[:create]
+  end
 
   get 'producers' => 'producer/producers#index', as: 'producers'
   get 'producers/:id' => 'producer/producers#show', as: 'producer'

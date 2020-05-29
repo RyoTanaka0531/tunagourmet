@@ -1,0 +1,50 @@
+<div class="container">
+    <h1>チャットページ</h1>
+    <% if producer_signed_in? %>
+        <h3><%= @buyer.company_name %>さんとのチャットルーム</h3>
+        <div class="chat-field">
+            <% @messages.each do |msg| %>
+                <!-- メッセージがproducerによるものだったら -->
+                <% if msg.is_producer %>
+                    <!-- メッセージを右に寄せる -->
+                    <div class="right-message">
+                        <%= msg.content %>
+                        <%= attachment_image_tag @producer, :profile_image, style: "width:30px; height:30px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %><br>
+                    </div>
+                <!-- メッセージがbuyerによるものだったら -->
+                <% else %>
+                    <!-- メッセージを左に寄せる -->
+                    <div class="left-message">
+                        <%= msg.content %><br>
+                        <%= @buyer.company_name %><br>
+                        <%= attachment_image_tag @buyer, :profile_image, style: "width:30px; height:30px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    <% elsif buyer_signed_in? %>
+        <h3><%= @producer.company_name%>さんとのチャットルーム</h3>
+        <div class="chat-field">
+            <% @messages.each do |msg| %>
+                <!-- メッセージがproducerによるものだったら -->
+                <% if msg.is_producer %>
+                    <!-- メッセージを左に寄せる -->
+                    <div class="left_message">
+                        <%= msg.content%>
+                    </div>
+                <!-- メッセージがbuyerによるものだったら -->
+                <% else %>
+                    <!-- メッセージを右に寄せる -->
+                    <div class="right-message">
+                        <%= msg.content %>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    <% end %>
+
+    <%= form_for [@chat, @message] do |f| %>
+        <%= f.text_field :content %>
+        <%= f.submit "送信" %>
+    <% end %>
+</div>

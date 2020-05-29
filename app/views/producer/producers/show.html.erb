@@ -6,6 +6,17 @@
             <h1>生産者情報</h1>
             <% end %>
         <div class="col-lg-3">
+
+        <% if @producer != current_producer %>
+            <% if @producer_ids.include?(@producer.id) %><br>
+                <%= link_to "チャットへ", chat_path(current_buyer.chats.find_by(producer_id: @producer.id)) %><br>
+            <% else %>
+                <%= form_for Chat.new do |f| %>
+                    <%= f.hidden_field :producer_id, :value => @producer.id %>
+                    <%= f.submit "チャットを開始" %>
+                <% end %>
+            <% end %>
+        <% end %>
             <div class="image">
                 <%= attachment_image_tag @producer, :profile_image, style: "width:200px; height:200px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg" %>
             </div>
