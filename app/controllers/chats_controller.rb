@@ -22,8 +22,8 @@ class ChatsController < ApplicationController
     @chat = Chat.find(params[:id]) #チャット情報の取得
     @message = Message.new #新規メッセージ投稿
     @messages = @chat.messages #チャット内のメッセージを全て取得
-    @buyer = Buyer.find(params[:id])
-    @prducer = Producer.find(params[:id])
+    # @buyer = Buyer.find(params[:id])
+    # @prducer = Producer.find(params[:id])
     if producer_signed_in?
       if @chat.producer.id == current_producer.id
         @buyer = @chat.buyer

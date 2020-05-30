@@ -16,8 +16,8 @@
                     <!-- メッセージを左に寄せる -->
                     <div class="left-message">
                         <%= msg.content %><br>
-                        <%= @buyer.company_name %><br>
                         <%= attachment_image_tag @buyer, :profile_image, style: "width:30px; height:30px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+                        <%= @buyer.company_name %>
                     </div>
                 <% end %>
             <% end %>
@@ -30,13 +30,16 @@
                 <% if msg.is_producer %>
                     <!-- メッセージを左に寄せる -->
                     <div class="left_message">
-                        <%= msg.content%>
+                        <%= msg.content%><br>
+                        <%= attachment_image_tag @producer, :profile_image, style: "width:30px; height:30px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+                        <%= @producer.company_name %>
                     </div>
                 <!-- メッセージがbuyerによるものだったら -->
                 <% else %>
                     <!-- メッセージを右に寄せる -->
                     <div class="right-message">
                         <%= msg.content %>
+                        <%= attachment_image_tag @buyer, :profile_image, style: "width:30px; height:30px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
                     </div>
                 <% end %>
             <% end %>
