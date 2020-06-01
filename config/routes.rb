@@ -63,6 +63,8 @@ Rails.application.routes.draw do
   get 'buyers/:id/quit' => 'buyer/buyers#quit', as: 'buyer_quit'
 
   get 'order/new' => 'buyer/orders#new', as: 'new_order'
+  get 'order/confirm' => 'buyer/orders#confirm'
+  post 'order/confirm' => 'buyer/orders#create'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

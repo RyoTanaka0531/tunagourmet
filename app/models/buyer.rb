@@ -7,6 +7,7 @@ class Buyer < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :chats, dependent: :destroy
+  has_many :orders, dependent: :destroy
   attachment :profile_image
   enum prefecture:{
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

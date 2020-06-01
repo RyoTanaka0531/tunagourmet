@@ -1,1 +1,23 @@
-<h3>発注登録</h3>
+<div class="container">
+<h2>発注登録</h2>
+<h3>生産者名:  <%= link_to @order.producers.company_name, producer_path(@producer) %></h3>
+<%= form_for (@order) do |f| %>
+    <table>
+        <tr>
+            <th>画像</th>
+            <th>品目名</th>
+            <th>売価</th>
+            <th>数量</th>
+            <th>金額</th>
+            <th>納品希望日</th>
+        </tr>
+        <tr>
+            <td><%= attachment_image_tag(product, :product_image, style: "width:50px; height:50px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg") %></td>
+            <td><%= @product.name %></td>
+            <td><%= @product.price %></td>
+            <td><%= f.number_field :count %></td>
+            <td><%= @order.product.count * @product.price %></td>
+            <td> </td>
+        </tr>
+    </table>
+<% end %>

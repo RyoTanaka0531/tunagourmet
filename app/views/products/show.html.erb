@@ -5,17 +5,34 @@
             <div class="image">
                 <%= attachment_image_tag @product, :product_image, style: "width:200px; height:200px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg" %>
             </div>
+            <div class="order-form ">
+                <p>
+                <%# <%= link_to "発注する", new_order_path %>
+                <%= link_to "発注する", new_order_path, product_id: @product.id, product_name: @product.name %>
+                </p>
+                <p><%= link_to "生産者ページ", producer_path(@producer), class: "btn btn-primary" %></p>
+                <% if @producer != current_producer && buyer_signed_in? %>
+                    <% if @producer_ids.include?(@producer.id) %>
+                        <%= link_to "生産者とチャットをする", chat_path(current_buyer.chats.find_by(producer_id: @producer.id)), class: "btn btn-primary" %><br>
+                    <% else %>
+                        <%= form_for Chat.new do |f| %>
+                            <%= f.hidden_field :producer_id, :value => @producer.id %>
+                            <%= f.submit "生産者とチャットを開始", class: "btn btn-primary" %>
+                        <% end %>
+                    <% end %>
+                <% end %>
+            </div>
         </div>
         <div class="col-lg-4">
             <h3><%= @product.name%></h3>
-            <p><strong>生産者名</strong></p>
-            <p><%= link_to @producer.name, producer_path(@producer) %></h4>
+            <p><strong>説明</strong></p>
+            <p><%= @product.description %></p>
             <h3>売価</h3>
             <%= @product.price %>円/kg
             <h3>出荷可能時期</h3>
             <%= @product.timing%>
-            <p><strong>説明</strong></p>
-            <p><%= @product.description %></p>
+            <p><strong>生産者名</strong></p>
+            <h4><%= link_to @producer.name, producer_path(@producer) %></h4>
             <div class="link">
                 <% if @product.producer == current_producer %>
                     <%= link_to "編集", edit_product_path %>
@@ -24,8 +41,8 @@
         </div>
     </div>
     <div class="row">
-        <p class="link">
-                <%= link_to "品目一覧に戻る", products_path %>
+        <p class="right-link">
+                <%= link_to ">>品目一覧に戻る", products_path %>
         </p>
     </div>
 </div>

@@ -39,6 +39,15 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @producer = Producer.find(@product.producer_id)
+    if @producer != current_producer
+      if buyer_signed_in?
+        chats = current_buyer.chats
+        @producer_ids = []
+        chats.each do |chat|
+          @producer_ids << chat.producer_id
+        end
+      end
+    end
   end
 
   def destroy
