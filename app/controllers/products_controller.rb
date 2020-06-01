@@ -14,9 +14,13 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @search = Product.ransack(params[:q])
-    @results = @search.result
-    @products = Product.all
+    if params[:q].present?
+      @search = Product.ransack(params[:q])
+      @products = @search.result
+    else
+      @search = Product.ransack()
+      @products = Product.all
+    end
   end
 
   def edit
@@ -51,3 +55,4 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :price, :description, :timing, :category_id, :producer_id, :product_image)
   end
 end
+

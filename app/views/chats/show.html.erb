@@ -10,6 +10,7 @@
                     <div class="right-message">
                         <%= msg.content %>
                         <%= attachment_image_tag @producer, :profile_image, style: "width:30px; height:30px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %><br>
+                        <%= msg.created_at %>
                     </div>
                 <!-- メッセージがbuyerによるものだったら -->
                 <% else %>
@@ -18,6 +19,7 @@
                         <%= msg.content %><br>
                         <%= attachment_image_tag @buyer, :profile_image, style: "width:30px; height:30px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
                         <%= @buyer.company_name %>
+                        <%= msg.created_at %>
                     </div>
                 <% end %>
             <% end %>
@@ -32,14 +34,16 @@
                     <div class="left_message">
                         <%= msg.content%><br>
                         <%= attachment_image_tag @producer, :profile_image, style: "width:30px; height:30px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
-                        <%= @producer.company_name %>
+                        <%= @producer.company_name %><br>
+                        <%= l msg.created_at %>
                     </div>
                 <!-- メッセージがbuyerによるものだったら -->
                 <% else %>
                     <!-- メッセージを右に寄せる -->
                     <div class="right-message">
                         <%= msg.content %>
-                        <%= attachment_image_tag @buyer, :profile_image, style: "width:30px; height:30px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+                        <%= attachment_image_tag @buyer, :profile_image, style: "width:30px; height:30px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %><br>
+                        <%= l msg.created_at %>
                     </div>
                 <% end %>
             <% end %>

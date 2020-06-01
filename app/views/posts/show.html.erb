@@ -1,2 +1,14 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="container">
+    <h2><%= @post.heading %></h2>
+    <p><%= @post.content %></p>
+    <% if @post.buyer %>
+        <p><%= link_to @post.buyer.company_name, buyer_path(@post.buyer) %>
+    <% else %>
+        <p><%= link_to @post.producer.company_name, producer_path(@post.producer) %>
+    <% end %>
+    <div class="right-link">
+        <% if @post.producer || @post.buyer == current_producer || current_buyer %>
+            <%= link_to "削除する", post_path(@post), method: :delete %>
+        <% end %>
+    </div>
+</div>

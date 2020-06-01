@@ -4,7 +4,7 @@
             <%= f.label :company_name_cont, "バイヤー名でさがす"%>
             <%= f.search_field :company_name_cont, class: "form-controll"%>
             <%= f.label :prefecture_cont, "都道府県"%>
-            <%= f.select :prefecture_cont, Buyer.prefectures.keys, class: "form-controll" %>
+            <%= f.select :prefecture_cont, Buyer.prefectures.keys, {prompt: "選択してください", class: "form-controll"} %>
         </div>
         <div class="actions">
             <%= f.submit "検索"%>

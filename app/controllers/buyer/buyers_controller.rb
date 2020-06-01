@@ -39,9 +39,13 @@ class Buyer::BuyersController < ApplicationController
   end
 
   def index
-    @search = Buyer.ransack(params[:q])
-    @results = @search.result
-    @buyers = Buyer.all
+    if params[:q].present?
+      @search = Buyer.ransack(params[:q])
+      @buyers = @search.result
+    else
+      @search = Buyer.ransack()
+      @buyers = Buyer.all
+    end
   end
 
   private
@@ -49,3 +53,4 @@ class Buyer::BuyersController < ApplicationController
     params.require(:buyer).permit(:email, :name, :kana_name, :company_name, :kana_company_name, :phone_number, :postcode, :address, :hp, :description, :profile_image, :prefecture)
   end
 end
+

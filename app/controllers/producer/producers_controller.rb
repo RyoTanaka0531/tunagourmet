@@ -41,9 +41,14 @@ class Producer::ProducersController < ApplicationController
   end
 
   def index
-    @producers = Producer.all
-    @search = Producer.ransack(params[:q])
-    @results = @search.result
+    #検索formにパラメーターが入力された場合とされてない場合
+    if params[:q].present?
+      @search = Producer.ransack(params[:q])
+      @producers = @search.result
+    else
+      @search = Producer.ransack()
+      @producers = Producer.all
+    end
   end
 
   private

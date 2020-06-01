@@ -7,7 +7,7 @@
             <% end %>
         <div class="col-lg-3">
 
-        <% if @producer != current_producer %>
+        <% if @producer != current_producer && buyer_signed_in? %>
             <% if @producer_ids.include?(@producer.id) %><br>
                 <%= link_to "チャットへ", chat_path(current_buyer.chats.find_by(producer_id: @producer.id)) %><br>
             <% else %>

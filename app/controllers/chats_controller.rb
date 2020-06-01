@@ -2,19 +2,21 @@ class ChatsController < ApplicationController
 
   def index
     if producer_signed_in?
-      @buyers = Buyer.all
-      chats = current_producer.chats
-      @buyer_ids = []
-      chats.each do |chat|
-        @buyer_ids << chat.buyer_id
-      end
+      @chats = current_producer.chats
+      # @chat = Chat.find(params[:id])
+      # @buyers = @chat.buyers
+      # @buyer_ids = []
+      # @chats.each do |chat|
+      # @buyer_ids << chat.buyer_id
+      # end
     elsif buyer_signed_in?
-      @producers = Producer.all
-      chats = current_buyer.chats
-      @producer_ids = []
-      chats.each do |chat|
-        @producer_ids << chat.producer_id
-      end
+      @chats = current_buyer.chats
+      # @producers = Producer.all
+      # chats = current_buyer.chats
+      # @producer_ids = []
+      # chats.each do |chat|
+        # @producer_ids << chat.producer_id
+      # end
     end
   end
 
@@ -69,3 +71,4 @@ class ChatsController < ApplicationController
     params.require(:chat).permit(:producer_id)
   end
 end
+
