@@ -1,10 +1,11 @@
 class Buyer::OrdersController < ApplicationController
 
   def new
+    # params[:product_id]
+    # params[:product_name]
+    # params[:product_price]
     @order = Order.new
-    params[:product_id]
-    params[:product_name]
-    @products = Product.find(product_id:[:id])
+    @product = Product.find_by(id: params[:product_id])
     # @product = Product.find(params[product.id])
     @order = Order.find_by(product_id: params[:product_id])
     # @product = Product.find(params[:id])

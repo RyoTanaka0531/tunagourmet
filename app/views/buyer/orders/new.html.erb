@@ -1,6 +1,6 @@
 <div class="container">
 <h2>発注登録</h2>
-<h3>生産者名:  <%= link_to @order.producers.company_name, producer_path(@producer) %></h3>
+<h3>生産者名:  <%= link_to @product.name, producer_path(@producer) %></h3>
 <%= form_for (@order) do |f| %>
     <table>
         <tr>
