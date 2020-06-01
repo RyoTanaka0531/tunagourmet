@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   resources :chats, only:[:show, :create, :index] do
     resources :messages, only:[:create]
   end
+  
 
   get 'producers' => 'producer/producers#index', as: 'producers'
   get 'producers/:id' => 'producer/producers#show', as: 'producer'
@@ -61,34 +62,7 @@ Rails.application.routes.draw do
   patch 'buyers/:id' => 'buyer/buyers#update'
   get 'buyers/:id/quit' => 'buyer/buyers#quit', as: 'buyer_quit'
 
-  namespace :buyer do
-    get 'orders/new'
-    get 'orders/create'
-    # get 'orders/confirm'
-    # get 'orders/completed'
-    # get 'orders/index'
-    # get 'orders/show'
-    # get 'orders/update'
-  end
-  # namespace :producer do
-    # get 'orders/index'
-    # get 'orders/show'
-    # get 'orders/update'
-    # get 'orders/confirm'
-    # get 'orders/completed'
-  # end
+  get 'order/new' => 'buyer/orders#new', as: 'new_order'
 
-  # get 'products/index'
-  # get 'products/show'
-  # get 'buyers/show'
-  # get 'buyers/edit'
-  # get 'buyers/update'
-  # get 'buyers/quit'
-  # get 'buyers/index'
-  # get 'producers/show'
-  # get 'producers/edit'
-  # get 'producers/update'
-  # get 'producers/quit'
-  # get 'producers/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

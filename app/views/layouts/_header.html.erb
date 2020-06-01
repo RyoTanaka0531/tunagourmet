@@ -16,7 +16,7 @@
         <ul class="nav nav-pills">
             <li><%= link_to "トップ", root_path %></li>
             <li><%= link_to "マイページ", buyer_path(current_buyer) %></li>
-            <li><%= link_to "発注", "#"%></li>
+            <li><%= link_to "発注", new_order_path %></li>
             <li><%= link_to "発注一覧", "#"%></li>
             <li><%= link_to "チャット", chats_path %></li>
             <li><%= link_to "ログアウト", destroy_buyer_session_path, method: :delete %></li>
