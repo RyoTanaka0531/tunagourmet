@@ -1,14 +1,35 @@
 <div class="container">
-    <h2><%= @post.heading %></h2>
-    <p><%= @post.content %></p>
-    <% if @post.buyer %>
-        <p><%= link_to @post.buyer.company_name, buyer_path(@post.buyer) %>
-    <% else %>
-        <p><%= link_to @post.producer.company_name, producer_path(@post.producer) %>
-    <% end %>
-    <div class="right-link">
-        <% if @post.producer || @post.buyer == current_producer || current_buyer %>
-            <%= link_to "削除する", post_path(@post), method: :delete %>
+    <div class="post-index">
+        <h2><%= @post.heading %></h2>
+        <p><%= @post.content %></p>
+        <div id="like_buttons_<%= @post.id %>">
+            <%= render 'likes/like', post: @post%>
+        </div>
+        <% if @post.buyer %>
+            <p><%= link_to @post.buyer.company_name, buyer_path(@post.buyer) %></p>
+        <% else %>
+            <p><%= link_to @post.producer.company_name, producer_path(@post.producer) %></p>
+        <% end %>
+        <div class="right-link">
+            <% if @post.producer || @post.buyer == current_producer || current_buyer %>
+                <%= link_to "削除する", post_path(@post), method: :delete %>
+            <% end %>
+        </div>
+        <div class="row">
+        <h3>コメント</h3>
+            <ul>
+                <!--もし非同期で投稿したコメントを表示させる場合に使う-->
+                <%# <li id="comments_area"> %>
+                <li>
+                    <%= render 'comments/index', comments: @comments %>
+                </li>
+            </ul>
+        </div><br>
+        <% if producer_signed_in? || buyer_signed_in? %>
+            <div class="comment-form">
+                <h3>投稿を入力</h3>
+                <%= render 'comments/form', comment: @comment, post: @post %>
+            </div>
         <% end %>
     </div>
 </div>

@@ -27,7 +27,7 @@
         <td><%= f.text_field :description %></td>
     </tr>
     </table>
-    <%= f.submit "登録する"%>
-    <%= link_to "削除する", product_path(@product), method: :delete %>
+    <%= f.submit "登録する", class: "btn btn-primary"%>
+    <%= link_to "削除する", product_path(@product), method: :delete, class:"btn btn-danger" %>
     <% end %>
 </div>

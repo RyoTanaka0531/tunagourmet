@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+  get 'likes/destroy'
+  get 'comments/create'
+  get 'comments/destroy'
   get 'posts/new'
   get 'posts/create'
   get 'posts/index'
@@ -44,7 +48,10 @@ Rails.application.routes.draw do
 
   resources :products
   resources :categories, only:[:index, :create, :destroy]
-  resources :posts, except:[:update, :edit]
+  resources :posts, except:[:update, :edit] do
+    resource :likes, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
+  end
   resources :chats, only:[:show, :create, :index] do
     resources :messages, only:[:create]
   end
