@@ -28,6 +28,8 @@ body,
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
 }
 
 
@@ -36,14 +38,35 @@ header{
     background-color: chocolate;
     margin-top: -20px;
 }
+
+footer{
+    width: 100%;
+    background-color: gray;
+    padding: 10px 0;
+/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+}
 .navlist{
     background-color: antiquewhite;
 }
 .sidebar{
 	background-color: rgba(190,176,152,0.4);
-	min-height: 100vh;
+	min-height: 150vh;
 	margin: 30px 0;
-	position: relative;
+    position: relative;
+}
+.producer_search, .buyer_search, .product_search{
+    margin: 20px 0;
+}
+
+.col-lg-7.col-lg-offset-2 {
+    margin-bottom: 40px;
+    border: solid 1px #dcdcdc;
+    border-radius: 1em;
+    .image{
+        margin: 20px 0;
+        float: left;
+    }
 }
 
 .left-message{
@@ -58,4 +81,42 @@ header{
 }
 .pull-left{
     float: none !important;
+}
+
+.post-index{
+    margin: 30px 0 ;
+    border: solid 1px #dcdcdc;
+    border-radius: 1em;
+}
+.post-content{
+    margin: 10px 20px;
+}
+.comment-area{
+    border-top: solid 1px #dcdcdc;
+    margin: 10px 20px;
+}
+li{
+    list-style: none;
+    margin: 10px 20px;
+}
+
+.form-control{
+    width: 30%;
+    display: inline;
+
+}
+.post-form{
+    border-bottom: solid 1px #dcdcdc;
+    padding-bottom: 30px;
+}
+.comment-form{
+    form{
+        width: 100%;
+        text-align: center;
+    }
+}
+.comment-container{
+    padding: 10px;
+    margin: 20px 60px;
+    border: solid 1px #dcdcdc;
 }

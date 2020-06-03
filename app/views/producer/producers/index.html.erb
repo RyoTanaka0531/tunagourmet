@@ -3,24 +3,26 @@
     <%= render 'sidebar', search: @search%>
 
     <% @producers.each do |producer|%>
-        <div class="col-lg-8 col-lg-offset-2">
-            <div class="image">
-                <%= link_to producer_path(producer) do%>
-                <%= attachment_image_tag(producer, :profile_image, style: "width:150px; height:150px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
-                <% end %>
-            </div>
-            <div class="info">
-                <div class="col-lg-8">
-                    <h4><%= link_to producer.company_name, producer_path(producer) %></h4>
-                    <div class="link">
-                        <%= link_to "詳細をみる", producer_path(producer) %>
-                    </div>
-                    <strong>プロフィール</strong>
-                    <div class="profile" style="width: 30em;">
-                        <%= producer.description %>
-                    </div>
-                    <div>
-                        <%= producer.prefecture %>
+        <div class="col-lg-7 col-lg-offset-2">
+            <div class="producer-index">
+                <div class="image">
+                    <%= link_to producer_path(producer) do%>
+                    <%= attachment_image_tag(producer, :profile_image, style: "width:150px; height:150px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
+                    <% end %>
+                </div>
+                <div class="info">
+                    <div class="col-lg-7">
+                        <h4><%= link_to producer.company_name, producer_path(producer) %></h4>
+                        <div class="link">
+                            <%= link_to "詳細をみる", producer_path(producer) %>
+                        </div>
+                        <strong>プロフィール</strong>
+                        <div class="profile" style="width: 30em;">
+                            <%= producer.description %>
+                        </div>
+                        <div>
+                            <%= producer.prefecture %>
+                        </div>
                     </div>
                 </div>
             </div>

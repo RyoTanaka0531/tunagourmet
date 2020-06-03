@@ -3,14 +3,14 @@
     <%= render 'sidebar', search: @search%>
 
     <% @buyers.each do |buyer|%>
-        <div class="col-lg-8 col-lg-offset-2">
+        <div class="col-lg-7 col-lg-offset-2">
             <div class="image">
                 <%= link_to buyer_path(buyer) do%>
                 <%= attachment_image_tag(buyer, :profile_image, style: "width:150px; height:150px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
                 <% end %>
             </div>
             <div class="info">
-                <div class="col-lg-8">
+                <div class="col-lg-7">
                     <h4><%= link_to buyer.company_name, buyer_path(buyer) %></h4>
                     <div class="link">
                         <%= link_to "詳細をみる", buyer_path(buyer) %>

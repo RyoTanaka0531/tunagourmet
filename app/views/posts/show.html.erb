@@ -1,44 +1,47 @@
 <div class="container">
     <div class="post-index">
-        <h2><%= @post.heading %></h2>
-        <p>
-        <%= attachment_image_tag @post, :image, style: "width:300px; height:300px", class: "img-rounded pull-left profile-thumb" %>
-        <%= @post.content %>
-        </p>
-        <div id="likes_buttons_<%= @post.id %>">
-            <%= render 'likes/like', post: @post%>
-        </div>
-        <% if @post.buyer %>
+        <div class="post-content">
+            <h2><%= @post.heading %></h2>
             <p>
-                <%= attachment_image_tag @post.buyer, :profile_image, style: "width:40px; height:40px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
-                <%= link_to @post.buyer.company_name, buyer_path(@post.buyer) %>
+            <%= attachment_image_tag @post, :image, style: "width:300px; height:300px", class: "img-rounded pull-left profile-thumb" %>
+            <%= @post.content %>
             </p>
-        <% else %>
-            <p>
-                <%= attachment_image_tag @post.producer, :profile_image, style: "width:40px; height:40px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
-                <%= link_to @post.producer.company_name, producer_path(@post.producer) %>
-            </p>
-        <% end %>
-            <p><%= @post.created_at.strftime("%Y/%m/%d %H:%M")%></p>
-        <div class="right-link">
+            <div id="likes_buttons_<%= @post.id %>">
+                <%= render 'likes/like', post: @post%>
+            </div>
+            <% if @post.buyer %>
+                <p>
+                    <%= attachment_image_tag @post.buyer, :profile_image, style: "width:40px; height:40px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+                    <%= link_to @post.buyer.company_name, buyer_path(@post.buyer) %>
+                </p>
+            <% else %>
+                <p>
+                    <%= attachment_image_tag @post.producer, :profile_image, style: "width:40px; height:40px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+                    <%= link_to @post.producer.company_name, producer_path(@post.producer) %>
+                </p>
+            <% end %>
+                <p><%= @post.created_at.strftime("%Y/%m/%d %H:%M")%></p>
             <% if @post.producer || @post.buyer == current_producer || current_buyer %>
                 <%= link_to "削除する", post_path(@post), method: :delete %>
             <% end %>
         </div>
-        <div class="row">
-        <h3>コメント</h3>
-            <ul>
-                <!--もし非同期で投稿したコメントを表示させる場合に使う-->
-                <%# <li id="comments_area"> %>
-                <li>
-                    <%= render 'comments/index', comments: @comments %>
-                </li>
-            </ul>
-        </div><br>
+            <div class="comment-area">
+                <h3>コメント</h3>
+                <ul>
+                    <!--もし非同期で投稿したコメントを表示させる場合に使う-->
+                    <%# <li id="comments_area"> %>
+                    <li>
+                        <%= render 'comments/index', comments: @comments %>
+                    </li>
+                </ul>
+            </div><br>
         <% if producer_signed_in? || buyer_signed_in? %>
             <div class="comment-form">
                 <%= render 'comments/form', comment: @comment, post: @post %>
             </div>
         <% end %>
     </div>
+        <div class="right-link">
+            <%= link_to ">>品目一覧にもどる", products_path%>
+        </div>
 </div>

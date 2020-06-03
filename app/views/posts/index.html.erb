@@ -12,26 +12,24 @@
         <% end %>
     </div>
     <h3>投稿する</h3>
-    <%= form_for(@post) do |f| %>
-        <%= f.label "題名" %>
-        <%= f.text_field :heading %><br>
-        <%= f.label "本文" %>
-        <%= f.text_area :content %><br>
-        <%= f.label "画像を載せる" %>
-        <%= f.attachment_field :image %>
-        <%= f.submit "登録" %>
-    <% end %>
+    <div class="post-form form-group">
+        <%= form_for(@post) do |f| %>
+            <%= f.label "題名" %>
+            <%= f.text_field :heading, class:"form-control" %><br>
+            <%= f.label "本文" %>
+            <%= f.text_area :content, class:"form-control" %><br>
+            <%= f.label "画像を載せる" %>
+            <%= f.attachment_field :image %>
+            <%= f.submit "投稿する", class: "btn btn-success form-control" %>
+        <% end %>
+    </div>
     <h3>投稿一覧</h3>
     <ul>
     <% @posts.each do |post| %>
+    <div class="post-index">
         <li>
             <h3><%= link_to post.heading, post_path(post) %></h3>
-            <div class="like-count">
-                <span class="glyphicon glyphicon-heart" style="color: red;"></span>
-                <%= post.likes.count %>
-            </div>
             <p><%= post.content %></p>
-            <p><%= post.created_at.strftime("%Y/%m/%d %H:%M") %></p>
             <% if post.buyer %>
                 <%= attachment_image_tag post.buyer, :profile_image, style: "width:40px; height:40px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
                 <%= link_to post.buyer.company_name, buyer_path(post.buyer) %>
@@ -39,7 +37,17 @@
                 <%= attachment_image_tag post.producer, :profile_image, style: "width:40px; height:40px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
                 <%= link_to post.producer.company_name, producer_path(post.producer) %>
             <% end %>
+            <div class="like-count">
+                <span class="glyphicon glyphicon-heart" style="color: red;"></span>
+                <%= post.likes.count %>
+            </div>
+            <div class="comment-count">
+                <span class="glyphicon glyphicon-comment" style="color: green;"></span>
+                <%= post.comments.count %>
+            </div>
+            <p><%= post.created_at.strftime("%Y/%m/%d %H:%M") %></p>
         </li>
+    </div>
     <% end %>
     </ul>
 </div>
