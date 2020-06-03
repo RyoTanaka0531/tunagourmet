@@ -1,15 +1,25 @@
 <div class="container">
     <div class="post-index">
         <h2><%= @post.heading %></h2>
-        <p><%= @post.content %></p>
-        <div id="like_buttons_<%= @post.id %>">
+        <p>
+        <%= attachment_image_tag @post, :image, style: "width:300px; height:300px", class: "img-rounded pull-left profile-thumb" %>
+        <%= @post.content %>
+        </p>
+        <div id="likes_buttons_<%= @post.id %>">
             <%= render 'likes/like', post: @post%>
         </div>
         <% if @post.buyer %>
-            <p><%= link_to @post.buyer.company_name, buyer_path(@post.buyer) %></p>
+            <p>
+                <%= attachment_image_tag @post.buyer, :profile_image, style: "width:40px; height:40px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+                <%= link_to @post.buyer.company_name, buyer_path(@post.buyer) %>
+            </p>
         <% else %>
-            <p><%= link_to @post.producer.company_name, producer_path(@post.producer) %></p>
+            <p>
+                <%= attachment_image_tag @post.producer, :profile_image, style: "width:40px; height:40px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+                <%= link_to @post.producer.company_name, producer_path(@post.producer) %>
+            </p>
         <% end %>
+            <p><%= @post.created_at.strftime("%Y/%m/%d %H:%M")%></p>
         <div class="right-link">
             <% if @post.producer || @post.buyer == current_producer || current_buyer %>
                 <%= link_to "削除する", post_path(@post), method: :delete %>
@@ -27,7 +37,6 @@
         </div><br>
         <% if producer_signed_in? || buyer_signed_in? %>
             <div class="comment-form">
-                <h3>投稿を入力</h3>
                 <%= render 'comments/form', comment: @comment, post: @post %>
             </div>
         <% end %>

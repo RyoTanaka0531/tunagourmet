@@ -21,7 +21,7 @@ class Producer < ApplicationRecord
     沖縄県:47
   }
   def liked_by?(producer)
-    likes.where(producer_id: producer_id).exists?
+    likes.where(producer_id: producer.id).exists?
   end
 
 end

@@ -22,7 +22,7 @@ class Buyer < ApplicationRecord
   }
 
   #すでにいいねしているかどうか
-  def liked_by?(buyer)
+  def liked_by_buyer?(buyer)
     likes.where(buyer_id: buyer.id).exists?
   end
 end

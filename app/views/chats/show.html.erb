@@ -10,7 +10,7 @@
                     <div class="right-message">
                         <%= msg.content %>
                         <%= attachment_image_tag @producer, :profile_image, style: "width:30px; height:30px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %><br>
-                        <%= msg.created_at %>
+                        <%= msg.created_at.strftime("%Y/%m/%d %H:%M") %>
                     </div>
                 <!-- メッセージがbuyerによるものだったら -->
                 <% else %>
@@ -19,7 +19,7 @@
                         <%= msg.content %><br>
                         <%= attachment_image_tag @buyer, :profile_image, style: "width:30px; height:30px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
                         <%= @buyer.company_name %>
-                        <%= msg.created_at %>
+                        <%= msg.created_at.strftime("%Y/%m/%d %H:%M") %>
                     </div>
                 <% end %>
             <% end %>

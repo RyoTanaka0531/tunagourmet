@@ -1,4 +1,4 @@
 <%= form_with(model: [post, comment], url: post_comments_path(@post)) do |f| %>
     <%= f.text_area :content, class: "input-mysize" %>
-    <%= f.submit "送信", class: "btn btn-primary" %>
+    <p><%= f.submit "コメントする", class: "btn btn-primary" %></p>
 <% end %>
