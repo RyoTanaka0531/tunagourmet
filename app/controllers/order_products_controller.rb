@@ -13,6 +13,10 @@ class OrderProductsController < ApplicationController
         redirect_to root_path
     end
 
+    def new
+        @order_product = OrderProduct.new
+    end
+
     private
     def order_product_params
         require.params(:order_product).permit(:count, :postage, :product_id, :order_id)

@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   end
 
   resources :products do
-    resources :order_products, only:[:create, :destroy]
+    resources :order_products, only:[:create, :destroy, :new]
   end
   resources :categories, only:[:index, :create, :destroy]
   resources :posts, except:[:update, :edit] do

@@ -8,7 +8,7 @@
             <div class="order-form ">
                 <p>
                 <%# <%= link_to "発注する", :controller => 'orders', :action => 'new', product_id: @product.id, product_name: @product.name, product_price: @product.price, class: "btn btn-primary" %>
-                <%= link_to "発注する", new_order_path(@product.id),  class: "btn btn-primary" %>
+                <%= link_to "発注する", new_product_order_product_path,  class: "btn btn-primary" %>
                 <%# <%= form_with url: order_new_path, local: true do |f|%> %>
                     <%# <%= f.hidden_field :product_id, value: @product.id %> %>
                     <%# <%= f.hidden_field :product_name, value: @product.name %> %>
