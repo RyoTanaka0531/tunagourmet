@@ -28,8 +28,6 @@ body,
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  box-sizing: border-box;
-  position: relative;
 }
 
 
@@ -43,8 +41,9 @@ footer{
     width: 100%;
     background-color: gray;
     padding: 10px 0;
-/*←絶対位置*/
-    bottom: 0; /*下に固定*/
+    // position: absolute;/*←絶対位置*/
+    // bottom: 0; /*下に固定*/
+    margin-top: auto;
 }
 .navlist{
     background-color: antiquewhite;
@@ -61,8 +60,7 @@ footer{
 
 .col-lg-7.col-lg-offset-2 {
     margin-bottom: 40px;
-    border: solid 1px #dcdcdc;
-    border-radius: 1em;
+    border-bottom: solid 1px #dcdcdc;
     .image{
         margin: 20px 0;
         float: left;
@@ -118,5 +116,50 @@ li{
 .comment-container{
     padding: 10px;
     margin: 20px 60px;
-    border: solid 1px #dcdcdc;
+    background-color: #f6f6f6;
+}
+
+// product周辺
+.new_product, .producer-products{
+    margin: 20px 60px;
+}
+.producer-products{
+    table{
+        width: 90%;
+        th{
+            text-align: center;
+        }
+        tr{
+            text-align: center;
+        }
+    }
+}
+
+// producer周辺
+.producer-info{
+    margin-bottom: 20px;
+    table{
+        min-height: 30vh;
+    }
+    td{
+        padding: 10px;
+    }
+    th{
+        padding: 10px;
+        width: 20%;
+    }
+}
+.producer-product-index{
+    border-bottom: solid 1px gray;
+    margin-bottom: 30px;
+}
+.products{
+    border-top: solid 1px gray;
+    .row{
+        margin-left: 90px;
+    }
+    li{
+        border-bottom: solid 1px gray;
+        width: 30%;
+    }
 }

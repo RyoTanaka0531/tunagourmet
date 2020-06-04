@@ -17,68 +17,85 @@
                 <% end %>
             <% end %>
         <% end %>
-            <div class="image">
+            <div class="producer-image">
                 <%= attachment_image_tag @producer, :profile_image, style: "width:200px; height:200px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg" %>
             </div>
         </div>
 
         <div class="col-lg-9">
-            <table>
-                <tr>
-                    <th>担当者名</th>
-                    <td><%= @producer.name %></td>
-                </tr>
-                <tr>
-                    <th>担当者名(フリガナ)</th>
-                    <td><%= @producer.kana_name %></td>
-                </tr>
-                <tr>
-                    <th>屋号/社名</th>
-                    <td><%= @producer.company_name %></td>
-                </tr>
-                <tr>
-                    <th>屋号/社名(フリガナ)</th>
-                    <td><%= @producer.kana_company_name %></td>
-                </tr>
-                <tr>
-                    <th>メールアドレス</th>
-                    <td><%= @producer.email %></td>
-                </tr>
-                <tr>
-                    <th>電話番号</th>
-                    <td><%= @producer.phone_number %></td>
-                </tr>
-                <tr>
-                    <th>郵便番号</th>
-                    <td><%= @producer.postcode %></td>
-                </tr>
-                <tr>
-                    <th>住所</th>
-                    <td><%= @producer.prefecture %><%= @producer.address %></td>
-                </tr>
-                <tr>
-                    <th>ホームページ</th>
-                    <td><%= link_to @producer.hp, @producer.hp %></td>
-                </tr>
-                <tr>
-                    <th>プロフィール</th>
-                    <td><%= @producer.description %></td>
-                </tr>
-            </table>
+            <div class="producer-info">
+                <table>
+                    <tr>
+                        <th>担当者名</th>
+                        <td><%= @producer.name %></td>
+                    </tr>
+                    <tr>
+                        <th>担当者名(フリガナ)</th>
+                        <td><%= @producer.kana_name %></td>
+                    </tr>
+                    <tr>
+                        <th>屋号/社名</th>
+                        <td><%= @producer.company_name %></td>
+                    </tr>
+                    <tr>
+                        <th>屋号/社名(フリガナ)</th>
+                        <td><%= @producer.kana_company_name %></td>
+                    </tr>
+                    <tr>
+                        <th>メールアドレス</th>
+                        <td><%= @producer.email %></td>
+                    </tr>
+                    <tr>
+                        <th>電話番号</th>
+                        <td><%= @producer.phone_number %></td>
+                    </tr>
+                    <tr>
+                        <th>郵便番号</th>
+                        <td><%= @producer.postcode %></td>
+                    </tr>
+                    <tr>
+                        <th>住所</th>
+                        <td><%= @producer.prefecture %><%= @producer.address %></td>
+                    </tr>
+                    <tr>
+                        <th>ホームページ</th>
+                        <td><%= link_to @producer.hp, @producer.hp %></td>
+                    </tr>
+                    <tr>
+                        <th>プロフィール</th>
+                        <td><%= @producer.description %></td>
+                    </tr>
+                </table>
+            </div>
+                    <% if @producer == current_producer %>
+                        <%= link_to "編集する", edit_producer_path(@producer) %>
+                    <% end %>
+            <div class="products">
+                <%# 生産者の登録している品目の表示 %>
+                <h3>品目一覧</h3>
+                <% @products.each do |product| %>
+                <div class="producer-product-index">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <%= attachment_image_tag product, :product_image, style: "width:140px; height:140px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg"%>
+                        </div>
+                        <div class="col-lg-offset-3">
+                            <li><%= link_to product.name, product_path(product) %></li>
+                            <li><span>売価:　　　　</span><%= product.price %>円/kg</li>
+                            <li><span>出荷時期:　　</span><%= product.timing %></li>
+                            <li><span>カテゴリー:　</span><%= product.category.name %></li>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3" style="padding-top: 15px;">
+                            <strong>説明</strong>
+                            <p><%= product.description %></p>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+            <p class="right-link"><%= link_to ">>生産者一覧に戻る", producers_path %></p>
         </div>
-    </div>
-        <%# 生産者の登録している品目の表示 %>
-    <div class="row">
-        <div class="products">
-        <ul>登録品目</ul>
-        <% @products.each do |product| %>
-            <li><%= link_to product.name, product_path(product) %></li>
-        <% end %>
-        </div>
-
-        <% if @producer == current_producer %>
-            <%= link_to "編集する", edit_producer_path(@producer) %>
-        <% end %>
-        <p><%= link_to "生産者一覧に戻る", producers_path %></p>
     </div>
 </div>

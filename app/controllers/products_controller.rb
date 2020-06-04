@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def new
     @product = Product.new
+    @products = current_producer.products
   end
 
   def create
@@ -37,6 +38,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @order = Order.new
     @product = Product.find(params[:id])
     @producer = Producer.find(@product.producer_id)
     if @producer != current_producer

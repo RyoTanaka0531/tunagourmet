@@ -12,9 +12,10 @@
         <% end %>
     </div>
     <h2>品目登録</h2>
+    <div class="product-form">
     <%= form_for(@product) do |f| %>
-    <table>
-    <tr>
+    <table style="margin-bottom: 30px;">
+    <tr style="margin-bottom: 5px;">
         <th><%= f.label "写真" %></th>
         <td><%= f.attachment_field :product_image %></td>
     </tr>
@@ -41,4 +42,27 @@
     </table>
     <%= f.submit "登録する", class: "btn btn-success"%>
     <% end %>
+    </div>
+        <div class="producer-products">
+            <table border="1">
+                <tr>
+                    <th>写真</th>
+                    <th>品目名</th>
+                    <th>売価</th>
+                    <th>出荷時期</th>
+                    <th>説明</th>
+                </tr>
+                <% @products.each do |product| %>
+                <tr>
+                    <td style="width: 120px; height:90px;"><%= attachment_image_tag(product, :product_image, style: "width:120px; height:90px", class: "pull-left profile-thumb", fallback: "no_image.jpg") %></td>
+                    <td><%= product.name %></td>
+                    <td><%= product.price%>円/kg</td>
+                    <td><%= product.timing%></td>
+                    <td><%= product.description%></td>
+                    <td><%= link_to "編集する", edit_product_path(product) %></td>
+                    <td><%= link_to "削除する", product_path(product), method: :delete %></td>
+                </tr>
+                <% end %>
+            </table>
+        </div>
 </div>

@@ -37,7 +37,11 @@
             </div><br>
         <% if producer_signed_in? || buyer_signed_in? %>
             <div class="comment-form">
-                <%= render 'comments/form', comment: @comment, post: @post %>
+            <ul>
+                <li>
+                    <%= render 'comments/form', comment: @comment, post: @post %>
+                </li>
+            </ul>
             </div>
         <% end %>
     </div>

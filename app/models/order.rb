@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
     belongs_to :buyer
-    belongs_to :product
+    has_many :order_product
+    # belongs_to :product
 end

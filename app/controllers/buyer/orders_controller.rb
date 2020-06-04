@@ -7,14 +7,16 @@ class Buyer::OrdersController < ApplicationController
     @order = Order.new
     @product = Product.find_by(id: params[:product_id])
     # @product = Product.find(params[product.id])
-    @order = Order.find_by(product_id: params[:product_id])
+    # @order = Order.find_by(product_id: params[:product_id])
     # @product = Product.find(params[:id])
     # @product = Product.where(params[:product_id])
     # @producer = Producer.where(product_id:[:product_id])
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = current_buyer.orders.build(product_id: params[:product_id])
+    @order.save
+    redirect_to root_path
   end
 
   def confirm

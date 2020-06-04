@@ -46,7 +46,9 @@ Rails.application.routes.draw do
     resources :buyers, only:[:show, :edit, :update, :quit, :index]
   end
 
-  resources :products
+  resources :products do
+    resources :order_products, only:[:create, :destroy]
+  end
   resources :categories, only:[:index, :create, :destroy]
   resources :posts, except:[:update, :edit] do
     resource :likes, only: [:create, :destroy]
@@ -70,6 +72,7 @@ Rails.application.routes.draw do
   get 'buyers/:id/quit' => 'buyer/buyers#quit', as: 'buyer_quit'
 
   get 'order/new' => 'buyer/orders#new', as: 'new_order'
+  post 'order/new' => 'buyer/orders#new'
   get 'order/confirm' => 'buyer/orders#confirm'
   post 'order/confirm' => 'buyer/orders#create'
 
