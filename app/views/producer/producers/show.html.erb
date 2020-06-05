@@ -4,19 +4,19 @@
             <h1>マイページ</h1>
             <% else %>
             <h1>生産者情報</h1>
-            <% end %>
-        <div class="col-lg-3">
-
         <% if @producer != current_producer && buyer_signed_in? %>
             <% if @producer_ids.include?(@producer.id) %><br>
-                <%= link_to "チャットへ", chat_path(current_buyer.chats.find_by(producer_id: @producer.id)) %><br>
+                <%= link_to "チャットへ", chat_path(current_buyer.chats.find_by(producer_id: @producer.id)), class: "btn btn-primary", style: "margin-bottom: 20px;" %><br>
             <% else %>
                 <%= form_for Chat.new do |f| %>
                     <%= f.hidden_field :producer_id, :value => @producer.id %>
-                    <%= f.submit "チャットを開始" %>
+                    <%= f.submit "チャットを開始", class: "btn btn-primary", style: "margin-bottom: 20px;" %>
                 <% end %>
             <% end %>
         <% end %>
+            <% end %>
+        <div class="col-lg-3">
+
             <div class="producer-image">
                 <%= attachment_image_tag @producer, :profile_image, style: "width:200px; height:200px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg" %>
             </div>
@@ -66,10 +66,12 @@
                         <td><%= @producer.description %></td>
                     </tr>
                 </table>
+                <div class="right-link">
+                        <% if @producer == current_producer %>
+                            <%= link_to "編集する", edit_producer_path(@producer), class: "btn btn-primary" %>
+                        <% end %>
+                </div>
             </div>
-                    <% if @producer == current_producer %>
-                        <%= link_to "編集する", edit_producer_path(@producer) %>
-                    <% end %>
             <div class="products">
                 <%# 生産者の登録している品目の表示 %>
                 <h3>品目一覧</h3>

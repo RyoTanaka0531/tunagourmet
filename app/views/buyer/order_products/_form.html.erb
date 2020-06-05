@@ -1,0 +1,52 @@
+    <%# <%= form_with url: product_order_products_path(@product), local: true do |f| %> %>
+    <%# <%= form_with url: new_order_path(@product), local: true do |f| %> %>
+    <%= form_for(@order_product) do |f| %>
+        <table>
+            <tr>
+                <th>画像</th>
+                <th>品目名</th>
+                <th>売価</th>
+                <th>数量</th>
+                <th>金額</th>
+            </tr>
+            <tr>
+                <td><%= @product.name%></td>
+                <td><%= @product.name%></td>
+                <td>
+                <!--変数をjavascriptに変換して値を渡す-->
+                <div id="product_price" data-json="<%= @product.price.to_json %>" ></div>
+                <%=  @product.price %>円/kg
+                </td>
+                <td><%= f.number_field :count %>kg</td>
+                <!--readonlyを指定して入力できないようにしている-->
+                <td><%= f.number_field :payment, readonly: "" %>円</td>
+            </tr>
+        </table>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= f.submit "納品希望日を決める", class: "btn btn-success"%>
+    <% end %>
+                <!--javascriptに変換して値を使い、自動計算-->
+                <script>
+                $(function(){
+                    // productの単価
+                    var value = JSON.parse(document.getElementById('product_price').dataset.json);
+                    // 入力対象のinputタグID名
+                    var tagInput = $('#order_product_count');
+                    // 出力対象のinputタグID名
+                    var tagOutput = $('#order_product_payment');
+                    tagInput.on('change', function(){
+                        var str = $(this).val();
+                        // 整数以外の文字列を削除
+                        var num = Number(str.replace(/[^0-9]/g, ''));
+                        if(num == 0){
+                            num = '';
+                        }
+                        // productと入力された数量の合計値
+                        $(this).val(num);
+                        if(num != 0){
+                            var order_product_payment = num * value;
+                            tagOutput.val(order_product_payment);
+                        }
+                    });
+                });
+                </script>

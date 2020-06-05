@@ -10,9 +10,12 @@ class PostsController < ApplicationController
     else
       redirect_to root_path
     end
-
-    @post.save!
+    if @post.save
       redirect_to post_path(@post)
+    else
+      flash[:notice] = "題名、または本文に空欄があります、もう一度ご入力ください。"
+      redirect_to request.referrer
+    end
   end
 
   def index

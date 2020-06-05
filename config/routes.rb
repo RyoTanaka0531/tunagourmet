@@ -1,17 +1,22 @@
 Rails.application.routes.draw do
-  get 'likes/create'
-  get 'likes/destroy'
-  get 'comments/create'
-  get 'comments/destroy'
-  get 'posts/new'
-  get 'posts/create'
-  get 'posts/index'
-  get 'posts/show'
-  get 'posts/destroy'
-  get 'categories/create'
-  get 'categories/index'
-  get 'products/index'
-  get 'products/show'
+  namespace :buyer do
+    get 'order_products/new'
+    post 'order_products/create'
+    get 'order_products/destroy'
+  end
+  # get 'likes/create'
+  # get 'likes/destroy'
+  # get 'comments/create'
+  # get 'comments/destroy'
+  # get 'posts/new'
+  # get 'posts/create'
+  # get 'posts/index'
+  # get 'posts/show'
+  # get 'posts/destroy'
+  # get 'categories/create'
+  # get 'categories/index'
+  # get 'products/index'
+  # get 'products/show'
   root 'home#top'
   # selectアクションで生産者かバイヤーか選択しルートを変える
   get 'sign_up' => 'home#select'
@@ -46,9 +51,7 @@ Rails.application.routes.draw do
     resources :buyers, only:[:show, :edit, :update, :quit, :index]
   end
 
-  resources :products do
-    resources :order_products, only:[:create, :destroy, :new]
-  end
+  
   resources :categories, only:[:index, :create, :destroy]
   resources :posts, except:[:update, :edit] do
     resource :likes, only: [:create, :destroy]
@@ -58,7 +61,6 @@ Rails.application.routes.draw do
     resources :messages, only:[:create]
   end
   
-
   get 'producers' => 'producer/producers#index', as: 'producers'
   get 'producers/:id' => 'producer/producers#show', as: 'producer'
   get 'producers/:id/edit' => 'producer/producers#edit', as: 'edit_producer'
@@ -70,11 +72,18 @@ Rails.application.routes.draw do
   get 'buyers/:id/edit' => 'buyer/buyers#edit', as: 'edit_buyer'
   patch 'buyers/:id' => 'buyer/buyers#update'
   get 'buyers/:id/quit' => 'buyer/buyers#quit', as: 'buyer_quit'
+  
+  resources :products do
+    # resources :order_products, only:[:create, :new]
+    # resources :orders, only:[:create, :new]
+  end
 
-  get 'order/new' => 'buyer/orders#new', as: 'new_order'
-  post 'order/new' => 'buyer/orders#new'
+  get 'products/:id/order_products/new' => 'buyer/order_products#new', as: 'new_order_product'
+  post 'products/:id/order_products/new' => 'buyer/order_products#new', as: 'new_order_products'
+  post 'order/new' => 'buyer/order_products#create', as: 'order_products'
+
+  post 'products/:id/order/new' => 'buyer/orders#create'
   get 'order/confirm' => 'buyer/orders#confirm'
   post 'order/confirm' => 'buyer/orders#create'
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

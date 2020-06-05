@@ -2,22 +2,34 @@
     <% if producer_signed_in? %>
         <h3>チャット中のバイヤー</h3>
         <% @chats.each do |chat| %>
-        <ul>
+        <table>
+            <tr>
+                <th><%= link_to chat.buyer.company_name, buyer_path(chat.buyer) %></th>
+                <td><%= link_to "チャットする", chat_path(chat), class: "btn btn-primary" %></td>
+            </tr>
+        </table>
+        <%# <ul>
             <li>
                 <%= link_to chat.buyer.company_name, buyer_path(chat.buyer) %>
-                <%= link_to "チャットする", chat_path(chat), class: "btn btn-primary" %>
-            </li>
-        </ul>
+                <%# <%= link_to "チャットする", chat_path(chat), class: "btn btn-primary" %>
+            <%# </li> %>
+        <%# </ul> %>
         <% end %>
     <% elsif buyer_signed_in? %>
         <h3>チャット中の生産者</h3>
-        <%= @chats.each do |chat| %>
-        <ul>
-            <li>
-                <%= link_to chat.producer.company_name, producer_path(chat.producer) %>
-                <%= link_to "チャットする", chat_path(chat), class: "btn btn-primary" %>
-            </li>
-        </ul>
+        <% @chats.each do |chat| %>
+            <table>
+            <tr>
+                    <th><%= link_to chat.producer.company_name, producer_path(chat.producer) %></th>
+                    <td><%= link_to "チャットする", chat_path(chat), class: "btn btn-primary" %></td>
+                </tr>
+            </table>
+        <%# <ul> %>
+            <%# <li> %>
+                <%# <%= link_to chat.producer.company_name, producer_path(chat.producer) %>
+                <%# <%= link_to "チャットする", chat_path(chat), class: "btn btn-primary" %>
+            <%# </li> %>
+        <%# </ul> %>
         <% end %>
     <% end %>
 </div>
