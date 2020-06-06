@@ -1,7 +1,8 @@
-    <%# <%= form_with url: product_order_products_path(@product), local: true do |f| %> %>
-    <%# <%= form_with url: new_order_path(@product), local: true do |f| %> %>
+    <%# <%= form_with url: product_order_products_path(@product), local: true do |f| %>
+    <%# <%= form_with url: new_order_path(@product), local: true do |f| %>
+    <div class="order_table">
     <%= form_for(@order_product) do |f| %>
-        <table>
+        <table border="1">
             <tr>
                 <th>画像</th>
                 <th>品目名</th>
@@ -10,16 +11,22 @@
                 <th>金額</th>
             </tr>
             <tr>
-                <td><%= @product.name%></td>
-                <td><%= @product.name%></td>
+                <td style="width: 140px; height: 120px;">
+                    <%= attachment_image_tag @product, :product_image, style: "width:140px; height:120px", class: "img pull-left profile-thumb", fallback: "no_image.jpg" %>
+                </td>
+                <td style="width: 200px; height: 120px;">
+                    <%= @product.name%>
+                </td>
                 <td>
                 <!--変数をjavascriptに変換して値を渡す-->
                 <div id="product_price" data-json="<%= @product.price.to_json %>" ></div>
-                <%=  @product.price %>円/kg
+                    <%=  @product.price %>円/kg
                 </td>
-                <td><%= f.number_field :count %>kg</td>
+                <td style="width: 200px; height: 120px;">
+                    <%= f.number_field :count %>kg
+                </td>
                 <!--readonlyを指定して入力できないようにしている-->
-                <td><%= f.number_field :payment, readonly: "" %>円</td>
+                <td style="width: 200px; height: 120px;"><%= f.number_field :payment, readonly: "" %>円</td>
             </tr>
         </table>
         <%= f.hidden_field :product_id, value: @product.id %>
@@ -50,3 +57,4 @@
                     });
                 });
                 </script>
+    </div>
