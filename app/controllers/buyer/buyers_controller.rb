@@ -29,8 +29,11 @@ class Buyer::BuyersController < ApplicationController
   
   def update
     @buyer = Buyer.find(params[:id])
-    @buyer.update(buyer_params)
-    redirect_to buyer_path(@buyer)
+    if @buyer.update(buyer_params)
+      redirect_to buyer_path(@buyer)
+    else
+      redirect_to request.referer
+    end
   end
   
   # 退会ページへ遷移

@@ -42,7 +42,7 @@
                 </tr>
                 <tr>
                     <th>業種・業態</th>
-                    <td>飲食</td>
+                    <td><%= @buyer.industory %></td>
                 </tr>
                 <tr>
                     <th>電話番号</th>
@@ -67,10 +67,10 @@
             </table>
         </div>
         <% if @buyer == current_buyer %>
-            <%= link_to "編集する", edit_buyer_path %>
+            <%= link_to "編集する", edit_buyer_path, class: "btn btn-primary" %>
         <% end %>
         <div class="right-link">
-            <p><%= link_to "バイヤー一覧に戻る", buyers_path %></p>
+            <p><%= link_to ">>バイヤー一覧に戻る", buyers_path %></p>
         </div>
     </div>
 </div>

@@ -1,17 +1,9 @@
 class Buyer::OrdersController < ApplicationController
 
   def new
-    # params[:product_id]
-    # params[:product_name]
-    # params[:product_price]
     @order_product = OrderProduct.new
     @order = Order.new
     @product = Product.find(params[:id])
-    # @product = Product.find(params[product.id])
-    # @order = Order.find_by(product_id: params[:product_id])
-    # @product = Product.find(params[:id])
-    # @product = Product.where(params[:product_id])
-    # @producer = Producer.where(product_id:[:product_id])
   end
 
   def create

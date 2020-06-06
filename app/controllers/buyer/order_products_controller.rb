@@ -23,3 +23,4 @@ def order_product_params
     require.params(:order_product).permit(:count, :payment, :product_id, :order_id)
 end
 end
+

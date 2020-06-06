@@ -81,6 +81,7 @@ Rails.application.routes.draw do
   get 'products/:id/order_products/new' => 'buyer/order_products#new', as: 'new_order_product'
   post 'products/:id/order_products/new' => 'buyer/order_products#new', as: 'new_order_products'
   post 'order/new' => 'buyer/order_products#create', as: 'order_products'
+  get 'buyer/:id/orders' => 'buyer/orders#index', as: 'orders'
 
   post 'products/:id/order/new' => 'buyer/orders#create'
   get 'order/confirm' => 'buyer/orders#confirm'
