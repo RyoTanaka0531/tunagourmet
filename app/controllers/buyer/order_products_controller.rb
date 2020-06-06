@@ -4,7 +4,7 @@ class Buyer::OrderProductsController < ApplicationController
         @order_product = OrderProduct.new(order_product_params)
         @order_product.save
         #リダイレクト先はorders#newかorders#confirm
-        redirect_to root_path
+        redirect_to new_order_path
     end
 
 
