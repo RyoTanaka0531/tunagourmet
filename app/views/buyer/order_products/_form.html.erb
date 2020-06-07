@@ -29,8 +29,9 @@
                 <td style="width: 200px; height: 120px;"><%= f.number_field :payment, readonly: "" %>円</td>
             </tr>
         </table>
+        <%= f.hidden_field :order_id, value: @order.id %>
         <%= f.hidden_field :product_id, value: @product.id %>
-        <%= f.submit "納品希望日を決める", class: "btn btn-success"%>
+        <%= f.submit "次に進む", class: "btn btn-success"%>
     <% end %>
                 <!--javascriptに変換して値を使い、自動計算-->
                 <script>

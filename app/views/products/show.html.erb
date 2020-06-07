@@ -8,7 +8,8 @@
             <div class="order-form ">
                 <p>
                 <!--productをorder_product側に渡す-->
-                    <%= link_to "発注する", new_order_products_path(@product),  class: "btn btn-primary" %>
+                    <%# <%= link_to "発注する", new_order_products_path(@product),  class: "btn btn-primary" %>
+                    <%= link_to "発注する", new_order_path(@product),  class: "btn btn-primary" %>
                 </p>
                 <p><%= link_to "生産者ページ", producer_path(@producer), class: "btn btn-primary" %></p>
                 <% if @producer != current_producer && buyer_signed_in? %>

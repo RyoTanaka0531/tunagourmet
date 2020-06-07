@@ -78,13 +78,18 @@ Rails.application.routes.draw do
     # resources :orders, only:[:create, :new]
   end
 
-  get 'products/:id/order_products/new' => 'buyer/order_products#new', as: 'new_order_product'
+  # get 'products/:id/order_products/new' => 'buyer/order_products#new', as: 'new_order_product'
   post 'products/:id/order_products/new' => 'buyer/order_products#new', as: 'new_order_products'
-  get 'order/new' => 'buyer/order_products#create', as: 'new_order'
+  post 'order/new' => 'buyer/order_products#create', as: 'order_products'
   get 'buyer/:id/orders' => 'buyer/orders#index', as: 'orders'
 
+  get 'products/:id/orders/new' => 'buyer/orders#new', as: 'new_order'
+  post 'buyer/:id/orders' => 'buyer/orders#create', as: 'new_orders'
+
+  get 'products/:id/orders' => 'buyer/order_products#new', as: 'new_order_product'
+  get 'orders/:id/preconfirm' => 'buyer/orders#preconfirm', as: 'preconfirm_order'
+
   post 'products/:id/order/new' => 'buyer/orders#create'
-  get 'order/confirm' => 'buyer/orders#confirm'
   post 'order/confirm' => 'buyer/orders#create'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

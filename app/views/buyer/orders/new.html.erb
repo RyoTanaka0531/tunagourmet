@@ -1,3 +1,11 @@
 <div class="container">
     <h2>納品希望日</h2>
+    <p><%= @product.name %></p>
+    <%= form_for(@order) do |f| %>
+        <%= f.label "納品希望日"%>
+        <%= f.date_select :delivery %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= f.hidden_field :buyer_id, value: @buyer.id %>
+        <%= f.submit "次に進む"%>
+    <% end %>
 </div>
