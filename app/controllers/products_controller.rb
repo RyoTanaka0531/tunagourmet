@@ -10,16 +10,17 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.producer_id = current_producer.id
       if @product.save
-        redirect_to products_path
+        redirect_to product_path(@product)
       else
-        render 'new'
+        flash[:notice] = '入力に不備があります。正しく入力してください。'
+        redirect_to request.referrer
       end
   end
 
   def index
     if params[:q].present?
       @search = Product.ransack(params[:q])
-      @products = @search.result
+      @products = @search.result.page(params[:page]).per(5)
     else
       @search = Product.ransack()
       @products = Product.page(params[:page]).per(12)
@@ -35,6 +36,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to product_path(@product)
     else
+      flash[:notice] = "入力に不備があります。正しく入力してください。"
       render 'edit'
     end
   end
@@ -76,4 +78,3 @@ class ProductsController < ApplicationController
     end
   end
 end
-

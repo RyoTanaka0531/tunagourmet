@@ -46,7 +46,7 @@ class Buyer::BuyersController < ApplicationController
   def index
     if params[:q].present?
       @search = Buyer.ransack(params[:q])
-      @buyers = @search.result
+      @buyers = @search.result.page(params[:page]).per(5)
     else
       @search = Buyer.ransack()
       @buyers = Buyer.page(params[:page]).per(5)

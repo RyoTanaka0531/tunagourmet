@@ -277,6 +277,17 @@ li{
         }
     }
 }
+.edit_product{
+    table{
+        margin: 0 auto;
+    }
+    .form-control{
+        width: 400px;
+    }
+    .buttons{
+        padding-top: 40px;
+    }
+}
 
 // producer周辺
 .producer-info{
@@ -304,6 +315,19 @@ li{
     li{
         border-bottom: solid 1px gray;
         width: 30%;
+    }
+}
+.product-form{
+    width: 100%;
+    text-align: -webkit-center;
+    th{
+        padding-right: 30px;
+    }
+    .form-control{
+        width: 400px;
+    }
+    .btn-success{
+        width: 370px;
     }
 }
 

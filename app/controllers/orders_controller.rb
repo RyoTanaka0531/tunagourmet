@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     # binding.pry
     if @order.save
-    redirect_to root_path
+    redirect_to order_path(@order)
     else
       # redirect_to request.referer
       render 'new'
@@ -32,8 +32,7 @@ class OrdersController < ApplicationController
     # @order_prodcut = OrderProduct.find(@order.order_product_id)
     @order_prodcut = @order.order_product_id
   end
-  def show
-  end
+
   def completed
   end
   
@@ -42,6 +41,8 @@ class OrdersController < ApplicationController
   end
   
   def show
+    @order = Order.find(params[:id])
+    @product = Product.find(params[:id])
   end
   
   def edit

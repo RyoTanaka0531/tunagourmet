@@ -1,3 +1,8 @@
+<% if flash[:notice]%>
+    <div class="alert alert-danger text-center">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
 <div class="container">
     <h2>品目編集</h2>
     <%= form_for(@product) do |f| %>
@@ -8,7 +13,7 @@
     </tr>
     <tr>
         <th><%= f.label "品目名" %></th>
-        <td><%= f.text_field :name %></td>
+        <td><%= f.text_field :name, class: "form-control", placeholder: "15字以内で入力してください" %></td>
     </tr>
     <tr>
         <th><%= f.label "カテゴリー" %></th>
@@ -16,18 +21,20 @@
     </tr>
     <tr>
         <th><%= f.label "売価" %></th>
-        <td><%= f.text_field :price %>円/kg</td>
+        <td><%= f.text_field :price, class: "form-control", placeholder: "半角数字のみ" %>円/kg</td>
     </tr>
     <tr>
         <th><%= f.label "出荷時期" %></th>
-        <td><%= f.text_field :timing %></td>
+        <td><%= f.text_field :timing, class: "form-control", placeholder: "例) 9月中旬〜12月下旬" %></td>
     </tr>
     <tr>
         <th><%= f.label "品目説明" %></th>
-        <td><%= f.text_field :description %></td>
+        <td><%= f.text_area :description, class: "form-control", placeholder: "例) 無農薬で育てました。" %></td>
     </tr>
     </table>
-    <%= f.submit "登録する", class: "btn btn-primary"%>
-    <%= link_to "削除する", product_path(@product), method: :delete, class:"btn btn-danger" %>
+    <div claas="buttons" style="text-align: center; padding-top: 40px;">
+    <%= f.submit "登録する", class: "btn btn-primary", style: "width: 200px; margin-right: 40px;"%>
+    <%= link_to "削除する", product_path(@product), method: :delete, class:"btn btn-danger", style: "width: 200px; padding: 10px 30px;" %>
+    </div>
     <% end %>
 </div>
