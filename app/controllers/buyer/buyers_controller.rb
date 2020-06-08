@@ -1,4 +1,6 @@
 class Buyer::BuyersController < ApplicationController
+  before_action :authenticate_buyer!, only:[:edit]
+
   def show
     @buyer = Buyer.find(params[:id])
     if @buyer != current_buyer
@@ -47,7 +49,7 @@ class Buyer::BuyersController < ApplicationController
       @buyers = @search.result
     else
       @search = Buyer.ransack()
-      @buyers = Buyer.all
+      @buyers = Buyer.page(params[:page]).per(5)
     end
   end
 

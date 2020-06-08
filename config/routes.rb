@@ -75,21 +75,32 @@ Rails.application.routes.draw do
   
   resources :products do
     # resources :order_products, only:[:create, :new]
-    # resources :orders, only:[:create, :new]
+    resources :orders, only:[:create]
   end
 
   # get 'products/:id/order_products/new' => 'buyer/order_products#new', as: 'new_order_product'
-  post 'products/:id/order_products/new' => 'buyer/order_products#new', as: 'new_order_products'
-  post 'order/new' => 'buyer/order_products#create', as: 'order_products'
-  get 'buyer/:id/orders' => 'buyer/orders#index', as: 'orders'
+  # 正しいルーティング
+  resources :orders, only: [:create, :show, :edit, :show, :new]
+  get 'orders/:id/confirm' => 'orders#confirm', as: 'order_confirm'
+  # ここまで
+  # get 'products/:id/order/new' => 'buyer/orders#new', as: 'order_new'
+  # get 'orders/:id/order_products/new' => 'buyer/order_products#new', as: 'new_order_product'
+  # get 'orders/:id/preconfirm' => 'buyer/orders#preconfirm', as: 'order_preconfirm'
+  # get 'orders/:id/confirm' => 'buyer/orders#confirm', as: 'order_confirm'
+  # post 'products/:id/order_products/new' => 'buyer/order_products#new', as: 'new_order_products'
+  # post 'order/new' => 'buyer/order_products#create', as: 'order_products'
+  # get 'buyer/:id/orders' => 'buyer/orders#index', as: 'orders'
 
-  get 'products/:id/orders/new' => 'buyer/orders#new', as: 'new_order'
-  post 'buyer/:id/orders' => 'buyer/orders#create', as: 'new_orders'
+  
+  # get 'orders/:id/preconfirm' => 'buyer/orders#preconfirm', as: 'preconfirm_order'
+  # patch 'orders/:id/preconfirm' => 'buyer/orders#update', as: 'preconfirm_orders'
 
-  get 'products/:id/orders' => 'buyer/order_products#new', as: 'new_order_product'
-  get 'orders/:id/preconfirm' => 'buyer/orders#preconfirm', as: 'preconfirm_order'
+  # get 'products/:id/orders/new' => 'buyer/orders#new', as: 'new_order'
+  # post 'buyer/:id/orders' => 'buyer/orders#create', as: 'new_orders'
 
-  post 'products/:id/order/new' => 'buyer/orders#create'
-  post 'order/confirm' => 'buyer/orders#create'
+
+  # post 'products/:id/orders/new' => 'buyer/orders#create'
+  
+  # get 'products/:id/orders/:id/confirm' => 'buyer/orders#confirm', as: 'order_confirm'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

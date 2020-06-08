@@ -2,25 +2,25 @@
     <div class="post-index">
         <div class="post-content">
             <h2><%= @post.heading %></h2>
-            <p>
-            <%= attachment_image_tag @post, :image, style: "width:300px; height:300px", class: "img-rounded pull-left profile-thumb" %>
-            <%= @post.content %>
+            <p sytle="border-bottom: solid 1px #dcdcdc;">
+                <%= attachment_image_tag @post, :image, style: "width:300px; height:300px", class: "img-rounded pull-left profile-thumb" %>
+                <%= @post.content %>
             </p>
-            <div id="likes_buttons_<%= @post.id %>">
-                <%= render 'likes/like', post: @post%>
+            <div class="likes_buttons">
+                <div id="likes_buttons_<%= @post.id %>">
+                    <%= render 'likes/like', post: @post%>
+                </div>
             </div>
             <% if @post.buyer %>
-                <p>
                     <%= attachment_image_tag @post.buyer, :profile_image, style: "width:40px; height:40px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
                     <%= link_to @post.buyer.company_name, buyer_path(@post.buyer) %>
-                </p>
             <% else %>
-                <p>
                     <%= attachment_image_tag @post.producer, :profile_image, style: "width:40px; height:40px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
                     <%= link_to @post.producer.company_name, producer_path(@post.producer) %>
-                </p>
             <% end %>
-                <p><%= @post.created_at.strftime("%Y/%m/%d %H:%M")%></p>
+            <div style="text-align: right;">
+                <%= @post.created_at.strftime("%Y/%m/%d %H:%M")%>
+            </div>
             <% if @post.producer || @post.buyer == current_producer || current_buyer %>
                 <%= link_to "削除する", post_path(@post), method: :delete %>
             <% end %>

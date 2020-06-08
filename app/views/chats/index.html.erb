@@ -13,6 +13,9 @@
             </div>
         <% end %>
         </div>
+        <div class="row" style="text-align: center;">
+        <%= paginate @chats%>
+        </div>
     <% elsif buyer_signed_in? %>
         <h3>チャット中の生産者</h3>
         <div class="chat-index">
@@ -26,6 +29,9 @@
                 </div>
             </div>
         <% end %>
+        </div>
+        <div class="row" style="text-align: center;">
+        <%= paginate @chats%>
         </div>
     <% end %>
 </div>

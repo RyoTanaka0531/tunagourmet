@@ -1,0 +1,39 @@
+<div class="container">
+<h3>備考欄</h3>
+        <table border="1">
+            <tr>
+                <th>画像</th>
+                <th>品目名</th>
+                <th>売価</th>
+                <th>数量</th>
+                <th>金額</th>
+            </tr>
+            <tr>
+                <td style="width: 140px; height: 120px;">
+                    <%# <%= attachment_image_tag @order_product.product, :product_image, style: "width:140px; height:120px", class: "img pull-left profile-thumb", fallback: "no_image.jpg" %>
+                    <%= attachment_image_tag @product, :product_image, style: "width:140px; height:120px", class: "img pull-left profile-thumb", fallback: "no_image.jpg" %>
+                </td>
+                <td style="width: 200px; height: 120px;">
+                    <%# <%= @order_product.product.name%>
+                    <%= @product.name%>
+                </td>
+                <td>
+                <!--変数をjavascriptに変換して値を渡す-->
+                    <%# <%=  @order_product.product.price %>
+                    <%=  @product.price %>円/kg
+                </td>
+                <td style="width: 200px; height: 120px;">
+                    <%# <%= @order_product.count %>
+                    <%= @product.order_product.count %>kg
+                </td>
+                <!--readonlyを指定して入力できないようにしている-->
+                <%# <td style="width: 200px; height: 120px;"><%= @order_product.payment %>円</td> %>
+                <%# <td style="width: 200px; height: 120px;"><%= @product.order_products.payment %>円</td> %>
+            </tr>
+        </table>
+        <div class="remark-form">
+            <%= form_for @order, url: preconfirm_orders_path do |f| %>
+                <%= f.text_area :remark, class: "form-control" %>
+            <% end %>
+        </div>
+</div>

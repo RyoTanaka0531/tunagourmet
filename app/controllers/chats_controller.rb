@@ -1,22 +1,12 @@
 class ChatsController < ApplicationController
+  before_action :require_signed_in
+
 
   def index
     if producer_signed_in?
-      @chats = current_producer.chats
-      # @chat = Chat.find(params[:id])
-      # @buyers = @chat.buyers
-      # @buyer_ids = []
-      # @chats.each do |chat|
-      # @buyer_ids << chat.buyer_id
-      # end
+      @chats = current_producer.chats.page(params[:page]).per(10)
     elsif buyer_signed_in?
-      @chats = current_buyer.chats
-      # @producers = Producer.all
-      # chats = current_buyer.chats
-      # @producer_ids = []
-      # chats.each do |chat|
-        # @producer_ids << chat.producer_id
-      # end
+      @chats = current_buyer.chats.page(params[:page]).per(10)
     end
   end
 
@@ -24,8 +14,6 @@ class ChatsController < ApplicationController
     @chat = Chat.find(params[:id]) #チャット情報の取得
     @message = Message.new #新規メッセージ投稿
     @messages = @chat.messages #チャット内のメッセージを全て取得
-    # @buyer = Buyer.find(params[:id])
-    # @prducer = Producer.find(params[:id])
     if producer_signed_in?
       if @chat.producer.id == current_producer.id
         @buyer = @chat.buyer
@@ -69,6 +57,13 @@ class ChatsController < ApplicationController
 
   def chat_producer_params
     params.require(:chat).permit(:producer_id)
+  end
+  private
+  def require_signed_in
+    unless signed_in?
+      flash[:error] = "新規登録またはログインをしてください"
+      redirect_to sign_up_path
+    end
   end
 end
 

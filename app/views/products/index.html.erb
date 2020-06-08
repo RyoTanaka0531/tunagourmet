@@ -1,6 +1,6 @@
 <div class="container">
     <h1>品目一覧</h1><br>
-<%= render 'sidebar', search: @search %>
+    <%= render 'sidebar', search: @search %>
     <div class="row">
         <div class="col-lg-7 col-lg-offset-2" style="border: none;">
 
@@ -27,4 +27,7 @@
             <% end %>
         </div>
     </div>
+</div>
+<div class="container" style="text-align: center;">
+    <%= paginate @products %>
 </div>

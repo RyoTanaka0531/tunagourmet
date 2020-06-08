@@ -2,11 +2,12 @@ class Buyer::OrderProductsController < ApplicationController
 
     def create
         @order_product = OrderProduct.new(order_product_params)
-        binding.pry
+        # binding.pry
         if @order_product.save
         #リダイレクト先はorders#newかorders#confirm
         # redirect_to new_order_path
-        redirect_to preconfirm_order_path(@order)
+        # redirect_to preconfirm_order_path(@order)
+        redirect_to order_preconfirm_url(@order_product.order_id)
         else
             redirect_to root_path
         end
@@ -15,9 +16,10 @@ class Buyer::OrderProductsController < ApplicationController
 
     def new
         @order = Order.find(params[:id])
+        @product = Product.find(@order.product_id)
         @order_product = @order.order_products.build
+        # @order_product = @order.order_products.build
         # @buyer = current_buyer
-        @product = Product.find(params[:id])
     end
 
     def destroy

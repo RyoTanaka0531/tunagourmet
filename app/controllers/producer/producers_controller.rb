@@ -1,4 +1,6 @@
 class Producer::ProducersController < ApplicationController
+  before_action :authenticate_producer!, only:[:edit]
+
   def show
     @producer = Producer.find(params[:id])
     @products = @producer.products
@@ -47,7 +49,7 @@ class Producer::ProducersController < ApplicationController
       @producers = @search.result
     else
       @search = Producer.ransack()
-      @producers = Producer.all
+      @producers = Producer.page(params[:page]).per(5)
     end
   end
 

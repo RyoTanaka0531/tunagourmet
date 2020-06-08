@@ -1,13 +1,38 @@
 <% if buyer_signed_in? %>
     <% if post.liked_by_buyer?(current_buyer)%>
-        <p><span class="glyphicon glyphicon-heart" style="color: red;"></span><%= link_to post.likes.count, post_likes_path(post.id), method: :delete, remote: true %></p>
+        <p style="border-bottom: solid 1px #dcdcdc; text-align: right;">
+            <%= link_to post_likes_path(post.id), method: :delete, remote: true do %>
+                <span class="glyphicon glyphicon-heart" style="color: red; font-size: 30px"></span>
+            <% end %>
+            <%= post.likes.count %>
+        </p>
     <% else %>
-        <p><span class="glyphicon glyphicon-heart-empty"></span><%= link_to post.likes.count, post_likes_path(post.id), method: :post, remote: true %></p>
+        <p style="border-bottom: solid 1px #dcdcdc; text-align: right;">
+            <%= link_to post_likes_path(post.id), method: :post, remote: true do %>
+                <span class="glyphicon glyphicon-heart-empty" style="font-size: 30px"></span>
+            <% end %>
+            <%= post.likes.count %>
+        </p>
     <% end %>
 <% elsif producer_signed_in? %>
     <% if post.liked_by?(current_producer)%>
-        <p><span class="glyphicon glyphicon-heart" style="color: red;"></span><%= link_to post.likes.count, post_likes_path(post.id), method: :delete, remote: true %></p>
+        <p style="border-bottom: solid 1px #dcdcdc; text-align: right;">
+            <%= link_to post_likes_path(post.id), method: :delete, remote: true do %>
+                <span class="glyphicon glyphicon-heart" style="color: red; font-size: 30px"></span>
+            <% end %>
+            <%= post.likes.count %>
+        </p>
     <% else %>
-        <p><span class="glyphicon glyphicon-heart-empty"></span><%= link_to post.likes.count, post_likes_path(post.id), method: :post, remote: true %></p>
+        <p style="border-bottom: solid 1px #dcdcdc; text-align: right;">
+            <%= link_to post_likes_path(post.id), method: :post, remote: true do %>
+                <span class="glyphicon glyphicon-heart-empty" style="font-size: 30px"></span>
+            <% end%>
+            <%= post.likes.count %>
+        </p>
     <% end %>
+<% else %>
+    <div class="like-count" style="text-align: right;">
+        <span class="glyphicon glyphicon-heart" style="color: red; font-size: 30px"></span>
+        <%= post.likes.count %>
+    </div>
 <% end %>

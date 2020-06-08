@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :require_signed_in, except:[:index, :show]
+
   def new
     @product = Product.new
     @products = current_producer.products
@@ -20,7 +22,7 @@ class ProductsController < ApplicationController
       @products = @search.result
     else
       @search = Product.ransack()
-      @products = Product.all
+      @products = Product.page(params[:page]).per(12)
     end
   end
 
@@ -38,6 +40,8 @@ class ProductsController < ApplicationController
   end
 
   def show
+    # @buyer = current_buyer
+    # @order = @buyer.orders.build
     @order = Order.new
     @product = Product.find(params[:id])
     @producer = Producer.find(@product.producer_id)
@@ -64,6 +68,12 @@ class ProductsController < ApplicationController
   private
   def product_params
     params.require(:product).permit(:name, :price, :description, :timing, :category_id, :producer_id, :product_image)
+  end
+  def require_signed_in
+    unless signed_in?
+      flash[:error] = "新規登録またはログインをしてください"
+      redirect_to sign_up_path
+    end
   end
 end
 

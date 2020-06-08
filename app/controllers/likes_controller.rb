@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+  before_action :require_signed_in
+
   def create
     @post = Post.find(params[:post_id])
     if producer_signed_in?
@@ -17,5 +19,13 @@ class LikesController < ApplicationController
       like = Like.find_by(post_id: params[:post_id], buyer_id: current_buyer.id)
     end
     like.destroy
+  end
+
+  private
+  def require_signed_in
+    unless signed_in?
+      flash[:error] = "新規登録またはログインをしてください"
+      redirect_to sign_up_path
+    end
   end
 end

@@ -1,0 +1,34 @@
+<%# <div class="container"> %>
+    <%# <h2>納品希望日</h2> %>
+    <%# <p><%= @product.name %></p>
+    <%# <%= form_for(@order) do |f| %>
+        <%# <%= f.label "納品希望日"%>
+        <%# <%= f.date_select :delivery %>
+        <%# <%= f.hidden_field :product_id, value: @product.id %>
+        <%# <%= f.hidden_field :buyer_id, value: @buyer.id %>
+        <%# <%= f.submit "次に進む"%>
+    <%# <% end %>
+<%# </div> %>
+<% if @order.confirming.blank? %>
+<%= @product.name %>
+        <%= form_for [@order, @product] do |f|%>
+            <%= f.number_field :count %>
+            <%# <%= f.nuber_field :payment %>
+            <%= f.date_select :delivery %>
+            <%= f.text_area :remark%>
+            <%= f.hidden_field :buyer_id, value: current_buyer.id %>
+            <%= f.hidden_field :product_id, value: @product.id %>
+            <%= f.submit "発注する" %>
+        <% end %>
+<% else %>
+<h3>入力確認</h3>
+    <%= form_for(@order) do |f| %>
+    <table>
+    <tr>
+    <th>品目名</th>
+    <td><%= @product.name %></td>
+    <%= @order.remark %>
+    </tr>
+    </table>
+    <% end %>
+<% end %>

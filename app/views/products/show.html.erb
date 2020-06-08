@@ -1,4 +1,5 @@
 <div class="container">
+<%# <% if @order.confirming.blank? %> %>
     <h1>品目情報</h1>
     <div class="row">
         <div class="col-lg-3">
@@ -9,6 +10,7 @@
                 <p>
                 <!--productをorder_product側に渡す-->
                     <%# <%= link_to "発注する", new_order_products_path(@product),  class: "btn btn-primary" %>
+                    <%# <%= link_to "発注する", order_new_path(@product),  class: "btn btn-primary" %>
                     <%= link_to "発注する", new_order_path(@product),  class: "btn btn-primary" %>
                 </p>
                 <p><%= link_to "生産者ページ", producer_path(@producer), class: "btn btn-primary" %></p>
@@ -41,9 +43,25 @@
             </div>
         </div>
     </div>
+    <%# orderをこのページで作る際 %>
+    <div class="row"> %>
+        <%= form_for(@order) do |f|%>
+        <%= f.number_field :count %>
+        <%= f.number_field :payment %>
+        <%= f.date_select :delivery %>
+        <%= f.text_area :remark%>
+        <%= f.hidden_field :buyer_id, value: current_buyer.id %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= f.submit "発注する" %>
+        <% end %>
+    </div> %>
     <div class="row">
         <p class="right-link">
                 <%= link_to ">>品目一覧に戻る", products_path %>
         </p>
     </div>
+<%# <% else %> %>
+    <%# <%= @order.count %> %>
+    <%# <%= @order.remark %> %>
+<%# <% end %> %>
 </div>

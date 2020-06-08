@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :require_signed_in, except:[:index, :show]
   def create
     if producer_signed_in?
       #producerがログインしてたらproducer_idを、buyerがログインしてたらbuyer_idを@postに入れる
@@ -20,7 +21,7 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(6)
   end
 
   def show
@@ -42,6 +43,13 @@ class PostsController < ApplicationController
 
   def post_producer_params
     params.require(:post).permit(:producer_id, :heading, :content, :image)
+  end
+
+  def require_signed_in
+    unless signed_in?
+      flash[:error] = "新規登録またはログインをしてください"
+      redirect_to sign_up_path
+    end
   end
 end
 
