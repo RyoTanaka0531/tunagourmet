@@ -12,9 +12,10 @@ class Buyer::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     if @order.save
-      redirect_to root_path
+      redirect_to completed_order_path
     else
       @product = Product.find(@order.product_id)
+      @producer = Producer.find(@product.producer_id)
       render 'confirm'
     end
   end
@@ -26,18 +27,20 @@ class Buyer::OrdersController < ApplicationController
 
 
   def index
-    @order_products = @order.order_products
+    @orders = Order.where(buyer_id:[current_buyer.id])
   end
-  
+
   def show
     @order = Order.find(params[:id])
     #　↓この形でproductとorderが紐づき、orderに紐づいたproductを取り出せる
     @product = Product.find(@order.product_id)
   end
 
+  def completed
+  end
 
   private
   def order_params
-    params.require(:order).permit(:remark, :buyer_id, :product_id, :delivery, :count, :payment, :confirming)
+    params.require(:order).permit(:remark, :buyer_id, :product_id, :delivery, :count, :payment, :confirming, :producer_id)
   end
 end

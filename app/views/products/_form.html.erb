@@ -1,6 +1,7 @@
     <%# <%= form_with url: product_order_products_path(@product), local: true do |f| %>
     <%# <%= form_with url: new_order_path(@product), local: true do |f| %>
     <div class="order_table">
+    <>
     <%= form_with model: @order, local: true do |f| %>
         <table border="1">
             <tr>
@@ -25,7 +26,9 @@
                 <td><%= f.text_area :remark%></td>
             </tr>
         </table>
+        <%# <%= f.text_field :producer_id %> %>
         <%= f.hidden_field :buyer_id, value: current_buyer.id %>
+        <%= f.hidden_field :producer_id, value: @producer.id %>
         <%= f.hidden_field :product_id, value: @product.id %>
         <%= f.submit "発注する", class: "btn btn-success"%>
     <% end %>

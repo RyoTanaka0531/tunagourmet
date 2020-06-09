@@ -6,7 +6,7 @@
             <li><%= link_to "トップ", root_path %></li>
             <li><%= link_to "マイページ", producer_path(current_producer)%></li>
             <li><%= link_to "品目登録", new_product_path %></li>
-            <li><%= link_to "受注一覧", "#"%></li>
+            <li><%= link_to "受注一覧", producer_orders_path%></li>
             <li><%= link_to "チャット", chats_path %></li>
             <li><%= link_to "ログアウト", destroy_producer_session_path, method: :delete %></li>
         </ul>

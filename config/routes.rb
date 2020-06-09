@@ -67,8 +67,13 @@ Rails.application.routes.draw do
   get 'orders/new' => 'buyer/orders#new'
   post 'orders' => 'buyer/orders#create'
   get 'orders.:id' => 'buyer/orders#show'
+  get 'orders/completed' => 'buyer/orders#completed', as: 'completed_order'
   get 'order.:id/confirm' => 'buyer/orders#confirm'
+  get 'orders' => 'buyer/orders#index', as: 'orders_index'
 
+  get 'producer/orders' => 'producer/orders#index', as: 'producer_orders'
+  # get 'producer/orders/:id' => 'producer/orders#show', as: 'producer_order'
+  patch 'producer/orders/:id' => 'producer/orders#update'
   # 正しいルーティング
   # resources :orders, only: [:create, :show, :edit, :show, :new]
   # get 'orders/:id/confirm' => 'orders#confirm', as: 'order_confirm'
