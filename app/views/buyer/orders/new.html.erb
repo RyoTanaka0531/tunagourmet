@@ -11,7 +11,7 @@
 <%# </div> %>
 <% if @order.confirming.blank? %>
 <%= @product.name %>
-        <%= form_for [@order, @product] do |f|%>
+        <%= form_with model: @order, local: true do |f|%>
             <%= f.number_field :count %>
             <%# <%= f.nuber_field :payment %>
             <%= f.date_select :delivery %>

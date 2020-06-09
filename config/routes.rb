@@ -34,9 +34,9 @@ Rails.application.routes.draw do
     resources :producers, only:[:show, :edit, :update, :quit, :index]
   end
 
-  namespace :buyer do
-    resources :buyers, only:[:show, :edit, :update, :quit, :index]
-  end
+  # namespace :buyer do
+  #   resources :buyers, only:[:show, :edit, :update, :quit, :index]
+  # end
 
 
   resources :categories, only:[:index, :create, :destroy]
@@ -59,14 +59,19 @@ Rails.application.routes.draw do
   get 'buyers/:id/edit' => 'buyer/buyers#edit', as: 'edit_buyer'
   patch 'buyers/:id' => 'buyer/buyers#update'
   get 'buyers/:id/quit' => 'buyer/buyers#quit', as: 'buyer_quit'
-
+  get 'buyers/:id/orders/new' => 'buyer/orders#new', as: 'buyer_order_new'
   resources :products do
-    resources :orders, only:[:create]
+    # resources :orders, only:[:create]
   end
 
+  get 'orders/new' => 'buyer/orders#new'
+  post 'orders' => 'buyer/orders#create'
+  get 'orders.:id' => 'buyer/orders#show'
+  get 'order.:id/confirm' => 'buyer/orders#confirm'
+
   # 正しいルーティング
-  resources :orders, only: [:create, :show, :edit, :show, :new]
-  get 'orders/:id/confirm' => 'orders#confirm', as: 'order_confirm'
+  # resources :orders, only: [:create, :show, :edit, :show, :new]
+  # get 'orders/:id/confirm' => 'orders#confirm', as: 'order_confirm'
   # ここまで
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
