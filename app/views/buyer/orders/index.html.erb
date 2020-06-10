@@ -1,3 +1,5 @@
+<%# <span>オーダーid: <%= @order.id %></span></span>
+<%# <span>現在のバイヤーid:  <%= @buyer.id%></span>
 <div class="container">
     <h3>発注品目一覧</h3>
     <% @orders.each do |order| %>
@@ -9,24 +11,26 @@
                 <th style="text-align: center;">売価</th>
                 <th style="text-align: center;">数量</th>
                 <th style="text-align: center;">金額</th>
+                <th style="text-align: center;">メモ</th>
             </tr>
             <tr style="text-align: center;">
-            <%# <% products = Product.where(order_id:order.id)%> %>
-                <% order.products.each do |product|%>
                 <td style="width: 140px; height: 120px;">
-                    <%= attachment_image_tag product, :product_image, style: "width:140px; height:120px", class: "img pull-left profile-thumb", fallback: "no_image.jpg" %>
+                    <%= attachment_image_tag order.product, :product_image, style: "width:140px; height:120px", class: "img pull-left profile-thumb", fallback: "no_image.jpg" %>
                 </td>
+
                 <td style="width: 200px; height: 120px;">
-                    <%= product.name%>
+                    <%= order.product.name%>
                 </td>
+
                 <td style="width: 200px; height: 120px;">
-                    <%= product.price %>円/kg
-                <% end %>
+                    <%= order.product.price %>円/kg
+                </td>
+
                 <td style="width: 200px; height: 120px;">
                     <%= order.count %>kg
                 </td>
                 <td style="width: 200px; height: 120px;"><%= order.payment %>円</td>
-                <%# <td style="border: none; border-right: none;" ><%= link_to "発注する", new_order_path, class:"btn btn-primary" %></td>
+                <td style="width: 200px; height: 120px;"><%= order.remark %></td>
             </tr>
         </table>
     </div>

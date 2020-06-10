@@ -1,8 +1,8 @@
 class Order < ApplicationRecord
     belongs_to :buyer
-    has_many :products
-    has_many :order_products
-    # belongs_to :product
+    belongs_to :product
+    # has_many :products
+    # has_many :order_products
     validates :count, presence: true
     validates :delivery, presence: true
     validates :remark, presence: true

@@ -8,6 +8,7 @@ class Buyer < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :orders, dependent: :destroy
+  has_many :products, dependent: :destroy
   attachment :profile_image
 
   enum prefecture:{

@@ -288,6 +288,14 @@ li{
         padding-top: 40px;
     }
 }
+.order-form{
+    p{
+        padding-top: 20px;
+    }
+    h3{
+        padding-top: 150px;
+    }
+}
 
 // producer周辺
 .producer-info{
@@ -359,6 +367,14 @@ li{
     }
 }
 
+// order
+.completed{
+    text-align: center;
+    padding-top: 100px;
+    h3{
+        margin-bottom: 60px;
+    }
+}
 // order_product
 .order_table{
     width: 100%;
@@ -384,5 +400,23 @@ li{
         td{
             border: solid 1px black;
         }
+    }
+}
+.producer-order-index{
+    h3{
+        margin-left: 100px;
+    }
+    width: 100%;
+    margin: 0 auto;
+    table{
+        text-align: center;
+        margin: 30px auto;
+    }
+    th{
+        text-align: center;
+    }
+    td{
+        width: 120px;
+        height: 120px;
     }
 }

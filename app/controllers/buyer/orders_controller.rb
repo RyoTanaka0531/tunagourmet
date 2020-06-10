@@ -14,6 +14,7 @@ class Buyer::OrdersController < ApplicationController
     if @order.save
       redirect_to completed_order_path
     else
+      #confirmingがnilだったらこっちに進む
       @product = Product.find(@order.product_id)
       @producer = Producer.find(@product.producer_id)
       render 'confirm'
@@ -27,7 +28,11 @@ class Buyer::OrdersController < ApplicationController
 
 
   def index
+    @buyer = current_buyer
+    @order = Order.find_by(buyer_id:@buyer.id)
     @orders = Order.where(buyer_id:[current_buyer.id])
+    @product = Order.find_by(buyer_id:@buyer.id).product
+
   end
 
   def show

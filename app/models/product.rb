@@ -1,7 +1,9 @@
 class Product < ApplicationRecord
     belongs_to :producer
     belongs_to :category
+    belongs_to :buyer
     has_many :orders
+    # belongs_to :order
 
     has_many :order_products
 
