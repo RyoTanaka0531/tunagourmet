@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.page(params[:page]).per(6)
+    @posts = Post.order(id: "DESC").page(params[:page]).per(6)
   end
 
   def show

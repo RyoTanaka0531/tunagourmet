@@ -1,38 +1,38 @@
-<%# <span>オーダーid: <%= @order.id %></span></span>
-<%# <span>現在のバイヤーid:  <%= @buyer.id%></span>
 <div class="container">
-    <h3>発注品目一覧</h3>
+    <h2>発注一覧</h2>
+    <div class="buyer-order-index">
     <% @orders.each do |order| %>
-    <div class="order-product-index">
-        <table>
+        <table border="1">
             <tr>
-                <th style="text-align: center;">画像</th>
-                <th style="text-align: center;">品目名</th>
-                <th style="text-align: center;">売価</th>
-                <th style="text-align: center;">数量</th>
-                <th style="text-align: center;">金額</th>
-                <th style="text-align: center;">メモ</th>
+                <th>画像</th>
+                <th>品目名</th>
+                <th>売価</th>
+                <th>数量</th>
+                <th>金額</th>
+                <th>メモ</th>
+                <th>受注状況</th>
             </tr>
-            <tr style="text-align: center;">
-                <td style="width: 140px; height: 120px;">
+            <tr>
+                <td>
                     <%= attachment_image_tag order.product, :product_image, style: "width:140px; height:120px", class: "img pull-left profile-thumb", fallback: "no_image.jpg" %>
                 </td>
 
-                <td style="width: 200px; height: 120px;">
+                <td>
                     <%= order.product.name%>
                 </td>
 
-                <td style="width: 200px; height: 120px;">
+                <td>
                     <%= order.product.price %>円/kg
                 </td>
 
-                <td style="width: 200px; height: 120px;">
+                <td>
                     <%= order.count %>kg
                 </td>
-                <td style="width: 200px; height: 120px;"><%= order.payment %>円</td>
-                <td style="width: 200px; height: 120px;"><%= order.remark %></td>
+                <td><%= order.payment %>円</td>
+                <td style="width: 200px;"><%= order.remark %></td>
+                <td><%= order.order_status %></td>
             </tr>
         </table>
-    </div>
     <% end %>
+    </div>
 </div>

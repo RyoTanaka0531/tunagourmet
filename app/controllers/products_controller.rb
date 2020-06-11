@@ -9,10 +9,12 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.producer_id = current_producer.id
-      if @product.save
-        redirect_to product_path(@product)
-      else
-        flash[:notice] = '入力に不備があります。正しく入力してください。'
+    if @product.save
+      flash[:notice] = '登録が完了しました。'
+      redirect_to product_path(@product)
+    else
+      binding.pry
+      flash[:notice] = '入力に不備があります。正しく入力してください。'
         redirect_to request.referrer
       end
   end
@@ -23,7 +25,7 @@ class ProductsController < ApplicationController
       @products = @search.result.page(params[:page]).per(5)
     else
       @search = Product.ransack()
-      @products = Product.page(params[:page]).per(12)
+      @products = Product.order(id: "DESC").page(params[:page]).per(12)
     end
   end
 
@@ -34,6 +36,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
+      flash[:notice] = "登録内容が変更されました。"
       redirect_to product_path(@product)
     else
       flash[:notice] = "入力に不備があります。正しく入力してください。"
@@ -42,8 +45,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    # @buyer = current_buyer
-    # @order = @buyer.orders.build
     @order = Order.new
     @product = Product.find(params[:id])
     @producer = Producer.find(@product.producer_id)
@@ -61,6 +62,7 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     if @product.destroy
+      flash[:notice] = "削除しました。"
       redirect_to producer_path(@product.producer.id)
     else
       render 'show'

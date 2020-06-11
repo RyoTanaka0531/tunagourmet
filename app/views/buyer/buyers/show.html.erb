@@ -1,3 +1,8 @@
+<% if flash[:notice] %>
+    <div class="alert alert-success text-center">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
 <div class="container">
         <% if @buyer == current_buyer %>
         <h1>マイページ</h1>
@@ -15,62 +20,64 @@
         <% end %>
         <% end %>
     <div class="row">
-        <div class="col-lg-3">
-
-
-            <div class="image">
-                <%= attachment_image_tag @buyer, :profile_image, style: "width:200px; height:200px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg" %>
+        <div class="producer-show">
+            <div class="col-lg-3">
+                <div class="image">
+                    <%= attachment_image_tag @buyer, :profile_image, style: "width:200px; height:200px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg" %>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-9">
-            <table>
-                <tr>
-                    <th>担当者名</th>
-                    <td><%= @buyer.name %></td>
-                </tr>
-                <tr>
-                    <th>担当者名(フリガナ)</th>
-                    <td><%= @buyer.kana_name %></td>
-                </tr>
-                <tr>
-                    <th>屋号/社名</th>
-                    <td><%= @buyer.company_name %></td>
-                </tr>
-                <tr>
-                    <th>屋号/社名(フリガナ)</th>
-                    <td><%= @buyer.kana_company_name %></td>
-                </tr>
-                <tr>
-                    <th>業種・業態</th>
-                    <td><%= @buyer.industory %></td>
-                </tr>
-                <tr>
-                    <th>電話番号</th>
-                    <td><%= @buyer.phone_number %></td>
-                </tr>
-                <tr>
-                    <th>郵便番号</th>
-                    <td><%= @buyer.postcode %></td>
-                </tr>
-                <tr>
-                    <th>住所</th>
-                    <td><%= @buyer.prefecture %><%= @buyer.address %></td>
-                </tr>
-                <tr>
-                    <th>ホームページ</th>
-                    <td><%= link_to @buyer.hp, @buyer.hp %></td>
-                </tr>
-                <tr>
-                    <th>プロフィール</th>
-                    <td style="width: 30em;"><%= @buyer.description %></td>
-                </tr>
-            </table>
-        </div>
-        <% if @buyer == current_buyer %>
-            <%= link_to "編集する", edit_buyer_path, class: "btn btn-primary" %>
-        <% end %>
-        <div class="right-link">
-            <p><%= link_to ">>バイヤー一覧に戻る", buyers_path %></p>
+            <div class="col-lg-9">
+                <table>
+                    <tr>
+                        <th>担当者名</th>
+                        <td><%= @buyer.name %></td>
+                    </tr>
+                    <tr>
+                        <th>担当者名(フリガナ)</th>
+                        <td><%= @buyer.kana_name %></td>
+                    </tr>
+                    <tr>
+                        <th>屋号/社名</th>
+                        <td><%= @buyer.company_name %></td>
+                    </tr>
+                    <tr>
+                        <th>屋号/社名(フリガナ)</th>
+                        <td><%= @buyer.kana_company_name %></td>
+                    </tr>
+                    <tr>
+                        <th>業種・業態</th>
+                        <td><%= @buyer.industory %></td>
+                    </tr>
+                    <tr>
+                        <th>電話番号</th>
+                        <td><%= @buyer.phone_number %></td>
+                    </tr>
+                    <tr>
+                        <th>郵便番号</th>
+                        <td><%= @buyer.postcode %></td>
+                    </tr>
+                    <tr>
+                        <th>住所</th>
+                        <td><%= @buyer.prefecture %><%= @buyer.address %></td>
+                    </tr>
+                    <tr>
+                        <th>ホームページ</th>
+                        <td><%= link_to @buyer.hp, @buyer.hp %></td>
+                    </tr>
+                    <tr>
+                        <th>プロフィール</th>
+                        <td style="width: 30em;"><%= @buyer.description %></td>
+                    </tr>
+                </table>
+            </div>
+            <div style="text-align: center;">
+                <% if @buyer == current_buyer %>
+                    <%= link_to "編集する", edit_buyer_path, class: "btn btn-primary" %>
+                <% end %>
+            </div>
+            <div class="right-link" style="padding-top: 30px;">
+                <p><%= link_to ">>バイヤー一覧に戻る", buyers_path %></p>
+            </div>
         </div>
     </div>
 </div>

@@ -33,8 +33,13 @@ class Producer::ProducersController < ApplicationController
 
   def update
     @producer = Producer.find(params[:id])
-    @producer.update(producer_params)
-    redirect_to producer_path(@producer.id)
+    if @producer.update(producer_params)
+      flash[:notice] = "登録内容が変更されました。"
+      redirect_to producer_path(@producer.id)
+    else
+      flash[:notice] = "入力に不備があります。正しく入力をしてください。"
+      redirect_to request.referer
+    end
   end
 
   # 退会ページへ遷移
@@ -49,7 +54,7 @@ class Producer::ProducersController < ApplicationController
       @producers = @search.result.page(params[:page]).per(5)
     else
       @search = Producer.ransack()
-      @producers = Producer.page(params[:page]).per(5)
+      @producers = Producer.order(id: "DESC").page(params[:page]).per(5)
     end
   end
 

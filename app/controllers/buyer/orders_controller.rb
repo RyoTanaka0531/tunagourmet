@@ -29,23 +29,25 @@ class Buyer::OrdersController < ApplicationController
 
   def index
     @buyer = current_buyer
-    @order = Order.find_by(buyer_id:@buyer.id)
-    @orders = Order.where(buyer_id:[current_buyer.id])
+    @orders = Order.where(buyer_id:[current_buyer.id]).order(id: "DESC")
     @product = Order.find_by(buyer_id:@buyer.id).product
-
   end
 
   def show
     @order = Order.find(params[:id])
-    #　↓この形でproductとorderが紐づき、orderに紐づいたproductを取り出せる
+    # ↓この形でproductとorderが紐づき、orderに紐づいたproductを取り出せる
     @product = Product.find(@order.product_id)
   end
 
   def completed
   end
 
+  def update
+  end
+
   private
   def order_params
-    params.require(:order).permit(:remark, :buyer_id, :product_id, :delivery, :count, :payment, :confirming, :producer_id)
+    params.require(:order).permit(:remark, :buyer_id, :product_id, :delivery, :count, :payment, :confirming, :producer_id, :order_status)
   end
 end
+

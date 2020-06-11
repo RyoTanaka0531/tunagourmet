@@ -1,43 +1,48 @@
 <div class="container">
-    <h3>発注確認</h3>
-    <h3>生産者名：　<%= @product.producer.name %></h3>
+    <h2>発注確認</h2>
+    <div class="order-confirm">
 
-    <%= form_for(@order) do |f| %>
-    <table>
-    <tr>
-        <th>品目名</th>
-        <td><%= @product.name %></td>
-    </tr>
-    <tr>
-        <th>売価</th>
-        <td><%= @product.price %>円/kg</td>
-    </tr>
-    <tr>
-        <th>数量</th>
-        <td><%= @order.count %>kg</td>
-    </tr>
-    <tr>
-        <th>金額</th>
-        <td><%= @order.payment %>円</td>
-    </tr>
-    <tr>
-        <th>納品希望日</th>
-        <td><%= @order.delivery %></td>
-    </tr>
-    <tr>
-        <th>備考</th>
-        <td><%= @order.remark %></td>
-    </tr>
-    <%= f.hidden_field :confirming %>
-    <%= f.hidden_field :payment %>
-    <%= f.hidden_field :remark %>
-    <%= f.hidden_field :delivery %>
-    <%= f.hidden_field :count %>
-    <%= f.hidden_field :product_id, value: @product.id %>
-    <%= f.hidden_field :buyer_id, value: current_buyer.id %>
-    <%= f.hidden_field :producer_id, value: @producer.id %>
-    <%= f.hidden_field :order_id, value: @order.id %>
-    </table>
-    <%= f.submit "注文を確定", class: "btn btn-primary"%>
-    <% end %>
+        <%= form_for(@order) do |f| %>
+        <table>
+        <tr>
+            <th><h3>発注品目名： <%= @product.price %></h3></th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>売価</th>
+            <td><%= @product.price %>円/kg</td>
+        </tr>
+        <tr>
+            <th>数量</th>
+            <td><%= @order.count %>kg</td>
+        </tr>
+        <tr>
+            <th>金額</th>
+            <td><%= @order.payment %>円</td>
+        </tr>
+        <tr>
+            <th>納品希望日</th>
+            <td><%= @order.delivery %></td>
+        </tr>
+        <tr>
+            <th>備考</th>
+            <td><%= @order.remark %></td>
+        </tr>
+        <tr>
+            <th>生産者名</th>
+            <td><%= @product.producer.name %></td>
+        </tr>
+        <%= f.hidden_field :confirming %>
+        <%= f.hidden_field :payment %>
+        <%= f.hidden_field :remark %>
+        <%= f.hidden_field :delivery %>
+        <%= f.hidden_field :count %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= f.hidden_field :buyer_id, value: current_buyer.id %>
+        <%= f.hidden_field :producer_id, value: @producer.id %>
+        <%= f.hidden_field :order_id, value: @order.id %>
+        </table>
+        <%= f.submit "注文を確定", class: "btn btn-primary"%>
+        <% end %>
+    </div>
 </div>

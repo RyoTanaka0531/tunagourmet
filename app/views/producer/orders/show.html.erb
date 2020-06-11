@@ -1,0 +1,51 @@
+<% if flash[:notice] %>
+    <div class="alert alert-success text-center">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
+<div class="container">
+<h1>受注詳細</h1>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="image">
+                <%= attachment_image_tag @order.product, :product_image, style: "width:200px; height:200px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg" %>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <table>
+                <tr>
+                    <th>品目名</th>
+                    <td><%= @order.product.name %></td>
+                </tr>
+                <tr>
+                    <th>売価</th>
+                    <td><%= @order.product.price %></td>
+                </tr>
+                <tr>
+                    <th>数量</th>
+                    <td><%= @order.count %></td>
+                </tr>
+                <tr>
+                    <th>金額</th>
+                    <td><%= @order.payment %></td>
+                </tr>
+                <tr>
+                    <th>メモ</th>
+                    <td><%= @order.remark %></td>
+                </tr>
+                <tr>
+                    <th>受注ステータス</th>
+                    <td>
+                        <%= form_with model: @order, url: update_producer_orders_path(@order) do |f| %>
+                            <%= f.select :order_status, Order.order_statuses.keys, class: "form-control" %>
+                            <%= f.submit "更新", class: "btn btn-success"%>
+                        <% end %>
+                    </td>
+                </tr>
+            </table>
+            <div class="right-link">
+                <%= link_to ">>受注一覧に戻る", producer_orders_path %>
+            </div>
+        </div>
+    </div>
+</div>

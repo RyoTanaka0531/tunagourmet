@@ -28,16 +28,18 @@ class Buyer::BuyersController < ApplicationController
   def edit
     @buyer = Buyer.find(params[:id])
   end
-  
+
   def update
     @buyer = Buyer.find(params[:id])
     if @buyer.update(buyer_params)
+      flash[:notice] = "登録情報を変更しました。"
       redirect_to buyer_path(@buyer)
     else
+      flash[:notice] = "変更内容に不備があります。再度正しく入力してください。"
       redirect_to request.referer
     end
   end
-  
+
   # 退会ページへ遷移
   def quit
     @buyer = Buyer.find(params[:id])
@@ -49,7 +51,7 @@ class Buyer::BuyersController < ApplicationController
       @buyers = @search.result.page(params[:page]).per(5)
     else
       @search = Buyer.ransack()
-      @buyers = Buyer.page(params[:page]).per(5)
+      @buyers = Buyer.order(id: "DESC").page(params[:page]).per(5)
     end
   end
 

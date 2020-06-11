@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  namespace :buyer do
-    get 'order_products/new'
-    post 'order_products/create'
-    get 'order_products/destroy'
-  end
   root 'home#top'
   # selectアクションで生産者かバイヤーか選択しルートを変える
   get 'sign_up' => 'home#select'
@@ -33,12 +28,6 @@ Rails.application.routes.draw do
   namespace :producer do
     resources :producers, only:[:show, :edit, :update, :quit, :index]
   end
-
-  # namespace :buyer do
-  #   resources :buyers, only:[:show, :edit, :update, :quit, :index]
-  # end
-
-
   resources :categories, only:[:index, :create, :destroy]
   resources :posts, except:[:update, :edit] do
     resource :likes, only: [:create, :destroy]
@@ -60,9 +49,8 @@ Rails.application.routes.draw do
   patch 'buyers/:id' => 'buyer/buyers#update'
   get 'buyers/:id/quit' => 'buyer/buyers#quit', as: 'buyer_quit'
   get 'buyers/:id/orders/new' => 'buyer/orders#new', as: 'buyer_order_new'
-  resources :products do
-    # resources :orders, only:[:create]
-  end
+  resources :products
+
 
   get 'orders/new' => 'buyer/orders#new'
   post 'orders' => 'buyer/orders#create'
@@ -72,12 +60,8 @@ Rails.application.routes.draw do
   get 'orders' => 'buyer/orders#index', as: 'orders_index'
 
   get 'producer/orders' => 'producer/orders#index', as: 'producer_orders'
-  # get 'producer/orders/:id' => 'producer/orders#show', as: 'producer_order'
-  patch 'producer/orders/:id' => 'producer/orders#update'
-  # 正しいルーティング
-  # resources :orders, only: [:create, :show, :edit, :show, :new]
-  # get 'orders/:id/confirm' => 'orders#confirm', as: 'order_confirm'
-  # ここまで
+  get 'producer/orders/:id' => 'producer/orders#show', as: 'producer_order'
+  patch 'producer/orders/:id' => 'producer/orders#update', as: 'update_producer_orders'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

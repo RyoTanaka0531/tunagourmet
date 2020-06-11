@@ -2,7 +2,7 @@
 <h3>受注一覧</h3>
 <div class="producer-order-index">
 	<% @orders.each do |order|%>
-	<h3>発注者名: <%= link_to order.buyer.company_name, buyer_path(order.buyer) %></h3>
+	<h3>発注者名:　<%= link_to order.buyer.company_name, buyer_path(order.buyer) %></h3>
 		<table border="1">
 			<tr>
 					<th>画像</th>
@@ -14,9 +14,9 @@
 					<th>納品希望日</th>
 			</tr>
 			<tr>
-				<td>
-					<%= attachment_image_tag order.product, :product_image, style: "width:140px; height:120px", class: "img pull-left profile-thumb", fallback: "no_image.jpg" %>
-				</td>
+                <td style="width: 140px; height: 120px;">
+                    <%= attachment_image_tag order.product, :product_image, style: "width:140px; height:120px", class: "img pull-left profile-thumb", fallback: "no_image.jpg" %>
+                </td>
 				<td>
 					<%= link_to order.product.name, product_path(order.product) %>
 				</td>
@@ -29,8 +29,12 @@
 				<td><%= order.payment %>円</td>
 				<td style="width: 200px;"><%= order.remark %></td>
 				<td><%= order.delivery %></td>
+				<td><%= order.order_status %></td>
 			</tr>
 		</table>
+		<div class="right-link">
+			<%= link_to "受注変更する", producer_order_path(order), class: "btn btn-success", style: "margin-right: 30px;" %>
+		</div>
 	<% end%>
 	</div>
 </div>

@@ -1,3 +1,8 @@
+<% if flash[:notice] %>
+    <div class="alert alert-success text-center">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
 <div class="container">
     <h1>品目情報</h1>
     <div class="row">
@@ -33,7 +38,7 @@
             <h3>出荷可能時期</h3>
             <%= @product.timing%>
             <p><strong>生産者名</strong></p>
-            <h4><%= link_to @producer.name, producer_path(@producer) %></h4>
+            <h4><%= link_to @producer.company_name, producer_path(@producer) %></h4>
         </div>
     </div>
     <% if buyer_signed_in? %>

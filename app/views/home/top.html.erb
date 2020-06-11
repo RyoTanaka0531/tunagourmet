@@ -1,4 +1,8 @@
-<div class="container">
+<% if flash[:notice] %>
+    <div class="alert alert-success text-center">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
     <div class="eyecatch">
         <div class="content-box">
         ようこそ　つなグルメへ！<br>
@@ -6,6 +10,34 @@
         ご利用には生産者の方、バイヤーの方に新規登録を行っていただく必要がございます。
         </div>
     </div>
+        <div class="information">
+            <h2>「つなぐるめ」の３つのポイント</h2>
+
+            <div class="message">
+                <h4>①　たくさんの出会い</h4>
+                <span>
+                全国の生産者さんとバイヤーさんが当ホームページをご利用いただくことにより、新規の取引先を登録者の中から探すことができます。
+                また新規開拓以外にも、品目に対する工夫や悩み、育て方などの様々な情報交換ができます。
+                </span>
+            </div>
+
+            <div class="message">
+                <h4>②　生産者/バイヤーで直接取引!</h4>
+                <span>
+                例えば、野菜の売り先を探している生産者（農家）さんと、野菜の仕入れ先を探しているバイヤー（飲食店など）さん同士が出会える場。
+                各生産者さん、バイヤーさんのページからチャットが出来、お互い相談しながら取引することができます。
+                </span>
+            </div>
+
+            <div class="message">
+                <h4>③　取引がカンタン！</h4>
+                <span>
+                バイヤーさんは発注したい品目のページから直接発注数量、納品希望日、メモなどの入力をしていただき、発注することが出来ます。
+                また、生産者さんは受けた発注に対して、受注情報を更新していただくことで取引が完結いたします。
+                </span>
+            </div>
+        </div>
+<div class="container">
     <div class="top-index">
         <% if producer_signed_in? %>
             <h2>バイヤー一覧</h2>
@@ -48,8 +80,8 @@
                 <% end %>
             </div>
         <% else %>
-            <h2>品目一覧</h2>
             <div class="row">
+            <h2>品目一覧</h2>
                 <% @products.each do |product| %>
                     <div class="index">
                     <dl>

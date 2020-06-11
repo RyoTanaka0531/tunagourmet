@@ -1,6 +1,0 @@
-<div class="container">
-    <h2>発注登録</h2>
-    <h3>生産者名:  <%= link_to @product.producer.company_name, producer_path(@product.producer) %></h3>
-    <%= render 'form', product: @product %>
-    <%= @order.id %>
-</div>

@@ -5,7 +5,7 @@
         <div class="col-lg-7 col-lg-offset-2" style="border: none;">
 
             <% @products.each do |product| %>
-                <div class="index">
+                <div class="products-index">
                 <dl>
                     <dt></dt>
                     <dd>
@@ -19,6 +19,8 @@
                         <dd><%= product.price %>円/kg</dd>
                     <dt>出荷時期</dt>
                         <dd><%= product.timing %></dd>
+                    <dt>生産者名</dt>
+                        <dd><%= link_to product.producer.company_name, producer_path(product.producer) %></dd>
                     <% if product.producer == current_producer %>
                         <%= link_to "編集する", edit_product_path(product) %></>
                     <% end %>

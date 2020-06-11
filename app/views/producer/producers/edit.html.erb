@@ -1,3 +1,8 @@
+<% if flash[:notice] %>
+    <div class="alert alert-danger text-center">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
 <div class="container">
 <h1>情報編集ページ</h1>
 <%= form_for(@producer) do |f| %>
@@ -8,50 +13,51 @@
     </tr>
     <tr>
         <th><%= f.label "担当者名" %></th>
-        <td><%= f.text_field :name %></td>
-    </tr>
+        <td><%= f.text_field :name, class: "form-control" %></td>    </tr>
     <tr>
         <th><%= f.label "担当者名(フリガナ)" %></th>
-        <td><%= f.text_field :kana_name %></td>
+        <td><%= f.text_field :kana_name, class: "form-control" %></td>
     </tr>
     <tr>
         <th><%= f.label "屋号/社名" %></th>
-        <td><%= f.text_field :company_name %></td>
+        <td><%= f.text_field :company_name, class: "form-control" %></td>
     </tr>
     <tr>
         <th><%= f.label "屋号/社名(フリガナ)" %></th>
-        <td><%= f.text_field :kana_company_name %></td>
+        <td><%= f.text_field :kana_company_name, class: "form-control" %></td>
     </tr>
     <tr>
         <th><%= f.label "メールアドレス" %></th>
-        <td><%= f.email_field :email %></td>
+        <td><%= f.email_field :email, class: "form-control" %></td>
     </tr>
     <tr>
         <th><%= f.label "電話番号" %></th>
-        <td><%= f.text_field :phone_number %></td>
+        <td><%= f.text_field :phone_number, class: "form-control" %></td>
     </tr>
     <tr>
         <th><%= f.label "郵便番号" %></th>
-        <td><%= f.text_field :postcode %></td>
+        <td><%= f.text_field :postcode, class: "form-control" %></td>
     </tr>
     <tr>
         <th><%= f.label "都道府県" %></th>
-        <td><%= f.select :prefecture, Producer.prefectures.keys %></td>
+        <td><%= f.select :prefecture, Buyer.prefectures.keys %></td>
     </tr>
     <tr>
         <th><%= f.label "住所(市区町村・番地・建物" %></th>
-        <td><%= f.text_field :address %></td>
+        <td><%= f.text_field :address, class: "form-control" %></td>
     </tr>
     <tr>
         <th><%= f.label "ホームページ" %></th>
-        <td><%= f.text_field :hp %></td>
+        <td><%= f.text_field :hp, class: "form-control" %></td>
     </tr>
     <tr>
         <th><%= f.label "プロフィール"%></th>
-        <td><%= f.text_area :description %></td>
+        <td><%= f.text_area :description, class: "form-control" %></td>
     </tr>
     </table>
-    <%= f.submit "登録する"%>
-    <%= link_to "退会する", producer_quit_path %>
+    <div class="button">
+        <%= f.submit "登録する", class: "btn btn-success"%>
+        <%= link_to "退会する", buyer_quit_path, class: "btn btn-danger" %>
+    </div>
 <% end %>
 </div>

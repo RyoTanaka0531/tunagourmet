@@ -21,7 +21,9 @@
             <div style="text-align: right;">
                 <%= @post.created_at.strftime("%Y/%m/%d %H:%M")%>
             </div>
-            <% if @post.producer || @post.buyer == current_producer || current_buyer %>
+            <% if producer_signed_in? && @post.producer == current_producer %>
+                <%= link_to "削除する", post_path(@post), method: :delete %>
+            <% elsif buyer_signed_in? && @post.buyer == current_buyer %>
                 <%= link_to "削除する", post_path(@post), method: :delete %>
             <% end %>
         </div>
@@ -46,6 +48,7 @@
         <% end %>
     </div>
         <div class="right-link">
-            <%= link_to ">>投稿一覧にもどる", posts_path%>
+            <strong><%= link_to ">>投稿一覧にもどる", posts_path%></strong>
         </div>
 </div>
+
