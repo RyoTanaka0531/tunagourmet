@@ -12,6 +12,8 @@ class Buyer < ApplicationRecord
   attachment :profile_image
   belongs_to :industory, optional: true
   belongs_to :prefecture, optional: true
+  validates :company_name, presence: :ture
+  validates :kana_company_name, presence: :ture
 
   #すでにいいねしているかどうか
   def liked_by_buyer?(buyer)

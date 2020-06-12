@@ -31,14 +31,6 @@
             <div class="producer-info">
                 <table>
                     <tr>
-                        <th>担当者名</th>
-                        <td><%= @producer.name %></td>
-                    </tr>
-                    <tr>
-                        <th>担当者名(フリガナ)</th>
-                        <td><%= @producer.kana_name %></td>
-                    </tr>
-                    <tr>
                         <th>屋号/社名</th>
                         <td><%= @producer.company_name %></td>
                     </tr>
@@ -47,29 +39,77 @@
                         <td><%= @producer.kana_company_name %></td>
                     </tr>
                     <tr>
+                        <th>担当者名</th>
+                        <td>
+                            <% if @producer.name.blank?%>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= @producer.name %>
+                            <% end %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>担当者名(フリガナ)</th>
+                        <td>
+                            <% if @producer.kana_name.blank?%>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= @producer.kana_name %>
+                            <% end %>
+                        </td>
+                    </tr>
+                    <tr>
                         <th>メールアドレス</th>
                         <td><%= @producer.email %></td>
                     </tr>
                     <tr>
                         <th>電話番号</th>
-                        <td><%= @producer.phone_number %></td>
+                        <td>
+                            <% if @producer.phone_number.blank?%>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= @producer.phone_number %>
+                            <% end %>
+                        </td>
                     </tr>
                     <tr>
                         <th>郵便番号</th>
-                        <td><%= @producer.postcode %></td>
+                        <td>
+                            <% if @producer.postcode.blank?%>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= @producer.postcode %>
+                            <% end %>
+                        </td>
                     </tr>
                     <tr>
                         <th>住所</th>
-                        <td><%= @producer.prefecture.name %><%= @producer.address %></td>
+                        <td>
+                            <% if @producer.prefecture_id.blank?%>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= @producer.prefecture.name %><%= @producer.address %>
+                            <% end %>
+                        </td>
                     </tr>
                     <tr>
                         <th>ホームページ</th>
-                        <td><%= link_to @producer.hp, @producer.hp %></td>
-                    </tr>
+                        <td>
+                            <% if @producer.hp.blank?%>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= link_to @producer.hp, @producer.hp %>
+                            <% end %>
+                        </td>                    </tr>
                     <tr>
                         <th>プロフィール</th>
-                        <td><%= @producer.description %></td>
-                    </tr>
+                        <td style="width: 30em;">
+                            <% if @producer.description.blank? %>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= @producer.description %>
+                            <% end %>
+                        </td>                    </tr>
                 </table>
                 <div class="right-link">
                         <% if @producer == current_producer %>

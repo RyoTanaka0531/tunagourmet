@@ -29,44 +29,104 @@
             <div class="col-lg-9">
                 <table>
                     <tr>
-                        <th>担当者名</th>
-                        <td><%= @buyer.name %></td>
-                    </tr>
-                    <tr>
-                        <th>担当者名(フリガナ)</th>
-                        <td><%= @buyer.kana_name %></td>
-                    </tr>
-                    <tr>
                         <th>屋号/社名</th>
-                        <td><%= @buyer.company_name %></td>
+                        <td>
+                            <% if @buyer.company_name.blank? %>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= @buyer.company_name %>
+                            <% end %>
+                        </td>
                     </tr>
                     <tr>
                         <th>屋号/社名(フリガナ)</th>
-                        <td><%= @buyer.kana_company_name %></td>
+                        <td>
+                            <% if @buyer.kana_company_name.blank? %>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= @buyer.kana_company_name %>
+                            <% end %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>担当者名</th>
+                        <td>
+                            <% if @buyer.name.blank? %>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= @buyer.name %>
+                            <% end %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>担当者名(フリガナ)</th>
+                        <td>
+                            <% if @buyer.kana_name.blank? %>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= @buyer.kana_name %>
+                            <% end %>
+                        </td>
                     </tr>
                     <tr>
                         <th>業種・業態</th>
-                        <td><%= @buyer.industory.name %></td>
+                        <td>
+                        <% if @buyer.industory_id.nil?%>
+                            <span>未登録</span>
+                        <% else %>
+                            <%= @buyer.industory.name %>
+                        <% end %>
+                        </td>
                     </tr>
                     <tr>
                         <th>電話番号</th>
-                        <td><%= @buyer.phone_number %></td>
+                        <td>
+                            <% if @buyer.phone_number.blank? %>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= @buyer.phone_number %>
+                            <% end %>
+                        </td>
                     </tr>
                     <tr>
                         <th>郵便番号</th>
-                        <td><%= @buyer.postcode %></td>
+                        <td>
+                            <% if @buyer.postcode.blank? %>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= @buyer.postcode %>
+                            <% end %>
+                        </td>
                     </tr>
                     <tr>
                         <th>住所</th>
-                        <td><%= @buyer.prefecture.name %><%= @buyer.address %></td>
+                        <td>
+                            <% if @buyer.prefecture_id.nil?%>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= @buyer.prefecture.name %>
+                            <% end %>
+                        </td>
                     </tr>
                     <tr>
                         <th>ホームページ</th>
-                        <td><%= link_to @buyer.hp, @buyer.hp %></td>
+                        <td>
+                            <% if @buyer.hp.blank? %>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= link_to @buyer.hp, @buyer.hp %>
+                            <% end %>
+                        </td>
                     </tr>
                     <tr>
                         <th>プロフィール</th>
-                        <td style="width: 30em;"><%= @buyer.description %></td>
+                        <td style="width: 30em;">
+                            <% if @buyer.description.blank? %>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= @buyer.description %>
+                            <% end %>
+                        </td>
                     </tr>
                 </table>
             </div>

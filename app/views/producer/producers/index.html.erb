@@ -18,12 +18,17 @@
                         </div>
                         <div style="padding-top: 10px;">
                         <strong>プロフィール</strong>
+                        </div>
                         <div class="profile" style="width: 30em;">
                             <%= producer.description %>
                         </div>
                         <div style="padding-top: 20px;">
                         <strong>所在地　　</strong>
-                        <%= producer.prefecture.name %>
+                        <% if producer.prefecture_id.nil?%>
+                            <span>未登録</span>
+                        <% else %>
+                            <%= producer.prefecture.name %>
+                        <% end %>
                         </div>
                     </div>
                 </div>

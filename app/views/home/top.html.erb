@@ -52,7 +52,13 @@
                                 <% end %>
                             </dd>
                             <dt></dt>
-                                <dd><%= link_to buyer.company_name, buyer_path(buyer) %></dd>
+                                <dd>
+                                <% if buyer.company_name.blank? %>
+                                    <%= link_to "未登録", buyer_path(buyer) %>
+                                <% else %>
+                                    <%= link_to buyer.company_name, buyer_path(buyer) %>
+                                <% end %>
+                                </dd>
                             <dt></dt>
                                 <dd style="width: 10em;"><%= buyer.description %></dd>
                         </dl>
@@ -72,7 +78,13 @@
                                 <% end %>
                             </dd>
                             <dt></dt>
-                                <dd><%= link_to producer.company_name, producer_path(producer) %></dd>
+                                <dd>
+                                <% if producer.company_name.blank? %>
+                                    <%= link_to "未登録", buyer_path(producer) %>
+                                <% else %>
+                                    <%= link_to producer.company_name, producer_path(producer) %>
+                                <% end %>
+                                </dd>
                             <dt></dt>
                                 <dd style="width: 10em;"><%= producer.description %></dd>
                         </dl>
@@ -116,7 +128,13 @@
                                 <% end %>
                             </dd>
                             <dt></dt>
-                                <dd><%= link_to producer.company_name, producer_path(producer) %></dd>
+                                <dd>
+                                <% if producer.company_name.blank? %>
+                                    <%= link_to "未登録", buyer_path(producer) %>
+                                <% else %>
+                                    <%= link_to producer.company_name, producer_path(producer) %>
+                                <% end %>
+                                </dd>
                             <dt></dt>
                                 <dd style="width: 10em;"><%= producer.description %></dd>
                         </dl>
@@ -135,7 +153,13 @@
                                 <% end %>
                             </dd>
                             <dt></dt>
-                                <dd><%= link_to buyer.company_name, buyer_path(buyer) %></dd>
+                                <dd>
+                                <% if buyer.company_name.blank? %>
+                                    <%= link_to "未登録", buyer_path(buyer) %>
+                                <% else %>
+                                    <%= link_to buyer.company_name, buyer_path(buyer) %>
+                                <% end %>
+                            </dd>
                             <dt></dt>
                                 <dd style="width: 10em;"><%= buyer.description %></dd>
                         </dl>
@@ -145,4 +169,5 @@
         <% end%>
     </div>
 </div>
+
 

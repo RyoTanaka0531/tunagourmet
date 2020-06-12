@@ -10,6 +10,8 @@ class Producer < ApplicationRecord
   has_many :chats, dependent: :destroy
   belongs_to :prefecture, optional: true
   attachment :profile_image
+  validates :company_name, presence: :ture
+  validates :kana_company_name, presence: :ture
 
   def liked_by?(producer)
     likes.where(producer_id: producer.id).exists?

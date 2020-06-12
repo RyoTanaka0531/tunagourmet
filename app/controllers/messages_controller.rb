@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+    before_action :require_signed_in
+
     def create
         @chat = Chat.find(params[:chat_id])
         @message = Message.new(message_params)
@@ -20,5 +22,12 @@ class MessagesController < ApplicationController
     private
     def message_params
         params.require(:message).permit(:content)
+    end
+
+    def require_signed_in
+        unless signed_in?
+            flash[:error] = "新規登録またはログインをしてください"
+            redirect_to sign_up_path
+        end
     end
 end

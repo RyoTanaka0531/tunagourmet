@@ -16,17 +16,26 @@
                         <%= link_to "詳細をみる", buyer_path(buyer) %>
                     </div>
                     <div style="padding-top: 10px;">
-                    <strong>プロフィール</strong>
+                        <strong>プロフィール</strong>
+                    </div>
                     <div class="profile" style="width: 30em;">
                         <%= buyer.description %>
                     </div>
                     <div style="padding-top: 10px;">
-                    <strong>所在地　　　</strong>
-                        <%= buyer.prefecture.name %>
+                        <strong>所在地　　　</strong>
+                        <% if buyer.prefecture_id.nil?%>
+                            <span>未登録</span>
+                        <% else %>
+                            <%= buyer.prefecture.name %>
+                        <% end %>
                     </div>
                     <div style="padding-top: 5px;">
-                    <strong>業種・業態　</strong>
-                        <%= buyer.industory.name %>
+                        <strong>業種・業態　</strong>
+                        <% if buyer.industory_id.nil?%>
+                            <span>未登録</span>
+                        <% else %>
+                            <%= buyer.industory.name %>
+                        <% end %>
                     </div>
                 </div>
             </div>
