@@ -13,7 +13,16 @@
             <%= f.label "本文" %>
             <%= f.text_area :content, class:"form-control" %><br>
             <%= f.label "画像を載せる" %>
-            <%= f.attachment_field :image %>
+            <div class="post-image">
+                <div class="prev-contents">
+                    <% if @post.image.present? %>
+                    <div class="prev-content">
+                        <%= attachment_image_tag @post, :image, class: "prev-image"%>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+            <%= f.attachment_field :image ,class: "hidden_file"%>
             <%= f.submit "投稿する", class: "btn btn-success form-control" %>
         <% end %>
     </div>

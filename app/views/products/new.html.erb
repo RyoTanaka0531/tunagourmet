@@ -10,7 +10,19 @@
     <table style="margin-bottom: 30px;">
     <tr style="margin-bottom: 5px;">
         <th><%= f.label "写真" %></th>
-        <td><%= f.attachment_field :product_image %></td>
+        <td>
+            <div class="post-image">
+                <div class="prev-contents">
+                    <% if @product.product_image.present? %>
+                    <div class="prev-content">
+                        <%= attachment_image_tag @product, :product_image, class: "prev-image"%>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+            <%= f.attachment_field :product_image ,class: "hidden_file"%>
+        <%# <%= f.attachment_field :product_image %>
+        </td>
     </tr>
     <tr>
         <th><%= f.label "品目名" %></th>

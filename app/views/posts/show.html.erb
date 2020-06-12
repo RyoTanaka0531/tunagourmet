@@ -2,10 +2,12 @@
     <div class="post-index">
         <div class="post-content">
             <h2><%= @post.heading %></h2>
-            <p sytle="border-bottom: solid 1px #dcdcdc;">
-                <%= attachment_image_tag @post, :image, style: "width:300px; height:300px", class: "img-rounded pull-left profile-thumb" %>
-                <%= @post.content %>
-            </p>
+            <div sytle="border-bottom: solid 1px #dcdcdc;">
+            <div class="post-content" sytle="border-bottom: solid 1px #dcdcdc;">
+                <p><%= attachment_image_tag @post, :image, style: "width:300px; height:300px", class: "img-rounded pull-left profile-thumb" %></p>
+                <p><%= @post.content %></p>
+            </div>
+            </div>
             <div class="likes_buttons">
                 <div id="likes_buttons_<%= @post.id %>">
                     <%= render 'likes/like', post: @post%>

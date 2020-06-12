@@ -1,13 +1,13 @@
 <% if buyer_signed_in? %>
     <% if post.liked_by_buyer?(current_buyer)%>
-        <p style="border-bottom: solid 1px #dcdcdc; text-align: right;">
+        <p>
             <%= link_to post_likes_path(post.id), method: :delete, remote: true do %>
                 <span class="glyphicon glyphicon-heart" style="color: red; font-size: 30px"></span>
             <% end %>
             <%= post.likes.count %>
         </p>
     <% else %>
-        <p style="border-bottom: solid 1px #dcdcdc; text-align: right;">
+        <p>
             <%= link_to post_likes_path(post.id), method: :post, remote: true do %>
                 <span class="glyphicon glyphicon-heart-empty" style="font-size: 30px"></span>
             <% end %>
@@ -16,14 +16,14 @@
     <% end %>
 <% elsif producer_signed_in? %>
     <% if post.liked_by?(current_producer)%>
-        <p style="border-bottom: solid 1px #dcdcdc; text-align: right;">
+        <p>
             <%= link_to post_likes_path(post.id), method: :delete, remote: true do %>
                 <span class="glyphicon glyphicon-heart" style="color: red; font-size: 30px"></span>
             <% end %>
             <%= post.likes.count %>
         </p>
     <% else %>
-        <p style="border-bottom: solid 1px #dcdcdc; text-align: right;">
+        <p>
             <%= link_to post_likes_path(post.id), method: :post, remote: true do %>
                 <span class="glyphicon glyphicon-heart-empty" style="font-size: 30px"></span>
             <% end%>

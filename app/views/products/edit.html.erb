@@ -6,11 +6,17 @@
 <div class="container">
     <h2>品目編集</h2>
     <%= form_for(@product) do |f| %>
+    <div class="col-lg-1">
+        <div class="prev-contents">
+            <% if @product.product_image.present? %>
+            <div class="prev-content">
+                <%= attachment_image_tag @product, :product_image, style: "width:200px; height:200px", class: "prev-image"%>
+            </div>
+            <% end %>
+        </div>
+        <%= f.attachment_field :product_image ,class: "hidden_file"%>
+    </div>
     <table>
-    <tr>
-        <th><%= f.label "写真" %></th>
-        <td><%= f.attachment_field :product_image %></td>
-    </tr>
     <tr>
         <th><%= f.label "品目名" %></th>
         <td><%= f.text_field :name, class: "form-control", placeholder: "15字以内で入力してください" %></td>

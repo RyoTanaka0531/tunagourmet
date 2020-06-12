@@ -18,6 +18,7 @@ class Buyer::OrdersController < ApplicationController
       #confirmingがnilだったらこっちに進む
       @product = Product.find(@order.product_id)
       @producer = Producer.find(@product.producer_id)
+      #入力フォームに値が入力されなかったときの分岐
       if @order.count.present? && @order.payment.present?
         render 'confirm'
       else

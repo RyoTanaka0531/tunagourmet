@@ -9,7 +9,18 @@
     <table>
     <tr>
         <th><%= f.label "写真" %></th>
-        <td><%= f.attachment_field :profile_image %></td>
+        <td>
+            <div class="post-image">
+                <div class="prev-contents">
+                    <% if @buyer.profile_image.present? %>
+                    <div class="prev-content">
+                        <%= attachment_image_tag @buyer, :profile_image, class: "prev-image"%>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+            <%= f.attachment_field :profile_image ,class: "hidden_file"%>
+        </td>
     </tr>
     <tr>
         <th><%= f.label "担当者名" %></th>
