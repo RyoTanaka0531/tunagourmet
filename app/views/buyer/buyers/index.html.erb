@@ -15,12 +15,18 @@
                     <div class="link">
                         <%= link_to "詳細をみる", buyer_path(buyer) %>
                     </div>
+                    <div style="padding-top: 10px;">
                     <strong>プロフィール</strong>
                     <div class="profile" style="width: 30em;">
                         <%= buyer.description %>
                     </div>
-                    <div>
-                        <%= buyer.prefecture %>
+                    <div style="padding-top: 10px;">
+                    <strong>所在地　　　</strong>
+                        <%= buyer.prefecture.name %>
+                    </div>
+                    <div style="padding-top: 5px;">
+                    <strong>業種・業態　</strong>
+                        <%= buyer.industory.name %>
                     </div>
                 </div>
             </div>

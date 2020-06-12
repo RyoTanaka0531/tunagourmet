@@ -1,3 +1,4 @@
+
     <div class="order_table">
     <%= form_with model: @order, local: true do |f| %>
         <table border="1">
@@ -6,7 +7,7 @@
                 <th>数量</th>
                 <th>金額</th>
                 <th>納品希望日</th>
-                <th>備考</th>
+                <th>メモ</th>
             </tr>
             <tr>
                 <td>
@@ -15,12 +16,12 @@
                     <%=  @product.price %>円/kg
                 </td>
                 <td>
-                    <%= f.number_field :count %>kg
+                    <%= f.number_field :count, placeholder: "半角数字のみ" %>kg
                 </td>
                 <!--readonlyを指定して入力できないようにしている-->
-                <td><%= f.number_field :payment, readonly: "" %>円</td>
+                <td><%= f.number_field :payment, placeholder: "自動計算", readonly: "" %>円</td>
                 <td><%= f.date_select :delivery %></td>
-                <td><%= f.text_area :remark%></td>
+                <td><%= f.text_area :remark, placeholder: "50文字以内" %></td>
             </tr>
         </table>
         <%# <%= f.text_field :producer_id %>

@@ -16,12 +16,14 @@
                         <div class="link">
                             <%= link_to "詳細をみる", producer_path(producer) %>
                         </div>
+                        <div style="padding-top: 10px;">
                         <strong>プロフィール</strong>
                         <div class="profile" style="width: 30em;">
                             <%= producer.description %>
                         </div>
-                        <div>
-                            <%= producer.prefecture %>
+                        <div style="padding-top: 20px;">
+                        <strong>所在地　　</strong>
+                        <%= producer.prefecture.name %>
                         </div>
                     </div>
                 </div>

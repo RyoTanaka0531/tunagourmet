@@ -19,6 +19,8 @@
                         <dd><%= product.price %>円/kg</dd>
                     <dt>出荷時期</dt>
                         <dd><%= product.timing %></dd>
+                    <dt>カテゴリー</dt>
+                        <dd><%= product.category.name %></dd>
                     <dt>生産者名</dt>
                         <dd><%= link_to product.producer.company_name, producer_path(product.producer) %></dd>
                     <% if product.producer == current_producer %>

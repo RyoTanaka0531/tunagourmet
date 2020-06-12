@@ -4,9 +4,10 @@
             <div class="form-group">
                 <%= f.label :company_name_cont, "バイヤー名でさがす"%>
                 <%= f.search_field :company_name_cont, class: "form-control", style: "width: 11em;"%>
-                <%= f.label :prefecture_cont, "都道府県"%>
-                <%= f.select :prefecture_cont, Buyer.prefectures.keys, {prompt: "選択してください", class: "form-control"} %>
-                <%# <%= f.select :prefecture_cont, Buyer.prefectures.keys, {prompt: "選択してください", class: "form-control"} %>
+                <%= f.label :prefecture_id_eq, "都道府県でさがす"%>
+                <%= f.collection_select(:prefecture_id_eq, Prefecture.all, :id, :name, :include_blank => "選択してください", class: "form-control") %>
+                <%= f.label :industory_id_eq, "業種・業態でさがす"%>
+                <%= f.collection_select(:industory_id_eq, Industory.all, :id, :name, :include_blank => "選択してください", class: "form-control") %>
             </div>
             <div class="actions">
                 <%= f.submit "検索", class: "btn btn-success"%>

@@ -2,7 +2,7 @@ class Producer::OrdersController < ApplicationController
   before_action :authenticate_producer!
   def index
     @producer = current_producer
-    @orders = Order.where(producer_id:@producer.id).order(id: "DESC")
+    @orders = Order.where(producer_id:@producer.id).order(id: "DESC").page(params[:page]).per(10)
     @product = Order.find_by(producer_id:@producer.id).product
   end
 

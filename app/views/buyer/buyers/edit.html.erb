@@ -28,8 +28,8 @@
         <td><%= f.text_field :kana_company_name, class: "form-control" %></td>
     </tr>
     <tr>
-        <th><%= f.label "業種・業態" %></th>
-        <td><%= f.select :industory, Buyer.industories.keys, {prompt: "選択してください", class: "form-control"}%></td>
+        <th><%= f.label :industory_id, "業種・業態" %></th>
+        <td><%= f.collection_select :industory_id, Industory.all, :id, :name, :include_blank => "選択してください", class: "form-control" %></td>
     </tr>
     <tr>
         <th><%= f.label "メールアドレス" %></th>
@@ -44,8 +44,8 @@
         <td><%= f.text_field :postcode, class: "form-control" %></td>
     </tr>
     <tr>
-        <th><%= f.label "都道府県" %></th>
-        <td><%= f.select :prefecture, Buyer.prefectures.keys %></td>
+        <th><%= f.label :prefecture_id, "都道府県" %></th>
+        <td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, :include_blank => "選択してください" %></td>
     </tr>
     <tr>
         <th><%= f.label "住所(市区町村・番地・建物" %></th>

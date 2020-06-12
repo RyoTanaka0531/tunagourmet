@@ -42,7 +42,6 @@ class ChatsController < ApplicationController
     else
       redirect_to root_path
     end
-
     if @chat.save
       redirect_to chat_path(@chat)
     else

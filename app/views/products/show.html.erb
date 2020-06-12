@@ -6,7 +6,7 @@
 <div class="container">
     <h1>品目情報</h1>
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-lg-offset-2">
             <div class="image">
                 <%= attachment_image_tag @product, :product_image, style: "width:200px; height:200px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg" %>
             </div>
@@ -42,9 +42,16 @@
         </div>
     </div>
     <% if buyer_signed_in? %>
-        <div class="row">
-        <h3>発注入力欄</h3>
-        <span>こちらのページから直接発注することが出来ます。</span>
+        <div class="row" style="padding-top:100px;">
+        <% if flash[:alert] %>
+            <div class="alert alert-danger text-center">
+                <%= flash[:alert] %>
+            </div>
+        <% end %>
+            <div style="text-align: center;">
+                <h3>発注入力欄</h3>
+                <span>こちらのページから直接発注することが出来ます。</span>
+            </div>
             <%= render 'form', order: @order, product: @product %>
         </div>
     <% end %>

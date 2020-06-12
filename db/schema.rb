@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_091044) do
+ActiveRecord::Schema.define(version: 2020_06_11_200405) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -39,11 +39,11 @@ ActiveRecord::Schema.define(version: 2020_06_10_091044) do
     t.string "phone_number", default: "", null: false
     t.string "postcode", default: "", null: false
     t.string "address", default: "", null: false
-    t.integer "industory", default: 0, null: false
     t.text "description"
     t.string "profile_image_id"
     t.string "hp"
-    t.integer "prefecture", default: 0, null: false
+    t.integer "industory_id"
+    t.integer "prefecture_id"
     t.index ["company_name"], name: "index_buyers_on_company_name"
     t.index ["email"], name: "index_buyers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_buyers_on_reset_password_token", unique: true
@@ -67,6 +67,12 @@ ActiveRecord::Schema.define(version: 2020_06_10_091044) do
     t.integer "producer_id"
     t.integer "buyer_id"
     t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "industories", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -121,6 +127,12 @@ ActiveRecord::Schema.define(version: 2020_06_10_091044) do
     t.string "image_id"
   end
 
+  create_table "prefectures", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "producers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -139,7 +151,7 @@ ActiveRecord::Schema.define(version: 2020_06_10_091044) do
     t.string "postcode", default: "", null: false
     t.string "address", default: "", null: false
     t.string "hp"
-    t.integer "prefecture", default: 0, null: false
+    t.integer "prefecture_id"
     t.index ["company_name"], name: "index_producers_on_company_name"
     t.index ["email"], name: "index_producers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_producers_on_reset_password_token", unique: true

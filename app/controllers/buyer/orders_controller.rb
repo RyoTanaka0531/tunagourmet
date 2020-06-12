@@ -1,4 +1,5 @@
 class Buyer::OrdersController < ApplicationController
+  before_action :authenticate_buyer!
 
   def new
     @order = Order.new
@@ -17,7 +18,12 @@ class Buyer::OrdersController < ApplicationController
       #confirmingがnilだったらこっちに進む
       @product = Product.find(@order.product_id)
       @producer = Producer.find(@product.producer_id)
-      render 'confirm'
+      if @order.count.present? && @order.payment.present?
+        render 'confirm'
+      else
+        flash[:alert] = "入力に空欄、または不備があります。正しく入力してください。"
+        redirect_to request.referer
+      end
     end
   end
 
@@ -29,7 +35,7 @@ class Buyer::OrdersController < ApplicationController
 
   def index
     @buyer = current_buyer
-    @orders = Order.where(buyer_id:[current_buyer.id]).order(id: "DESC")
+    @orders = Order.where(buyer_id:[current_buyer.id]).order(id: "DESC").page(params[:page]).per(10)
     @product = Order.find_by(buyer_id:@buyer.id).product
   end
 
@@ -50,4 +56,3 @@ class Buyer::OrdersController < ApplicationController
     params.require(:order).permit(:remark, :buyer_id, :product_id, :delivery, :count, :payment, :confirming, :producer_id, :order_status)
   end
 end
-
