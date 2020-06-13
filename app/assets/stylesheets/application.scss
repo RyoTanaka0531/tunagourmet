@@ -28,6 +28,8 @@ body,
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-image: image-url("hoge.jpg");   
+
 }
 h1, h2, h3, {
     color: #c8d627;
@@ -35,7 +37,7 @@ h1, h2, h3, {
 .container{
     width: 80%;
     padding: 40px 0;
-    // color: #c08e47;
+    color: #565d63;
 }
 .alert{
     margin-bottom: 0;
@@ -53,7 +55,16 @@ h1, h2, h3, {
 
 // header周辺
 header{
-    padding-top: 20px;
+    .logo{
+        float: left;
+    }
+    img{
+        padding-left: 100px;
+    }
+    ul{
+        height: 96px;
+        line-height: 4;
+    }
     h2{
         float: left;
         padding-left: 60px;
@@ -108,10 +119,24 @@ header{
 footer{
     width: 100%;
     background-color: #c8d627;
-    padding: 10px 0;
     // position: absolute;/*←絶対位置*/
     // bottom: 0; /*下に固定*/
     margin-top: auto;
+    p{
+        display: inline-block;
+        line-height: 5;
+        padding-left: 30px;
+    }
+    .footer-list{
+        text-align: right;
+        line-height: 5;
+        padding-right: 50px;
+        display: inline-block;
+        float: right;
+        a{
+            padding: 0 20px;
+        }
+    }
 }
 // home-top
 .top-index{
@@ -132,7 +157,7 @@ footer{
     h2{
         text-align: center;
         margin-bottom: 60px;
-        color: black;
+        color: #6a6a68;
     }
     .message{
         width: 25%;
@@ -141,6 +166,7 @@ footer{
         background-color: white;
         border-radius: 1em;
         padding: 25px 40px;
+        color: #6a6a68;
 
     }
 }
@@ -177,6 +203,23 @@ footer{
     }
 }
 // producer
+.producer-index, .buyer-index{
+    padding-bottom: 60px;
+    padding-left: 400px;
+    .image-info{
+        border-bottom: solid 1px #dcdcdc;
+        padding-bottom: 50px;
+    }
+    .image{
+        display: inline-block;
+        padding-right: 20px;
+    }
+    .info{
+        display: inline-block;
+        vertical-align: top;
+    }
+
+}
 .btn-primary{
     padding: 10px 30px;
     background-color:#c8d627;
@@ -283,6 +326,7 @@ li{
     margin: 20px 60px;
     background-color: #f6f6f6;
 }
+
 
 .post-image{
     .prev-image{

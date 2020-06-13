@@ -3,37 +3,37 @@
     <%= render 'sidebar', search: @search%>
 
     <% @producers.each do |producer|%>
-        <div class="col-lg-7 col-lg-offset-2">
-            <div class="producer-index">
-                <div class="image">
-                    <%= link_to producer_path(producer) do%>
-                    <%= attachment_image_tag(producer, :profile_image, style: "width:150px; height:150px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
-                    <% end %>
-                </div>
-                <div class="info">
-                    <div class="col-lg-7">
-                        <h4><%= link_to producer.company_name, producer_path(producer) %></h4>
-                        <div class="link">
-                            <%= link_to "詳細をみる", producer_path(producer) %>
-                        </div>
-                        <div style="padding-top: 10px;">
-                        <strong>プロフィール</strong>
-                        </div>
-                        <div class="profile" style="width: 30em;">
-                            <%= producer.description %>
-                        </div>
-                        <div style="padding-top: 20px;">
-                        <strong>所在地　　</strong>
-                        <% if producer.prefecture_id.nil?%>
-                            <span>未登録</span>
-                        <% else %>
-                            <%= producer.prefecture.name %>
+            <div class="producer-index" >
+                <div class="image-info">
+                    <div class="image">
+                        <%= link_to producer_path(producer) do%>
+                        <%= attachment_image_tag(producer, :profile_image, style: "width:150px; height:150px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
                         <% end %>
+                    </div>
+                    <div class="info">
+                        <div class="col-lg-7">
+                            <h4><%= link_to producer.company_name, producer_path(producer) %></h4>
+                            <div class="link">
+                                <%= link_to "詳細をみる", producer_path(producer) %>
+                            </div>
+                            <div style="padding-top: 10px;">
+                            <strong>プロフィール</strong>
+                            </div>
+                            <div class="profile" style="width: 30em;">
+                                <%= producer.description %>
+                            </div>
+                            <div style="padding-top: 20px;">
+                            <strong>所在地　　</strong>
+                            <% if producer.prefecture_id.nil?%>
+                                <span>未登録</span>
+                            <% else %>
+                                <%= producer.prefecture.name %>
+                            <% end %>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     <% end %>
 </div>
 <div class="container" style="text-align: center;">

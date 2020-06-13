@@ -1,3 +1,4 @@
+<% provide(:title, "情報編集") %>
 <% if flash[:notice] %>
     <div class="alert alert-danger text-center">
         <%= flash[:notice] %>
@@ -23,20 +24,20 @@
         </td>
     </tr>
     <tr>
-        <th><%= f.label "担当者名" %></th>
-        <td><%= f.text_field :name, class: "form-control" %></td>
-    </tr>
-    <tr>
-        <th><%= f.label "担当者名(フリガナ)" %></th>
-        <td><%= f.text_field :kana_name, class: "form-control" %></td>
-    </tr>
-    <tr>
         <th><%= f.label "屋号/社名" %></th>
         <td><%= f.text_field :company_name, class: "form-control" %></td>
     </tr>
     <tr>
         <th><%= f.label "屋号/社名(フリガナ)" %></th>
         <td><%= f.text_field :kana_company_name, class: "form-control" %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "担当者名" %></th>
+        <td><%= f.text_field :name, class: "form-control" %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "担当者名(フリガナ)" %></th>
+        <td><%= f.text_field :kana_name, class: "form-control" %></td>
     </tr>
     <tr>
         <th><%= f.label :industory_id, "業種・業態" %></th>

@@ -1,5 +1,7 @@
 <header>
-    <h2><%= link_to "つなぐるめ", root_path %></h2>
+    <div class="logo">
+    <%= link_to image_tag('tunagurume.jpg'), root_path %>
+    </div>
 <% if producer_signed_in? %>
     <nav>
         <ul class="nav nav-pills">
