@@ -72,6 +72,7 @@ gem 'rails-i18n'
 gem 'ransack'
 gem 'pry-rails'
 gem 'enum_help'
+gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
