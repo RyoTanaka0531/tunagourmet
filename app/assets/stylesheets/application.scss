@@ -86,6 +86,7 @@ header{
     }
 }
 
+
 // navlist
 .navlist{
     background-color: #c8d627;
@@ -416,6 +417,12 @@ li{
     float: left;
     height: 350px;
     margin: 20px 30px;
+}
+.product-image{
+    .prev-image{
+        width: 300px;
+        height: 300px;
+    }
 }
 
 // producer周辺

@@ -37,7 +37,12 @@ class Buyer::OrdersController < ApplicationController
   def index
     @buyer = current_buyer
     @orders = Order.where(buyer_id:[current_buyer.id]).order(id: "DESC").page(params[:page]).per(10)
-    @product = Order.find_by(buyer_id:@buyer.id).product
+    if @orders.present?
+      @product = Order.find_by(buyer_id:@buyer.id).product
+    else
+      flash[:alert] = '発注履歴はありません。'
+      redirect_to products_path
+    end
   end
 
   def show

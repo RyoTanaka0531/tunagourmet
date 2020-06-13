@@ -8,6 +8,7 @@
     <h2>品目編集</h2>
     <%= form_for(@product) do |f| %>
     <div class="col-lg-1">
+    <div class="product-image">
         <div class="prev-contents">
             <% if @product.product_image.present? %>
             <div class="prev-content">
@@ -15,6 +16,7 @@
             </div>
             <% end %>
         </div>
+    </div>
         <%= f.attachment_field :product_image ,class: "hidden_file"%>
     </div>
     <table>

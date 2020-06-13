@@ -3,7 +3,12 @@ class Producer::OrdersController < ApplicationController
   def index
     @producer = current_producer
     @orders = Order.where(producer_id:@producer.id).order(id: "DESC").page(params[:page]).per(10)
-    @product = Order.find_by(producer_id:@producer.id).product
+    if @orders.present?
+      @product = Order.find_by(producer_id:@producer.id).product
+    else
+      flash[:alert] = '受注履歴はありません。'
+      redirect_to products_path
+    end
   end
 
   def show
