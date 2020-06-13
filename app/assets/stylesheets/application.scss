@@ -114,6 +114,14 @@ header{
         }
     }
 }
+// eyecatch
+.eyecatch{
+    width: 100%;
+    height: 600px;
+    background-image: image-url("vegetable.png");
+    background-size: cover;
+}
+// home.scssから移動
 
 // footer
 footer{
