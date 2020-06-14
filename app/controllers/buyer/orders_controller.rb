@@ -38,6 +38,7 @@ class Buyer::OrdersController < ApplicationController
     @buyer = current_buyer
     @orders = Order.where(buyer_id:[current_buyer.id]).order(id: "DESC").page(params[:page]).per(10)
     if @orders.present?
+      # 発注に紐づいた品目の生産者を定義したい。今のままでは定義できない↓
       @product = Order.find_by(buyer_id:@buyer.id).product
     else
       flash[:alert] = '発注履歴はありません。'

@@ -3,6 +3,7 @@
 <h2>発注一覧</h2>
     <div class="buyer-order-index">
     <% @orders.each do |order| %>
+    <%# <h3>生産者名:　<%= link_to @product.producer.company_name, producer_path(@product.producer)</h3> %>
         <table border="1">
             <tr>
                 <th>発注日</th>
@@ -44,4 +45,5 @@
         <%= paginate @orders %>
     </div>
 </div>
+
 
