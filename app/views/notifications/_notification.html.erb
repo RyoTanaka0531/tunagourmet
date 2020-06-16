@@ -1,0 +1,12 @@
+<% visiter = notification.visiter %>
+<% post = notification.post %>
+<% if visiter == @producer %>
+    <%= link_to visiter.name, producer_path(notification.visiter) %>
+<% elsif visiter == @buyer %>
+    <%= link_to visiter.name, buyer_path(notification.visiter) %>
+<% end %>
+<%= notification_form(notification) %>
+<br>
+<% if !@comment.nil? %>
+    <p><%= @comment %></p>
+<% end %>

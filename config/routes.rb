@@ -63,5 +63,6 @@ Rails.application.routes.draw do
   get 'producer/orders/:id' => 'producer/orders#show', as: 'producer_order'
   patch 'producer/orders/:id' => 'producer/orders#update', as: 'update_producer_orders'
 
+  resources :notifications, only:[:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

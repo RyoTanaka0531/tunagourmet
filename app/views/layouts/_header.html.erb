@@ -7,6 +7,7 @@
         <ul class="nav nav-pills">
             <li><%= link_to "トップ", root_path %></li>
             <li><%= link_to "マイページ", producer_path(current_producer)%></li>
+            <li><%= link_to "通知", notifications_path %></li>
             <li><%= link_to "品目登録", new_product_path %></li>
             <li><%= link_to "受注一覧", producer_orders_path%></li>
             <li><%= link_to "チャット", chats_path %></li>
@@ -18,6 +19,7 @@
         <ul class="nav nav-pills">
             <li><%= link_to "トップ", root_path %></li>
             <li><%= link_to "マイページ", buyer_path(current_buyer) %></li>
+            <li><%= link_to "通知", notifications_path %></li>
             <li><%= link_to "発注一覧", orders_index_path %></li>
             <li><%= link_to "チャット", chats_path %></li>
             <li><%= link_to "ログアウト", destroy_buyer_session_path, method: :delete %></li>

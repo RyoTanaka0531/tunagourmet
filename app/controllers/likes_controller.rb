@@ -9,6 +9,16 @@ class LikesController < ApplicationController
       like = current_buyer.likes.build(post_id: params[:post_id])
     end
     like.save
+    # 通知処理
+    if producer_signed_in?
+      @post.create_notification_by(current_producer)
+    elsif buyer_signed_in?
+      @post.create_notification_by(current_buyer)
+    end
+    respond_to do |format|
+      format.html {redirect_to request.referrer}
+      format.js
+    end
   end
   
   def destroy

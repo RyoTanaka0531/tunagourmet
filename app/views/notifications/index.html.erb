@@ -1,0 +1,12 @@
+<h3>通知</h3>
+<%# <% if producer_signed_in? %>
+    <%# <% notifications = @notifications.where.not(visitor_id: current_producer.id)%>
+<%# <% elsif buyer_signed_in? %>
+    <%# <% notifications = @notifications.where.not(visitor_id: current_buyer.id)%>
+<%# <% end %>
+<% if @notifications.exists? %>
+    <%= render @notifications %>
+    <%= paginate @notifications %>
+<% else %>
+    <p>通知はありません</p>
+<% end %>

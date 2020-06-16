@@ -9,10 +9,19 @@ class CommentsController < ApplicationController
     else
       redirect_to root_path
     end
-    @comment.save
+    if @comment.save
+      if producer_signed_in?
+        @post.create_notification_comment!(current_producer, @comment.id)
+      elsif buyer_signed_in?
+        @post.create_notification_comment!(current_buyer, @comment.id)
+      end
+      # respond_to :js
+      redirect_to request.referrer
+    else
     #もし非同期でコメントをsaveした場合
     # render :index
-    redirect_to request.referrer
+      redirect_to request.referrer
+    end
   end
   
   def destroy
