@@ -12,12 +12,20 @@ module NotificationsHelper
                 tag.a(notification.visiter.name, href: buyer_path(@visiter))+ 'が' + tag.a('あなたの投稿', href: post_path(notification.post_id))+ "にいいねしました"
             end
         when "comment" then
-            @comment = Comment.fidn_by(id: @visiter_comment)&.content
+            @comment = Comment.find_by(id: @visiter_comment)&.content
             if @visiter == @producer
                 tag.a(@visiter.neme, href: producer_path(@visiter))+"が"+tag.a('あなたの投稿', href: post_path(notification.post_id))+"にコメントしました"
             elsif @visiter == @buyer
                 tag.a(@visiter.neme, href: buyer_path(@visiter))+"が"+tag.a('あなたの投稿', href: post_path(notification.post_id))+"にコメントしました"
             end
+        end
+    end
+
+    def unchecked_notifications
+        if producer_signed_in?
+            @notifications = current_producer.passive_notifications.where(checked: false)
+        elsif buyer_signed_in?
+            @notifications = current_buyer.passive_notifications.where(checked: false)
         end
     end
 end
