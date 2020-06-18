@@ -1,17 +1,16 @@
 <% visiter = notification.visiter %>
 <% post = notification.post %>
 <div class="clearfix">
-    <% if visiter == @producer %>
+    <%# <% if visiter == @producer %>
         <%= link_to producer_path(notification.visiter) do %>
-            <%= attachment_image_tag visiter, :profile_image, :fill, 100,100, format: "jpeg", fallback: "no_image.jpg", size: "50*50"%>
+            <%= attachment_image_tag visiter, :profile_image, :fill, 50,50, format: "jpeg", fallback: "no_image.jpg", size: "50*50", class:"profile-img-circle" %>
         <% end %>
-    <% elsif visiter == @buyer %>
-        <%= link_to buyer_path(notification.visiter) do %>
-            <%= attachment_image_tag visiter, :profile_image, :fill, 100,100, format: "jpeg", fallback: "no_image.jpg", size: "50*50"%>
-        <% end %>
-    <% end %>
+    <%# <% elsif visiter == @buyer %>
+        <%# <%= link_to buyer_path(notification.visiter) do %>
+            <%# <%= attachment_image_tag visiter, :profile_image, :fill, 100,100, format: "jpeg", fallback: "no_image.jpg", size: "50*50"%>
+        <%# <% end %>
+    <%# <% end %>
     <%= notification_form(notification) %><span class="moderate-font"><%= "(#{time_ago_in_words(notification.created_at)}前)"%></span>
-    <%= notification_form(notification) %>
     <br>
     <% if !@comment.nil? %>
         <p><%= @comment %></p>

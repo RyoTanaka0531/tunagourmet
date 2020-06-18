@@ -2,22 +2,22 @@ module NotificationsHelper
     def notification_form(notification)
         @visiter = notification.visiter
         @commnet = nil
-        your_post = link_to 'あなたの投稿', post_path(notification)
+        your_post = link_to 'あなたの投稿', post_path(notification), style:"font-weight: bold;"
         @visiter_comment = notification.comment_id
         case notification.action
         when "like" then
-            if @visiter == @producer
-                tag.a(notification.visiter.name, href: producer_path(@visiter))+ 'が' + tag.a('あなたの投稿', href: post_path(notification.post_id))+ "にいいねしました"
-            elsif @visiter == @buyer
-                tag.a(notification.visiter.name, href: buyer_path(@visiter))+ 'が' + tag.a('あなたの投稿', href: post_path(notification.post_id))+ "にいいねしました"
-            end
+            # if @visiter == @buyer
+                tag.a(notification.visiter.company_name, href: @visiter, style: "font-weight: bold;")+ 'が' + tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;")+ "にいいねしました"
+            # elsif @visiter == @producer
+                # tag.a(notification.visiter.company_name, href: producer_path(@visiter))+ 'が' + tag.a('あなたの投稿', href: post_path(notification.post_id))+ "にいいねしました"
+            # end
         when "comment" then
             @comment = Comment.find_by(id: @visiter_comment)&.content
-            if @visiter == @producer
-                tag.a(@visiter.neme, href: producer_path(@visiter))+"が"+tag.a('あなたの投稿', href: post_path(notification.post_id))+"にコメントしました"
-            elsif @visiter == @buyer
-                tag.a(@visiter.neme, href: buyer_path(@visiter))+"が"+tag.a('あなたの投稿', href: post_path(notification.post_id))+"にコメントしました"
-            end
+            # if @visiter == @buyer
+                tag.a(@visiter.company_name, href: @visiter, style: "font-weight; bold;")+"が"+tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;")+"にコメントしました"
+            # elsif @visiter == @producer
+                # tag.a(@visiter.company_name, href: producer_path(@visiter))+"が"+tag.a('あなたの投稿', href: post_path(notification.post_id))+"にコメントしました"
+            # end
         end
     end
 

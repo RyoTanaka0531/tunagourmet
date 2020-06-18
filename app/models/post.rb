@@ -18,7 +18,7 @@ class Post < ApplicationRecord
         likes.where(buyer_id: buyer.id).exists?
     end
 
-    def create_notification_by(current_buyer)
+    def create_notification_by_buyer(current_buyer)
         temp = Notification.where(["visiter_id = ? and visited_id = ? and post_id = ? and action = ? ", current_buyer.id, buyer_id, id, 'like'])
         if temp.blank?
             notification = current_buyer.active_notifications.new(
@@ -32,7 +32,7 @@ class Post < ApplicationRecord
             notification.save if notification.valid?
         end
     end
-    def create_notification_like!(current_producer)
+    def create_notification_by_producer(current_producer)
         temp = Notification.where(["visiter_id = ? and visited_id = ? and post_id = ? and action = ? ", current_producer.id, producer_id, id, 'like'])
         if temp.blank?
             notification = current_producer.active_notifications.new(
@@ -40,14 +40,14 @@ class Post < ApplicationRecord
                 visited_id: producer_id,
                 action: 'like'
             )
-            if notification.visitor_id == notification.visited_id
+            if notification.visiter_id == notification.visited_id
                 notification.checked = true
             end
             notification.save if notification.valid?
         end
     end
 
-   def create_notification_comment!(current_buyer, comment_id)
+    def create_notification_comment!(current_buyer, comment_id)
         # 自分以外にコメントしている人を全て取得し、全員に通知を送る
         temp_ids = Comment.select(:buyer_id).where(post_id: id).where.not(buyer_id: current_buyer.id).distinct
         temp_ids.each do |temp_id|
@@ -67,12 +67,12 @@ class Post < ApplicationRecord
         )
         # 自分の投稿に対するコメントの場合は、通知済みとする
         if notification.visiter_id == notification.visited_id
-            notification.cheked = ture
+            notification.cheked = true
         end
         notification.save if notification.valid?
     end
 
-   def create_notification_comment!(current_producer, comment_id)
+    def create_notification_comment!(current_producer, comment_id)
         # 自分以外にコメントしている人を全て取得し、全員に通知を送る
         temp_ids = Comment.select(:producer_id).where(post_id: id).where.not(producer_id: current_producer.id).distinct
         temp_ids.each do |temp_id|
