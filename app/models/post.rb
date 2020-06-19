@@ -18,12 +18,12 @@ class Post < ApplicationRecord
         likes.where(buyer_id: buyer.id).exists?
     end
 
-    def create_notification_by_buyer(current_buyer)
-        temp = Notification.where(["visiter_id = ? and visited_id = ? and post_id = ? and action = ? ", current_buyer.id, buyer_id, id, 'like'])
+    def create_notification_by(current_producer)
+        temp = Notification.where(["visiter_id = ? and visited_id = ? and post_id = ? and action = ? ", current_producer.id, producer_id, id, 'like'])
         if temp.blank?
-            notification = current_buyer.active_notifications.new(
+            notification = current_producer.active_notifications.new(
                 post_id: id,
-                visited_id: buyer_id,
+                visited_id: producer_id,
                 action: 'like'
             )
             if notification.visiter_id == notification.visited_id
@@ -32,12 +32,12 @@ class Post < ApplicationRecord
             notification.save if notification.valid?
         end
     end
-    def create_notification_by_producer(current_producer)
-        temp = Notification.where(["visiter_id = ? and visited_id = ? and post_id = ? and action = ? ", current_producer.id, producer_id, id, 'like'])
+    def create_notification_by(current_buyer)
+        temp = Notification.where(["visiter_id = ? and visited_id = ? and post_id = ? and action = ? ", current_buyer.id, buyer_id, id, 'like'])
         if temp.blank?
-            notification = current_producer.active_notifications.new(
+            notification = current_buyer.active_notifications.new(
                 post_id: id,
-                visited_id: producer_id,
+                visited_id: buyer_id,
                 action: 'like'
             )
             if notification.visiter_id == notification.visited_id
