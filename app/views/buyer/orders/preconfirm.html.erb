@@ -10,25 +10,19 @@
             </tr>
             <tr>
                 <td style="width: 140px; height: 120px;">
-                    <%# <%= attachment_image_tag @order_product.product, :product_image, style: "width:140px; height:120px", class: "img pull-left profile-thumb", fallback: "no_image.jpg" %>
                     <%= attachment_image_tag @product, :product_image, style: "width:140px; height:120px", class: "img pull-left profile-thumb", fallback: "no_image.jpg" %>
                 </td>
                 <td style="width: 200px; height: 120px;">
-                    <%# <%= @order_product.product.name%>
                     <%= @product.name%>
                 </td>
                 <td>
                 <!--変数をjavascriptに変換して値を渡す-->
-                    <%# <%=  @order_product.product.price %>
                     <%=  @product.price %>円/kg
                 </td>
                 <td style="width: 200px; height: 120px;">
-                    <%# <%= @order_product.count %>
                     <%= @product.order_product.count %>kg
                 </td>
                 <!--readonlyを指定して入力できないようにしている-->
-                <%# <td style="width: 200px; height: 120px;"><%= @order_product.payment %>円</td> %>
-                <%# <td style="width: 200px; height: 120px;"><%= @product.order_products.payment %>円</td> %>
             </tr>
         </table>
         <div class="remark-form">

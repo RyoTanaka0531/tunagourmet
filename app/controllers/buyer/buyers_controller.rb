@@ -1,5 +1,6 @@
 class Buyer::BuyersController < ApplicationController
-  before_action :authenticate_buyer!, only:[:edit]
+  before_action :authenticate_buyer!, only:[:edit, :update]
+  before_action :correct_buyer, only:[:edit, :update]
 
   def show
     @buyer = Buyer.find(params[:id])
@@ -58,6 +59,12 @@ class Buyer::BuyersController < ApplicationController
   private
   def buyer_params
     params.require(:buyer).permit(:email, :name, :kana_name, :company_name, :kana_company_name, :phone_number, :postcode, :address, :hp, :description, :profile_image, :prefecture_id, :industory_id)
+  end
+  def correct_buyer
+    @buyer = Buyer.find(params[:id])
+    unless @buyer == current_buyer
+      redirect_to root_path
+    end
   end
 end
 

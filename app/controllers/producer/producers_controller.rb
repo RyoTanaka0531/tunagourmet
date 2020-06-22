@@ -1,5 +1,6 @@
 class Producer::ProducersController < ApplicationController
-  before_action :authenticate_producer!, only:[:edit]
+  before_action :authenticate_producer!, only:[:edit, :update]
+  before_action :correct_producer, only:[:edit, :update]
 
   def show
     @producer = Producer.find(params[:id])
@@ -61,5 +62,11 @@ class Producer::ProducersController < ApplicationController
   private
   def producer_params
     params.require(:producer).permit(:name, :kana_name, :company_name, :kana_company_name, :phone_number, :postcode, :address, :hp, :description, :profile_image, :prefecture_id)
+  end
+  def correct_producer
+    @producer = Producer.find(params[:id])
+    unless @producer == current_producer
+      redirect_to root_path
+    end
   end
 end

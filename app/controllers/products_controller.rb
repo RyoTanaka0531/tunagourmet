@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :require_signed_in, except:[:index, :show]
+  before_action :correct_producer, only:[:edit, :update, :destroy]
 
   def new
     @product = Product.new
@@ -78,6 +79,13 @@ class ProductsController < ApplicationController
     unless signed_in?
       flash[:error] = "新規登録またはログインをしてください"
       redirect_to sign_up_path
+    end
+  end
+
+  def correct_producer
+    @product = current_producer.products.find_by(id: params[:id])
+    unless @product
+      redirect_to root_path
     end
   end
 end
