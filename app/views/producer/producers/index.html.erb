@@ -7,7 +7,7 @@
                 <div class="image-info">
                     <div class="image">
                         <%= link_to producer_path(producer) do%>
-                        <%= attachment_image_tag(producer, :profile_image, style: "width:150px; height:150px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
+                        <%= attachment_image_tag(producer, :profile_image, class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
                         <% end %>
                     </div>
                     <div class="info">
@@ -16,13 +16,13 @@
                             <div class="link">
                                 <%= link_to "詳細をみる", producer_path(producer) %>
                             </div>
-                            <div style="padding-top: 10px;">
+                            <div class="profile-head">
                             <strong>プロフィール</strong>
                             </div>
-                            <div class="profile" style="width: 30em;">
+                            <div class="profile">
                                 <%= producer.description %>
                             </div>
-                            <div style="padding-top: 20px;">
+                            <div class="producer-prefecture">
                             <strong>所在地　　</strong>
                             <% if producer.prefecture_id.nil?%>
                                 <span>未登録</span>
@@ -36,6 +36,8 @@
             </div>
     <% end %>
 </div>
-<div class="container" style="text-align: center;">
-    <%= paginate @producers %>
+<div class="container">
+    <div class="producer-paginate">
+        <%= paginate @producers %>
+    </div>
 </div>

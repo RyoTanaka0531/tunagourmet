@@ -20,7 +20,7 @@
                     <%= order.created_at.strftime("%Y/%m/%d") %>
                 </td>
                 <td>
-                    <%= attachment_image_tag order.product, :product_image, style: "width:140px; height:120px", class: "img pull-left profile-thumb", fallback: "no_image.jpg" %>
+                    <%= attachment_image_tag order.product, :product_image, class: "img pull-left profile-thumb", fallback: "no_image.jpg" %>
                 </td>
 
                 <td>
@@ -35,14 +35,16 @@
                     <%= order.count %>kg
                 </td>
                 <td><%= order.payment %>円</td>
-                <td style="width: 200px;"><%= order.remark %></td>
+                <td id="order-remark"><%= order.remark %></td>
                 <td><%= order.order_status %></td>
             </tr>
         </table>
     <% end %>
     </div>
-    <div class="container" style="text-align: center;">
-        <%= paginate @orders %>
+    <div class="container">
+        <div class="order-paginate">
+            <%= paginate @orders %>
+        </div>
     </div>
 </div>
 

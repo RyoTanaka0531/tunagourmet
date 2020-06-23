@@ -7,7 +7,7 @@
             <div class="image-info">
                 <div class="image">
                     <%= link_to buyer_path(buyer) do%>
-                    <%= attachment_image_tag(buyer, :profile_image, style: "width:150px; height:150px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
+                    <%= attachment_image_tag(buyer, :profile_image, class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
                     <% end %>
                 </div>
                 <div class="info">
@@ -16,13 +16,13 @@
                         <div class="link">
                             <%= link_to "詳細をみる", buyer_path(buyer) %>
                         </div>
-                        <div style="padding-top: 10px;">
+                        <div class="profile-head">
                             <strong>プロフィール</strong>
                         </div>
-                        <div class="profile" style="width: 30em;">
+                        <div class="profile">
                             <%= buyer.description %>
                         </div>
-                        <div style="padding-top: 10px;">
+                        <div class="buyer-prefecture">
                             <strong>所在地　　　</strong>
                             <% if buyer.prefecture_id.nil?%>
                                 <span>未登録</span>
@@ -30,7 +30,7 @@
                                 <%= buyer.prefecture.name %>
                             <% end %>
                         </div>
-                        <div style="padding-top: 5px;">
+                        <div class="buyer-industory">
                             <strong>業種・業態　</strong>
                             <% if buyer.industory_id.nil?%>
                                 <span>未登録</span>
@@ -44,6 +44,8 @@
         </div>
     <% end %>
 </div>
-<div class="container" style="text-align: center;">
-    <p><%= paginate @buyers %></p>
+<div class="container">
+    <div class="buyer-paginate">
+        <p><%= paginate @buyers %></p>
+    </div>
 </div>

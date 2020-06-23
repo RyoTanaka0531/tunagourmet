@@ -1,4 +1,3 @@
-
     <div class="order_table">
     <%= form_with model: @order, local: true do |f| %>
         <table border="1">
@@ -19,40 +18,16 @@
                     <%= f.number_field :count, placeholder: "半角数字のみ" %>kg
                 </td>
                 <!--readonlyを指定して入力できないようにしている-->
-                <td><%= f.number_field :payment, placeholder: "自動計算", readonly: "" %>円</td>
+                <!--assets/javascripts/productsに内容あり-->
+                <td><%= f.number_field :payment, data: {"turbolinks" => false}, placeholder: "自動計算", readonly: "" %>円</td>
                 <td><%= f.date_select :delivery %></td>
                 <td><%= f.text_area :remark, placeholder: "50文字以内" %></td>
             </tr>
         </table>
-        <%# <%= f.text_field :producer_id %>
         <%= f.hidden_field :buyer_id, value: current_buyer.id %>
         <%= f.hidden_field :producer_id, value: @producer.id %>
         <%= f.hidden_field :product_id, value: @product.id %>
         <%= f.submit "発注する", class: "btn btn-success"%>
     <% end %>
-                <!--javascriptに変換して値を使い、自動計算-->
-                <script>
-                $(function(){
-                    // productの単価
-                    var value = JSON.parse(document.getElementById('product_price').dataset.json);
-                    // 入力対象のinputタグID名
-                    var tagInput = $('#order_count');
-                    // 出力対象のinputタグID名
-                    var tagOutput = $('#order_payment');
-                    tagInput.on('change', function(){
-                        var str = $(this).val();
-                        // 整数以外の文字列を削除
-                        var num = Number(str.replace(/[^0-9]/g, ''));
-                        if(num == 0){
-                            num = '';
-                        }
-                        // productと入力された数量の合計値
-                        $(this).val(num);
-                        if(num != 0){
-                            var order_payment = num * value;
-                            tagOutput.val(order_payment);
-                        }
-                    });
-                });
-                </script>
     </div>
+

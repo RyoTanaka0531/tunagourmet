@@ -3,7 +3,7 @@
         <%= search_form_for @search do |f| %>
             <div class="form-group">
                 <%= f.label :company_name_cont, "生産者名でさがす"%>
-                <%= f.search_field :company_name_cont, class: "form-control", style: "width: 11em;"%>
+                <%= f.search_field :company_name_cont, class: "form-control"%>
                 <%= f.label :prefecture_id_eq, "都道府県でさがす"%>
                 <%= f.collection_select(:prefecture_id_eq, Prefecture.all, :id, :name, :include_blank => "選択してください", class: "form-control") %>
             </div>

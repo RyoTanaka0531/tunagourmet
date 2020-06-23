@@ -8,24 +8,26 @@
 <% end %>
 <div class="container">
     <div class="row">
-            <% if @producer == current_producer %>
+        <% if @producer == current_producer %>
             <h1>マイページ</h1>
-            <% else %>
+        <% else %>
             <h1>生産者情報</h1>
-        <% if @producer != current_producer && buyer_signed_in? %>
-            <% if @producer_ids.include?(@producer.id) %><br>
-                <%= link_to "チャットへ", chat_path(current_buyer.chats.find_by(producer_id: @producer.id)), class: "btn btn-primary", style: "margin-bottom: 20px;" %><br>
-            <% else %>
-                <%= form_for Chat.new do |f| %>
-                    <%= f.hidden_field :producer_id, :value => @producer.id %>
-                    <%= f.submit "チャットを開始", class: "btn btn-primary", style: "margin-bottom: 20px;" %>
+            <div class="chatting">
+                <% if @producer != current_producer && buyer_signed_in? %>
+                    <% if @producer_ids.include?(@producer.id) %><br>
+                        <%= link_to "チャットへ", chat_path(current_buyer.chats.find_by(producer_id: @producer.id)), class: "btn btn-primary"%><br>
+                    <% else %>
+                        <%= form_for Chat.new do |f| %>
+                            <%= f.hidden_field :producer_id, :value => @producer.id %>
+                            <%= f.submit "チャットを開始", class: "btn btn-primary"%>
+                        <% end %>
+                    <% end %>
                 <% end %>
-            <% end %>
+            </div>
         <% end %>
-            <% end %>
         <div class="col-lg-3">
 
-            <div class="producer-image">
+            <div class="image">
                 <%= attachment_image_tag @producer, :profile_image, style: "width:200px; height:200px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg" %>
             </div>
         </div>
@@ -103,10 +105,11 @@
                             <% else %>
                                 <%= link_to @producer.hp, @producer.hp %>
                             <% end %>
-                        </td>                    </tr>
+                        </td>
+                    </tr>
                     <tr>
                         <th>プロフィール</th>
-                        <td style="width: 30em;">
+                        <td>
                             <% if @producer.description.blank? %>
                                 <span>未登録</span>
                             <% else %>
@@ -147,7 +150,9 @@
                 </div>
                 <% end %>
             </div>
-            <p class="right-link"><%= link_to ">>生産者一覧に戻る", producers_path %></p>
+            <p class="right-link">
+                <%= link_to ">>生産者一覧に戻る", producers_path %>
+            </p>
         </div>
     </div>
 </div>

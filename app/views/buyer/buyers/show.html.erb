@@ -8,25 +8,27 @@
 <% end %>
 <div class="container">
         <% if @buyer == current_buyer %>
-        <h1>マイページ</h1>
+            <h1>マイページ</h1>
         <% else %>
-        <h1>バイヤー情報</h1>
-        <% if @buyer != current_buyer && producer_signed_in? %>
-            <% if @buyer_ids.include?(@buyer.id) %><br>
-                <%= link_to "チャットへ", chat_path(current_producer.chats.find_by(buyer_id: @buyer.id)), class: "btn btn-primary", style: "margin-bottom: 20px;" %><br>
-            <% else %>
-                <%= form_for Chat.new do |f| %>
-                    <%= f.hidden_field :buyer_id, :value => @buyer.id %>
-                    <%= f.submit "チャットを開始", class: "btn btn-success", style: "margin-bottom: 20px;" %>
+            <h1>バイヤー情報</h1>
+            <div class="chatting">
+                <% if @buyer != current_buyer && producer_signed_in? %>
+                    <% if @buyer_ids.include?(@buyer.id) %><br>
+                        <%= link_to "チャットへ", chat_path(current_producer.chats.find_by(buyer_id: @buyer.id)), class: "btn btn-primary"%><br>
+                    <% else %>
+                        <%= form_for Chat.new do |f| %>
+                            <%= f.hidden_field :buyer_id, :value => @buyer.id %>
+                            <%= f.submit "チャットを開始", class: "btn btn-success"%>
+                        <% end %>
+                    <% end %>
                 <% end %>
-            <% end %>
-        <% end %>
+            </div>
         <% end %>
     <div class="row">
-        <div class="producer-show">
+        <div class="buyer-show">
             <div class="col-lg-3">
                 <div class="image">
-                    <%= attachment_image_tag @buyer, :profile_image, style: "width:200px; height:200px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg" %>
+                    <%= attachment_image_tag @buyer, :profile_image, class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg" %>
                 </div>
             </div>
             <div class="col-lg-9">
@@ -123,7 +125,7 @@
                     </tr>
                     <tr>
                         <th>プロフィール</th>
-                        <td style="width: 30em;">
+                        <td>
                             <% if @buyer.description.blank? %>
                                 <span>未登録</span>
                             <% else %>
@@ -138,7 +140,7 @@
                     <%= link_to "編集する", edit_buyer_path, class: "btn btn-primary" %>
                 <% end %>
             </div>
-            <div class="right-link" style="padding-top: 30px;">
+            <div class="right-link">
                 <p><%= link_to ">>バイヤー一覧に戻る", buyers_path %></p>
             </div>
         </div>

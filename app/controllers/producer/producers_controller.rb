@@ -8,16 +8,12 @@ class Producer::ProducersController < ApplicationController
     if @producer != current_producer
       if buyer_signed_in?
         chats = current_buyer.chats
-        @producer_ids = []
-        chats.each do |chat|
-          @producer_ids << chat.producer_id
-        end
       elsif producer_signed_in?
         chats = current_producer.chats
-        @producer_ids = []
-        chats.each do |chat|
-          @producer_ids << chat.producer_id
-        end
+      end
+      @producer_ids = []
+      chats.each do |chat|
+        @producer_ids << chat.producer_id
       end
     end
   end

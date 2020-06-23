@@ -3,7 +3,6 @@
 <%= @product.name %>
         <%= form_with model: @order, local: true do |f|%>
             <%= f.number_field :count %>
-            <%# <%= f.nuber_field :payment %>
             <%= f.date_select :delivery %>
             <%= f.text_area :remark%>
             <%= f.hidden_field :buyer_id, value: current_buyer.id %>

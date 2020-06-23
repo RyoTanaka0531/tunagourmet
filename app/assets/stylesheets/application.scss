@@ -201,6 +201,9 @@ footer{
 .producer_search, .buyer_search, .product_search{
     margin: 20px 0;
 }
+#q_company_name_cont, #q_name_cont{
+    width: 11em;
+}
 
 .col-lg-7.col-lg-offset-2 {
     margin-bottom: 40px;
@@ -214,6 +217,12 @@ footer{
 .producer-index, .buyer-index{
     padding-bottom: 60px;
     padding-left: 400px;
+    .profile-head{
+        padding-top: 10px;
+    }
+    .profile{
+        width: 30em;
+    }
     .image-info{
         border-bottom: solid 1px #dcdcdc;
         padding-bottom: 50px;
@@ -221,6 +230,10 @@ footer{
     .image{
         display: inline-block;
         padding-right: 20px;
+        img{
+            width: 150px;
+            height: 150px;
+        }
     }
     .info{
         display: inline-block;
@@ -245,9 +258,16 @@ footer{
 
     background-color: #dbdf19;
     border-color: #dbdf19;
-  }
+}
 
-.producer-show{
+.buyer-show{
+    img{
+        width: 200px;
+        height: 200px;
+    }
+    td{
+        width: 30em;
+    }
     th{
         padding: 10px 30px;
     }
@@ -258,6 +278,7 @@ footer{
 
 .right-link{
     text-align: right;
+    padding-top: 30px;
 }
 .pull-left{
     float: none !important;
@@ -424,12 +445,19 @@ li{
     float: left;
     height: 350px;
     margin: 20px 30px;
+    img{
+        width: 150px;
+        height: 150px;
+    }
 }
 .product-image{
     .prev-image{
         width: 300px;
         height: 300px;
     }
+}
+.product-paginate{
+    text-align: center;
 }
 
 // producer周辺
@@ -440,6 +468,7 @@ li{
     }
     td{
         padding: 10px;
+        width: 30em;
     }
     th{
         padding: 10px;
@@ -473,6 +502,12 @@ li{
         width: 370px;
     }
 }
+.producer-prefecture{
+    padding-top: 20px;
+}
+.producer-paginate{
+    text-align: center;
+}
 
 // buyer
 .edit_buyer, .edit_producer{
@@ -505,6 +540,15 @@ li{
         width: 100%;
     }
 }
+.buyer-prefecture{
+    padding-top: 10px;
+}
+.buyer-industory{
+    padding-top: 5px;
+}
+.buyer-paginate{
+    text-align: center;
+}
 
 // order
 .completed{
@@ -513,10 +557,8 @@ li{
     h3{
         margin-bottom: 60px;
     }
-    .links{
-        a{
-            padding: 20px 0;
-        }
+    p{
+        padding: 20px 0;
     }
     }
 .order-confirm{
@@ -577,6 +619,16 @@ li{
         width: 120px;
         height: 120px;
     }
+    img{
+        width: 140px;
+        height: 120px;
+    }
+    .order-paginate{
+        text-align: center;
+    }
+    #order-remark{
+        width: 200px;
+    }
 }
 
 //ログイン
@@ -604,4 +656,9 @@ li{
     // text-align: center;
     padding-left: 35%;
     padding-top: 30px;
+}
+.chatting{
+    .btn.btn-primary{
+        margin-bottom: 20px;
+    }
 }
