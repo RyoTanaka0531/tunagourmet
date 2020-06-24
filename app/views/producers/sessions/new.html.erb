@@ -3,8 +3,11 @@
     <div class="alert alert-success text-center">
         <%= flash[:notice] %>
     </div>
-<% end %>
-<% if flash[:alert] %>
+<%# <% elsif flash[:error] %>
+    <%# <div class="alert alert-danger text-center"> %>
+        <%# <%= flash[:error] %>
+    <%# </div> %>
+<% elsif flash[:alert] %>
     <div class="alert alert-danger text-center">
         <%= flash[:alert] %>
     </div>

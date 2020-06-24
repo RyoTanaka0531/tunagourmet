@@ -1,38 +1,40 @@
 <% provide(:title, "チャット一覧") %>
 <div class="container">
-    <% if producer_signed_in? %>
-        <h3>チャット中のバイヤー</h3>
-        <div class="chat-index">
-        <% @chats.each do |chat| %>
-            <div class="row">
-                <div class="col-lg-4 col-lg-offset-2">
-                    <h4><%= link_to chat.buyer.company_name, buyer_path(chat.buyer) %></h4>
-                </div>
-                <div class="col-lg-3">
-                    <%= link_to "チャットする", chat_path(chat), class: "btn btn-primary" %>
-                </div>
-            </div>
-        <% end %>
-        </div>
-        <div class="row" style="text-align: center;">
-        <%= paginate @chats%>
-        </div>
-    <% elsif buyer_signed_in? %>
-        <h3>チャット中の生産者</h3>
-        <div class="chat-index">
-        <% @chats.each do |chat| %>
-            <div class="row">
-                <div class="col-lg-4 col-lg-offset-2">
-                    <h4>生産者名:   <%= link_to chat.producer.company_name, producer_path(chat.producer) %><h4>
-                </div>
-                <div class="col-lg-3">
+    <div class="chat-container">
+        <% if producer_signed_in? %>
+            <h3>チャット中のバイヤー</h3>
+            <div class="chat-index">
+            <% @chats.each do |chat| %>
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-2">
+                        <h4><%= link_to chat.buyer.company_name, buyer_path(chat.buyer) %></h4>
+                    </div>
+                    <div class="col-lg-3">
                         <%= link_to "チャットする", chat_path(chat), class: "btn btn-primary" %>
+                    </div>
                 </div>
+            <% end %>
+            </div>
+            <div class="row">
+            <%= paginate @chats%>
+            </div>
+        <% elsif buyer_signed_in? %>
+            <h3>チャット中の生産者</h3>
+            <div class="chat-index">
+            <% @chats.each do |chat| %>
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-2">
+                        <h4>生産者名:   <%= link_to chat.producer.company_name, producer_path(chat.producer) %><h4>
+                    </div>
+                    <div class="col-lg-3">
+                            <%= link_to "チャットする", chat_path(chat), class: "btn btn-primary" %>
+                    </div>
+                </div>
+            <% end %>
+            </div>
+            <div class="row">
+            <%= paginate @chats%>
             </div>
         <% end %>
-        </div>
-        <div class="row" style="text-align: center;">
-        <%= paginate @chats%>
-        </div>
-    <% end %>
+    </div>
 </div>

@@ -40,6 +40,10 @@ class Buyer::BuyersController < ApplicationController
   # 退会ページへ遷移
   def quit
     @buyer = Buyer.find(params[:id])
+    @buyer.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用お待ちしております。"
+    redirect_to root_path
   end
 
   def index

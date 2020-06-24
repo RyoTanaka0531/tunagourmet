@@ -59,7 +59,7 @@
                 </tr>
                 <% @products.each do |product| %>
                 <tr>
-                    <td style="width: 120px; height:90px;"><%= attachment_image_tag(product, :product_image, style: "width:120px; height:90px", class: "pull-left profile-thumb", fallback: "no_image.jpg") %></td>
+                    <td id="product-image"><%= attachment_image_tag(product, :product_image, class: "pull-left profile-thumb", fallback: "no_image.jpg") %></td>
                     <td><%= product.name %></td>
                     <td><%= product.price%>円/kg</td>
                     <td><%= product.timing%></td>

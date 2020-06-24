@@ -12,7 +12,7 @@
         <div class="prev-contents">
             <% if @product.product_image.present? %>
             <div class="prev-content">
-                <%= attachment_image_tag @product, :product_image, style: "width:200px; height:200px", class: "prev-image"%>
+                <%= attachment_image_tag @product, :product_image, class: "prev-image"%>
             </div>
             <% end %>
         </div>
@@ -41,9 +41,9 @@
         <td><%= f.text_area :description, class: "form-control", placeholder: "例) 無農薬で育てました。" %></td>
     </tr>
     </table>
-    <div claas="buttons" style="text-align: center; padding-top: 40px;">
-    <%= f.submit "登録する", class: "btn btn-primary", style: "width: 200px; margin-right: 40px;"%>
-    <%= link_to "削除する", product_path(@product), method: :delete, class:"btn btn-danger", style: "width: 200px; padding: 10px 30px;" %>
+    <div class="products-edit-buttons">
+    <%= f.submit "登録する", class: "btn btn-primary"%>
+    <%= link_to "削除する", product_path(@product), method: :delete, class:"btn btn-danger"%>
     </div>
     <% end %>
 </div>

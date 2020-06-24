@@ -21,6 +21,10 @@ class Buyer < ApplicationRecord
   def liked_by_buyer?(buyer)
     likes.where(buyer_id: buyer.id).exists?
   end
+
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
 end
 
 

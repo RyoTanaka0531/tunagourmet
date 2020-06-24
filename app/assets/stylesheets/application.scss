@@ -148,6 +148,10 @@ footer{
 }
 // home-top
 .top-index{
+    img{
+        width: 150px;
+        height: 150px;
+    }
     .row{
         margin: 0 auto;
         width:70%;
@@ -180,6 +184,7 @@ footer{
 }
 // home-select
 .select_registration{
+    text-align: center;
     h3{
         padding-bottom: 30px;
     }
@@ -310,15 +315,34 @@ footer{
         margin-left: 20px;
         padding-bottom: 30px;
     }
+    img{
+        width:40px;
+        height:40px;
+    }
+    .glyphicon-heart{
+        color: red;
+    }
+    .glyphicon-comment{
+        color: green;
+    }
     // .like-buttons{
         // text-align: right;
     // }
 }
 .post-content{
     margin: 10px 20px;
-    p{
-        display: inline-block;
-        vertical-align: top;
+    .post-content2{
+        img{
+            width: 300px;
+            height: 300px;
+        }
+        p{
+            display: inline-block;
+            vertical-align: top;
+        }
+    }
+    .post-time{
+        text-align: right;
     }
 }
 .comment-area{
@@ -354,6 +378,14 @@ li{
     padding: 10px;
     margin: 20px 60px;
     background-color: #f6f6f6;
+    img{
+        width: 40px;
+        height: 40px;
+    }
+}
+.glyphicon-comment{
+    color: green;
+    font-size: 30px;
 }
 
 
@@ -400,7 +432,17 @@ li{
         width: 30%;
     }
 }
-
+.chat-container{
+    .row{
+        text-align: center;
+    }
+}
+.chat-field{
+    img{
+        width: 30px;
+        height: 30px;
+    }
+}
 
 // product周辺
 .new_product, .producer-products{
@@ -415,6 +457,14 @@ li{
         tr{
             text-align: center;
         }
+    }
+    #product-image{
+        width: 120px;
+        height:90px;
+    }
+    img{
+        width: 120px;
+        height:90px;
     }
 }
 .product-form{
@@ -459,6 +509,35 @@ li{
 .product-paginate{
     text-align: center;
 }
+.prev-content{
+    img{
+        width: 200px;
+        height: 200px;
+    }
+}
+.products-edit-buttons{
+    text-align: center;
+    padding-top: 40px;
+    .btn-primary{
+        width: 200px;
+        margin-right: 40px;
+    }
+    .btn-danger{
+        width: 200px;
+        padding: 10px 30px;
+    }
+}
+.product-show{
+    img{
+        width: 200px;
+        height: 200px;
+    }
+    .order-new{
+        .order-form{
+            text-align: center;
+        }
+    }
+}
 
 // producer周辺
 .producer-info{
@@ -475,9 +554,22 @@ li{
         width: 20%;
     }
 }
+.producer-image{
+    img{
+        width: 200px;
+        height: 200px;
+    }
+}
 .producer-product-index{
     border-bottom: solid 1px gray;
     margin-bottom: 30px;
+    img{
+        width: 150px;
+        height: 150px;
+    }
+    .col-lg-3{
+        padding-top: 15px;
+    }
 }
 .products{
     border-top: solid 1px gray;
@@ -662,3 +754,11 @@ li{
         margin-bottom: 20px;
     }
 }
+
+    .glyphicon-heart{
+        color: red;
+        font-size: 30px;
+    }
+    .glyphicon-heart-empty{
+        font-size: 30px;
+    }

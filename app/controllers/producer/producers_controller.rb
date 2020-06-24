@@ -42,6 +42,10 @@ class Producer::ProducersController < ApplicationController
   # 退会ページへ遷移
   def quit
     @producer = Producer.find(params[:id])
+    @producer.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用お待ちしております。"
+    redirect_to root_path
   end
 
   def index

@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     post 'producers/sign_up' => 'producers/registrations#create', as: 'producer_registration'
   end
   namespace :producer do
-    resources :producers, only:[:show, :edit, :update, :quit, :index]
+    resources :producers, only:[:show, :edit, :update, :index]
   end
   resources :categories, only:[:index, :create, :destroy]
   resources :posts, except:[:update, :edit] do
@@ -40,18 +40,17 @@ Rails.application.routes.draw do
   get 'producers/:id' => 'producer/producers#show', as: 'producer'
   get 'producers/:id/edit' => 'producer/producers#edit', as: 'edit_producer'
   patch 'producers/:id' => 'producer/producers#update'
-  get 'producers/:id/quit' => 'producer/producers#quit', as: 'producer_quit'
+  put 'producers/:id/quit' => 'producer/producers#quit', as: 'producer_quit'
 
   get 'buyers' => 'buyer/buyers#index', as: 'buyers'
   get 'buyers/:id' => 'buyer/buyers#show', as: 'buyer'
   get 'buyers/:id/edit' => 'buyer/buyers#edit', as: 'edit_buyer'
   patch 'buyers/:id' => 'buyer/buyers#update'
-  get 'buyers/:id/quit' => 'buyer/buyers#quit', as: 'buyer_quit'
+  put 'buyers/:id/quit' => 'buyer/buyers#quit', as: 'buyer_quit'
   get 'buyers/:id/orders/new' => 'buyer/orders#new', as: 'buyer_order_new'
   resources :products
 
 
-  get 'orders/new' => 'buyer/orders#new'
   post 'orders' => 'buyer/orders#create'
   get 'orders.:id' => 'buyer/orders#show'
   get 'orders/completed' => 'buyer/orders#completed', as: 'completed_order'

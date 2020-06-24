@@ -36,18 +36,18 @@
             <h3><%= link_to post.heading, post_path(post) %></h3>
             <p><%= post.content %></p>
             <% if post.buyer %>
-                <%= attachment_image_tag post.buyer, :profile_image, style: "width:40px; height:40px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+                <%= attachment_image_tag post.buyer, :profile_image, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
                 <%= link_to post.buyer.company_name, buyer_path(post.buyer) %>
             <% else %>
-                <%= attachment_image_tag post.producer, :profile_image, style: "width:40px; height:40px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+                <%= attachment_image_tag post.producer, :profile_image, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
                 <%= link_to post.producer.company_name, producer_path(post.producer) %>
             <% end %>
             <div class="like-count">
-                <span class="glyphicon glyphicon-heart" style="color: red;"></span>
+                <span class="glyphicon glyphicon-heart"></span>
                 <%= post.likes.count %>
             </div>
             <div class="comment-count">
-                <span class="glyphicon glyphicon-comment" style="color: green;"></span>
+                <span class="glyphicon glyphicon-comment"></span>
                 <%= post.comments.count %>
             </div><br>
             <%= post.created_at.strftime("%Y/%m/%d %H:%M") %>

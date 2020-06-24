@@ -16,21 +16,17 @@ class CommentsController < ApplicationController
       elsif buyer_signed_in?
         @comment_post.create_notification_comment!(current_buyer, @comment.id)
       end
-      # respond_to :js
-      redirect_to request.referrer
+      render :index
     else
-    #もし非同期でコメントをsaveした場合
-    # render :index
       redirect_to request.referrer
     end
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
-    #もし非同期でコメントをsaveした場合
-    #render 'index'
-    redirect_to request.referrer
+    render :index
   end
 
   private

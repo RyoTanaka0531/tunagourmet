@@ -1,15 +1,6 @@
 class Buyer::OrdersController < ApplicationController
   before_action :authenticate_buyer!
 
-  def new
-    @order = Order.new
-    if @order.confirming.blank?
-      @product = Product.find(@order.product_id)
-    else
-      @product = Product.find(params[:format])
-    end
-  end
-
   def create
     @order = Order.new(order_params)
     if @order.save

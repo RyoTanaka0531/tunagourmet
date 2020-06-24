@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_115548) do
+ActiveRecord::Schema.define(version: 2020_06_24_051417) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_06_15_115548) do
     t.string "hp"
     t.integer "industory_id"
     t.integer "prefecture_id"
+    t.boolean "is_deleted", default: false
     t.index ["company_name"], name: "index_buyers_on_company_name"
     t.index ["email"], name: "index_buyers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_buyers_on_reset_password_token", unique: true
@@ -165,6 +166,7 @@ ActiveRecord::Schema.define(version: 2020_06_15_115548) do
     t.string "address", default: "", null: false
     t.string "hp"
     t.integer "prefecture_id"
+    t.boolean "is_deleted", default: false
     t.index ["company_name"], name: "index_producers_on_company_name"
     t.index ["email"], name: "index_producers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_producers_on_reset_password_token", unique: true

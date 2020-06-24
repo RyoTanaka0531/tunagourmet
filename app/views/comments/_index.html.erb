@@ -1,20 +1,20 @@
-<span class="glyphicon glyphicon-comment" style="color: green; font-size: 30px;"></span>
-<%= @post.comments.count %>
+<span class="glyphicon glyphicon-comment"></span>
+<%= post.comments.count %>
         <% comments.each do |comment| %>
             <% unless comment.id.nil? %>
                 <div class="comment-container">
                     <p><%= comment.content %></p>
                     <% if comment.producer %>
                         <% if comment.producer == current_producer %>
-                            <p><%= link_to "削除", post_comment_path(comment.post_id, comment.id), method: :delete %></p>
+                            <p><%= link_to "削除", post_comment_path(comment.post_id, comment.id), method: :delete, remote: true %></p>
                         <% end %>
-                        <%= attachment_image_tag comment.producer, :profile_image, style: "width:40px; height:40px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
+                        <%= attachment_image_tag comment.producer, :profile_image, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
                         <%=  link_to comment.producer.company_name, producer_path(comment.producer) %></p>
                     <% elsif comment.buyer %>
                         <% if comment.producer == current_producer %>
-                            <p><%= link_to "削除", post_comment_path(comment.post_id, comment.id), method: :delete %></p>
+                            <p><%= link_to "削除", post_comment_path(comment.post_id, comment.id), method: :delete, remote: true %></p>
                         <% end %>
-                        <%= attachment_image_tag comment.buyer, :profile_image, style: "width:40px; height:40px", class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
+                        <%= attachment_image_tag comment.buyer, :profile_image, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
                         <%=  link_to comment.buyer.company_name, buyer_path(comment.buyer) %>
                     <% end %>
                     <%= comment.created_at.strftime("%Y/%m/%d %H:%M")%>

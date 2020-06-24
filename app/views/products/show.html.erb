@@ -4,61 +4,65 @@
     </div>
 <% end %>
 <div class="container">
-    <h1>品目情報</h1>
-    <div class="row">
-        <div class="col-lg-3 col-lg-offset-2">
-            <div class="image">
-                <%= attachment_image_tag @product, :product_image, style: "width:200px; height:200px", class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg" %>
-            </div>
-            <div class="order-form ">
-                <p><%= link_to "生産者ページ", producer_path(@producer), class: "btn btn-primary" %></p>
-            <div class="link">
-                <% if @product.producer == current_producer %>
-                    <%= link_to "編集", edit_product_path, class:"btn btn-primary" %>
-                <% end %>
-            </div>
-                <% if @producer != current_producer && buyer_signed_in? %>
-                    <% if @producer_ids.include?(@producer.id) %>
-                        <%= link_to "生産者とチャットをする", chat_path(current_buyer.chats.find_by(producer_id: @producer.id)), class: "btn btn-primary" %><br>
-                    <% else %>
-                        <%= form_for Chat.new do |f| %>
-                            <%= f.hidden_field :producer_id, :value => @producer.id %>
-                            <%= f.submit "生産者とチャットを開始", class: "btn btn-primary" %>
+    <div class="product-show">
+        <h1>品目情報</h1>
+        <div class="row">
+            <div class="col-lg-3 col-lg-offset-2">
+                <div class="image">
+                    <%= attachment_image_tag @product, :product_image, class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg" %>
+                </div>
+                <div class="order-form ">
+                    <p><%= link_to "生産者ページ", producer_path(@producer), class: "btn btn-primary" %></p>
+                <div class="link">
+                    <% if @product.producer == current_producer %>
+                        <%= link_to "編集", edit_product_path, class:"btn btn-primary" %>
+                    <% end %>
+                </div>
+                    <% if @producer != current_producer && buyer_signed_in? %>
+                        <% if @producer_ids.include?(@producer.id) %>
+                            <%= link_to "生産者とチャットをする", chat_path(current_buyer.chats.find_by(producer_id: @producer.id)), class: "btn btn-primary" %><br>
+                        <% else %>
+                            <%= form_for Chat.new do |f| %>
+                                <%= f.hidden_field :producer_id, :value => @producer.id %>
+                                <%= f.submit "生産者とチャットを開始", class: "btn btn-primary" %>
+                            <% end %>
                         <% end %>
                     <% end %>
-                <% end %>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h3><%= @product.name%></h3>
+                <p><strong>説明</strong></p>
+                <p><%= @product.description %></p>
+                <h3>売価</h3>
+                <%= @product.price %>円/kg
+                <h3>出荷可能時期</h3>
+                <%= @product.timing%>
+                <p><strong>生産者名</strong></p>
+                <h4><%= link_to @producer.company_name, producer_path(@producer) %></h4>
             </div>
         </div>
-        <div class="col-lg-4">
-            <h3><%= @product.name%></h3>
-            <p><strong>説明</strong></p>
-            <p><%= @product.description %></p>
-            <h3>売価</h3>
-            <%= @product.price %>円/kg
-            <h3>出荷可能時期</h3>
-            <%= @product.timing%>
-            <p><strong>生産者名</strong></p>
-            <h4><%= link_to @producer.company_name, producer_path(@producer) %></h4>
-        </div>
-    </div>
-    <% if buyer_signed_in? %>
-        <div class="row" style="padding-top:100px;">
-        <% if flash[:alert] %>
-            <div class="alert alert-danger text-center">
-                <%= flash[:alert] %>
+        <% if buyer_signed_in? %>
+            <div class="row">
+                <div class="order-new">
+                <% if flash[:alert] %>
+                    <div class="alert alert-danger text-center">
+                        <%= flash[:alert] %>
+                    </div>
+                <% end %>
+                    <div class="order-form">
+                        <h3>発注入力欄</h3>
+                        <span>こちらのページから直接発注することが出来ます。</span>
+                    </div>
+                    <%= render 'form', order: @order, product: @product %>
+                </div>
             </div>
         <% end %>
-            <div style="text-align: center;">
-                <h3>発注入力欄</h3>
-                <span>こちらのページから直接発注することが出来ます。</span>
-            </div>
-            <%= render 'form', order: @order, product: @product %>
+        <div class="row">
+            <p class="right-link">
+                <%= link_to ">>品目一覧に戻る", products_path %>
+            </p>
         </div>
-    <% end %>
-    <div class="row">
-        <p class="right-link">
-            <%= link_to ">>品目一覧に戻る", products_path %>
-        </p>
     </div>
 </div>
 
