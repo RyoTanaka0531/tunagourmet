@@ -22,9 +22,9 @@
         <ul class="nav nav-pills">
             <li><%= link_to "トップ", root_path %></li>
             <li><%= link_to "マイページ", buyer_path(current_buyer) %></li>
-            <%# <% if unchecked_notifications.any? %>
-                <%# <i class="fa fa-circle" style="color: gold;"></i> %>
-            <%# <% end %>
+            <% if unchecked_notifications.any? %>
+                <i class="fa fa-circle" style="color: gold;"></i>
+            <% end %>
             <li><%= link_to "通知", notifications_path %></li>
             <li><%= link_to "発注一覧", orders_index_path %></li>
             <li><%= link_to "チャット", chats_path %></li>

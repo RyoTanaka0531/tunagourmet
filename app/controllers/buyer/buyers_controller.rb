@@ -53,12 +53,10 @@ class Buyer::BuyersController < ApplicationController
   def index
     if params[:q].present?
       @search = Buyer.ransack(params[:q])
-      # @buyers = @search.result.where(is_deleted: ["false"]).page(params[:page]).per(5)
-      @buyers = @search.result.page(params[:page]).per(5)
+      @buyers = @search.result.where(is_deleted: ["false"]).page(params[:page]).per(5)
     else
       @search = Buyer.ransack()
-      # @buyers = Buyer.where(is_deleted: ["false"]).order(id: "DESC").page(params[:page]).per(5)
-      @buyers = Buyer.order(id: "DESC").page(params[:page]).per(5)
+      @buyers = Buyer.where(is_deleted: ["false"]).order(id: "DESC").page(params[:page]).per(5)
     end
   end
 

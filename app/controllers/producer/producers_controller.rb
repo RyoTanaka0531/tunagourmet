@@ -56,12 +56,10 @@ class Producer::ProducersController < ApplicationController
     #検索formにパラメーターが入力された場合とされてない場合
     if params[:q].present?
       @search = Producer.ransack(params[:q])
-      # @producers = @search.result.where(is_deleted: ["false"]).page(params[:page]).per(5)
-      @producers = @search.result.page(params[:page]).per(5)
+      @producers = @search.result.where(is_deleted: ["false"]).page(params[:page]).per(5)
     else
       @search = Producer.ransack()
-      # @producers = Producer.where(is_deleted: ["false"]).order(id: "DESC").page(params[:page]).per(5)
-      @producers = Producer.order(id: "DESC").page(params[:page]).per(5)
+      @producers = Producer.where(is_deleted: ["false"]).order(id: "DESC").page(params[:page]).per(5)
     end
   end
 

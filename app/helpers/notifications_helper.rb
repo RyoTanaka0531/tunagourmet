@@ -26,8 +26,8 @@ module NotificationsHelper
     def unchecked_notifications
         if producer_signed_in?
             @notifications = current_producer.passive_notifications.where(checked: false)
-        # elsif buyer_signed_in?
-            # @notifications = current_buyer.passive_notifications.where(checked: false)
+        elsif buyer_signed_in?
+            @notifications = current_buyer.passive_notifications.where(checked: false)
         end
     end
 end
