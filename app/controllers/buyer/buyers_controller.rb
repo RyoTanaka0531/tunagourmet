@@ -49,16 +49,16 @@ class Buyer::BuyersController < ApplicationController
   def index
     if params[:q].present?
       @search = Buyer.ransack(params[:q])
-      @buyers = @search.result.page(params[:page]).per(5)
+      @buyers = @search.result.where(is_deleted: ["false"]).page(params[:page]).per(5)
     else
       @search = Buyer.ransack()
-      @buyers = Buyer.order(id: "DESC").page(params[:page]).per(5)
+      @buyers = Buyer.where(is_deleted: ["false"]).order(id: "DESC").page(params[:page]).per(5)
     end
   end
 
   private
   def buyer_params
-    params.require(:buyer).permit(:email, :name, :kana_name, :company_name, :kana_company_name, :phone_number, :postcode, :address, :hp, :description, :profile_image, :prefecture_id, :industory_id)
+    params.require(:buyer).permit(:email, :name, :kana_name, :company_name, :kana_company_name, :phone_number, :postcode, :address, :hp, :description, :profile_image, :prefecture_id, :industory_id, :is_deleted)
   end
   def correct_buyer
     @buyer = Buyer.find(params[:id])
@@ -66,4 +66,5 @@ class Buyer::BuyersController < ApplicationController
       redirect_to root_path
     end
   end
+
 end

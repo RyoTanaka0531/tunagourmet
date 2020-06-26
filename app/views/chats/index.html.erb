@@ -1,3 +1,4 @@
+
 <% provide(:title, "チャット一覧") %>
 <div class="container">
     <div class="chat-container">
@@ -24,7 +25,7 @@
             <% @chats.each do |chat| %>
                 <div class="row">
                     <div class="col-lg-4 col-lg-offset-2">
-                        <h4>生産者名:   <%= link_to chat.producer.company_name, producer_path(chat.producer) %><h4>
+                        <h4><%= link_to chat.producer.company_name, producer_path(chat.producer) %><h4>
                     </div>
                     <div class="col-lg-3">
                             <%= link_to "チャットする", chat_path(chat), class: "btn btn-primary" %>

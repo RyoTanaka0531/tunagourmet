@@ -57,7 +57,7 @@ class ChatsController < ApplicationController
   def chat_producer_params
     params.require(:chat).permit(:producer_id)
   end
-  private
+
   def require_signed_in
     unless signed_in?
       flash[:error] = "新規登録またはログインをしてください"

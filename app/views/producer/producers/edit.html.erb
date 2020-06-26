@@ -56,7 +56,7 @@
         <td><%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, :include_blank => "選択してください" %></td>
     </tr>
     <tr>
-        <th><%= f.label "住所(市区町村・番地・建物" %></th>
+        <th><%= f.label "住所(市区町村・番地・建物)" %></th>
         <td><%= f.text_field :address, class: "form-control" %></td>
     </tr>
     <tr>

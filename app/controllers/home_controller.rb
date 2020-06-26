@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
     def top
-        @producers = Producer.all
-        @buyers = Buyer.all
+        @producers = Producer.where(is_deleted: ["false"])
+        @buyers = Buyer.where(is_deleted: ["false"])
         @products = Product.all
     end
 

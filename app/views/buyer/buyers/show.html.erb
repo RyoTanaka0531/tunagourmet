@@ -12,7 +12,7 @@
         <% else %>
             <h1>バイヤー情報</h1>
             <div class="chatting">
-                <% if @buyer != current_buyer && producer_signed_in? %>
+                <% if producer_signed_in? %>
                     <% if @buyer_ids.include?(@buyer.id) %><br>
                         <%= link_to "チャットへ", chat_path(current_producer.chats.find_by(buyer_id: @buyer.id)), class: "btn btn-primary"%><br>
                     <% else %>
