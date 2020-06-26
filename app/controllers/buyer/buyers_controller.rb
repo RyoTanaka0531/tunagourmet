@@ -7,12 +7,16 @@ class Buyer::BuyersController < ApplicationController
     if @buyer != current_buyer
       if producer_signed_in?
         chats = current_producer.chats
+        @buyer_ids = []
+        chats.each do |chat|
+          @buyer_ids << chat.buyer_id
+        end
       elsif buyer_signed_in?
         chats = current_buyer.chats
-      end
-      @buyer_ids = []
-      chats.each do |chat|
-      @buyer_ids << chat.buyer_id
+        @buyer_ids = []
+        chats.each do |chat|
+          @buyer_ids << chat.buyer_id
+        end
       end
     end
   end

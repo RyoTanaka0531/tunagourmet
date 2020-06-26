@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     @comment_post = @comment.post
     if @comment.save
       if producer_signed_in?
-        @comment_post.create_notification_comment!(current_producer, @comment.id)
+        @comment_post.create_notification_producer_comment!(current_producer, @comment.id)
       elsif buyer_signed_in?
         @comment_post.create_notification_comment!(current_buyer, @comment.id)
       end

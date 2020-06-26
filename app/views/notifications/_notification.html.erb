@@ -1,14 +1,13 @@
-<% visiter = notification.visiter %>
-<%# <% visiter_producer = notification.visiter_producer %>
-<% post = notification.post %>
+<% visiter = notification.visiter || notification.visiter_producer  %>
+<% visiter_producer = notification.visiter_producer %>
 <div class="clearfix">
-    <% if visiter.present? %>
-        <%= link_to buyer_path(notification.visiter) do %>
+    <% if visiter == notification.visiter %>
+        <%= link_to buyer_path(visiter) do %>
             <%= attachment_image_tag visiter, :profile_image, format: "jpeg", fallback: "no_image.jpg", class:"profile-img-circle", style: "width: 100px; height: 100px;" %>
         <% end %>
-    <% else %>
-        <%= link_to producer_path(notification.visiter_producer) do %>
-            <%= attachment_image_tag notification.visiter_producer, :profile_image, format: "jpeg", fallback: "no_image.jpg", class:"profile-img-circle", style: "width: 100px; height: 100px;"%>
+    <% elsif visiter_producer %>
+        <%= link_to producer_path(visiter_producer) do %>
+            <%= attachment_image_tag visiter_producer, :profile_image, format: "jpeg", fallback: "no_image.jpg", class:"profile-img-circle", style: "width: 100px; height: 100px;"%>
         <% end %>
     <% end %>
     <%= notification_form(notification) %><span class="moderate-font"><%= "(#{time_ago_in_words(notification.created_at)}前)"%></span>
