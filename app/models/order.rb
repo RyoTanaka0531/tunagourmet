@@ -16,3 +16,4 @@ class Order < ApplicationRecord
         self.confirming = errors.empty? ? '1' : ''
     end
 end
+

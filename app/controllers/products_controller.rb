@@ -14,10 +14,9 @@ class ProductsController < ApplicationController
       flash[:notice] = '登録が完了しました。'
       redirect_to product_path(@product)
     else
-      binding.pry
       flash[:notice] = '入力に不備があります。正しく入力してください。'
         redirect_to request.referrer
-      end
+    end
   end
 
   def index
@@ -34,6 +33,7 @@ class ProductsController < ApplicationController
   def edit
     @product = Product.find(params[:id])
   end
+
 
   def update
     @product = Product.find(params[:id])

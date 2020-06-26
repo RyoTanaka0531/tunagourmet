@@ -3,9 +3,9 @@ class NotificationsController < ApplicationController
 
     def index
         if producer_signed_in?
-            @notifications = current_producer.passive_notifications.page(params[:page]).per(20)
+            @notifications = current_producer.passive_notifications.order(id: "DESC").page(params[:page]).per(20)
         else
-            @notifications = current_buyer.passive_notifications.page(params[:page]).per(20)
+            @notifications = current_buyer.passive_notifications.order(id: "DESC").page(params[:page]).per(20)
         end
         @notifications.where(checked: false).each do |notification|
             notification.update_attributes(checked: true)

@@ -7,17 +7,17 @@ module NotificationsHelper
         @visiter_comment = notification.comment_id
         case notification.action
         when "like" then
-            if @visiter.present?
+            if @visiter
                 tag.a(notification.visiter.company_name, href: buyer_path(@visiter), style: "font-weight: bold;")+ 'が' + tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;")+ "にいいねしました"
-            else
+            elsif @visiter_producer
                 tag.a(notification.visiter_producer.company_name, href: producer_path(@visiter_producer), style: "font-weight: bold;")+ 'が' + tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;")+ "にいいねしました"
             end
         when "comment" then
             @comment = Comment.find_by(id: @visiter_comment)&.content
             @comment_producer = Comment.find_by(id: @visiter_producer_comment)&.content
-            if @visiter.present?
+            if @visiter
                 tag.a(@visiter.company_name, href: buyer_path(@visiter), style: "font-weight: bold;")+"が"+tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;")+"にコメントしました"
-            else
+            elsif @visiter_producercd
                 tag.a(@visiter_producer.company_name, href: producer_path(@visiter_producer), style: "font-weight: bold;")+"が"+tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;")+"にコメントしました"
             end
         end
