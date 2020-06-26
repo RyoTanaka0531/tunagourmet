@@ -65,7 +65,7 @@ class Producer::ProducersController < ApplicationController
 
   private
   def producer_params
-    params.require(:producer).permit(:name, :kana_name, :company_name, :kana_company_name, :phone_number, :postcode, :address, :hp, :description, :profile_image, :prefecture_id)
+    params.require(:producer).permit(:name, :kana_name, :company_name, :kana_company_name, :phone_number, :postcode, :address, :hp, :description, :profile_image, :prefecture_id,  :is_deleted)
   end
   def correct_producer
     @producer = Producer.find(params[:id])
@@ -74,3 +74,4 @@ class Producer::ProducersController < ApplicationController
     end
   end
 end
+

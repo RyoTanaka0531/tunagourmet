@@ -25,7 +25,7 @@ class Producers::SessionsController < Devise::SessionsController
   def reject_producer
     @producer = Producer.find_by(email: params[:producer][:email].downcase)
     if @producer
-      if (@producer.valid_password?(params[:producer][:password]) && (@producer.active_for_authentication? == false))
+      if (@producer.valid_password?(params[:producer][:password]) && (@producer.active_for_authentication? == true))
         flash[:alert] = "退会済みのユーザーです。"
         redirect_to new_producer_session_path
       end
