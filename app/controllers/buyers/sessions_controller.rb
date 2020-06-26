@@ -24,7 +24,7 @@ class Buyers::SessionsController < Devise::SessionsController
   def reject_buyer
     @buyer = Buyer.find_by(email: params[:buyer][:email].downcase)
     if @buyer
-      if (@buyer.valid_password?(params[:buyer][:password]) && (@buyer.active_for_authentication? == true))
+      if (@buyer.valid_password?(params[:buyer][:password]) && (@buyer.active_for_authentication? == false))
         flash[:alert] = "退会済みのユーザーです。"
         redirect_to new_buyer_session_path
       end
