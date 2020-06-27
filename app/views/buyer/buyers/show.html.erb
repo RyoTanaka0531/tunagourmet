@@ -113,7 +113,7 @@
                             <% if @buyer.prefecture_id.nil?%>
                                 <span>未登録</span>
                             <% else %>
-                                <%= @buyer.prefecture.name %>
+                                <%= @buyer.prefecture.name %><%= @buyer.address %>
                             <% end %>
                         </td>
                     </tr>

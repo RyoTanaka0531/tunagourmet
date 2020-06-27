@@ -13,7 +13,10 @@ class MessagesController < ApplicationController
 
         @message.chat_id = @chat.id
         if @message.save
-            redirect_to chat_url(@chat)
+            # redirect_to chat_url(@chat)
+            # format.html { redirect_to "chat_url(@chat)" }
+            # format.json
+            render :show
         else
             redirect_to chat_url(@chat)
         end
