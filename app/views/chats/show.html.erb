@@ -1,10 +1,10 @@
 <div class="container">
     <h1>チャットページ</h1>
     <div id="chat-fields">
-        <%= render 'messages/index', buyer: @buyer, proudcer: @producer, messages: @messages %>
+        <%= render 'messages/index', buyer: @chat.buyer, producer: @chat.producer, messages: @messages %>
     </div>
 
-    <%= form_for [@chat, @message] do |f| %>
+    <%= form_for [@chat, @message], remote: true do |f| %>
         <%= f.text_area :content, placeholder: "メッセージを入力してください。", class: "form-control" %><br>
         <%= f.submit "送信", class: "btn btn-success"%>
     <% end %>

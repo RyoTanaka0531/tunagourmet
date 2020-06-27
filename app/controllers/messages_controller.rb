@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
             # redirect_to chat_url(@chat)
             # format.html { redirect_to "chat_url(@chat)" }
             # format.json
-            render :show
+            render :index
         else
             redirect_to chat_url(@chat)
         end
