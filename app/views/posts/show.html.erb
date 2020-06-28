@@ -12,11 +12,11 @@
                 </div>
             </div>
             <% if @post.buyer %>
-                    <%= attachment_image_tag @post.buyer, :profile_image, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
-                    <%= link_to @post.buyer.company_name, buyer_path(@post.buyer) %>
+                <%= attachment_image_tag @post.buyer, :profile_image, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+                <%= link_to @post.buyer.company_name, buyer_path(@post.buyer) %>
             <% else %>
-                    <%= attachment_image_tag @post.producer, :profile_image, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
-                    <%= link_to @post.producer.company_name, producer_path(@post.producer) %>
+                <%= attachment_image_tag @post.producer, :profile_image, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg" %>
+                <%= link_to @post.producer.company_name, producer_path(@post.producer) %>
             <% end %>
             <div class="post-time">
                 <%= @post.created_at.strftime("%Y/%m/%d %H:%M")%>
@@ -38,16 +38,16 @@
             </div><br>
         <% if producer_signed_in? || buyer_signed_in? %>
             <div class="comment-form">
-            <ul>
-                <li>
-                    <%= render 'comments/form', comment: @comment, post: @post %>
-                </li>
-            </ul>
+                <ul>
+                    <li>
+                        <%= render 'comments/form', comment: @comment, post: @post %>
+                    </li>
+                </ul>
             </div>
         <% end %>
     </div>
-        <div class="right-link">
-            <strong><%= link_to ">>投稿一覧にもどる", posts_path%></strong>
-        </div>
+    <div class="right-link">
+        <strong><%= link_to ">>投稿一覧にもどる", posts_path%></strong>
+    </div>
 </div>
 
