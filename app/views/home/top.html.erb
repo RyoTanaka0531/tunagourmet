@@ -43,6 +43,13 @@
         <% if producer_signed_in? %>
             <h2>バイヤー一覧</h2>
             <div class="row">
+                <div class="slick-slider">
+                    <div class="slick-lists">
+                    <%# バイヤーのスライダーを表示する %>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <% @buyers.each do |buyer| %>
                     <div class="index">
                         <dl>
