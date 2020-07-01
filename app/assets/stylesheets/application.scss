@@ -17,6 +17,9 @@
 @import 'font-awesome';
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import 'slick-theme';
+@import 'slick';
+
 
 * {
     margin: 0;
@@ -765,4 +768,35 @@ li{
     }
 .no-notification{
     text-align: center;
+}
+.slicks{
+    background-color: #c8d627;
+
+    .slick-head{
+        text-align: center;
+        h2{
+            color: hsl(60, 1%, 41%);
+            background-color: #c8d627;
+        }
+    }
+    .slick{
+        .buyer-list{
+            padding: 20px 30px;
+            background-color: white;
+            margin: 0 5px;
+            border-radius: 1em;
+            height: 200px;
+        margin-bottom: 16px;
+        img{
+            width: 200px;
+            height: 150px;
+            float: left;
+            padding-right: 5px;
+        }
+    }
+}
+//     .buyer-list{
+//         width: 640px;
+//         height: 430px;
+//     }
 }

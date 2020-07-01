@@ -16,10 +16,3 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
-$(function(){
-    $('.slick-slider').slick({
-        dots: true,
-        autoplay: true,
-        autoplaySpeed: 1000,
-    });
-});
