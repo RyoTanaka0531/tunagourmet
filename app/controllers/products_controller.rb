@@ -22,8 +22,8 @@ class ProductsController < ApplicationController
   def index
     if params[:q].present?
       @search = Product.ransack(params[:q])
-      # @categories = Category.all
       @products = @search.result.page(params[:page]).per(5)
+      @slick_products = Product.order(id: "DESC").limit(5)
     else
       @search = Product.ransack()
       @products = Product.order(id: "DESC").page(params[:page]).per(12)

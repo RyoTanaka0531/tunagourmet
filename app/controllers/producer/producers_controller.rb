@@ -57,6 +57,7 @@ class Producer::ProducersController < ApplicationController
     if params[:q].present?
       @search = Producer.ransack(params[:q])
       @producers = @search.result.where(is_deleted: ["false"]).page(params[:page]).per(5)
+      @slick_producers = Producer.where(is_deleted: ["false"]).order(id: "DESC").limit(5)
     else
       @search = Producer.ransack()
       @producers = Producer.where(is_deleted: ["false"]).order(id: "DESC").page(params[:page]).per(5)
