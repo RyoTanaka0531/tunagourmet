@@ -3,6 +3,24 @@
         <%= flash[:alert] %>
     </div>
 <% end %>
+<div class="slicks">
+    <div class="slick-head">
+        <h2>新着品目</h2>
+    </div>
+    <div class="slick">
+        <% @slick_products.each do |product| %>
+            <div class="product-list">
+                <%= link_to product_path(product) do %>
+                    <%= attachment_image_tag(product, :product_image) %>
+                <% end %>
+                <%= link_to product.name, product_path(product) %><br>
+                <%= product.description %><br>
+                <%= product.price%>円/kg<br>
+                <%= product.timing%>
+            </div>
+        <% end %>
+    </div>
+</div>
 <div class="container">
     <h1>品目一覧</h1><br>
     <%= render 'sidebar', search: @search %>

@@ -60,6 +60,7 @@ class Producer::ProducersController < ApplicationController
     else
       @search = Producer.ransack()
       @producers = Producer.where(is_deleted: ["false"]).order(id: "DESC").page(params[:page]).per(5)
+      @slick_producers = Producer.where(is_deleted: ["false"]).order(id: "DESC").limit(5)
     end
   end
 

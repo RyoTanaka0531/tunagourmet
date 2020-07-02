@@ -1,3 +1,19 @@
+<div class="slicks">
+    <div class="slick-head">
+        <h2>新着バイヤー</h2>
+    </div>
+    <div class="slick">
+        <% @slick_buyers.each do |buyer| %>
+            <div class="buyer-list">
+                <%= link_to buyer_path(buyer) do %>
+                    <%= attachment_image_tag(buyer, :profile_image) %>
+                <% end %>
+                <%= link_to buyer.company_name, buyer_path(buyer) %><br>
+                <%= buyer.description %>
+            </div>
+        <% end %>
+    </div>
+</div>
 <div class="container">
     <h1>バイヤー一覧</h1><br>
     <%= render 'sidebar', search: @search%>

@@ -57,6 +57,7 @@ class Buyer::BuyersController < ApplicationController
     else
       @search = Buyer.ransack()
       @buyers = Buyer.where(is_deleted: ["false"]).order(id: "DESC").page(params[:page]).per(5)
+      @slick_buyers = Buyer.where(is_deleted: ["false"]).order(id: "DESC").limit(5)
     end
   end
 

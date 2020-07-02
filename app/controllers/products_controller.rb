@@ -27,6 +27,7 @@ class ProductsController < ApplicationController
     else
       @search = Product.ransack()
       @products = Product.order(id: "DESC").page(params[:page]).per(12)
+      @slick_products = Product.order(id: "DESC").limit(5)
     end
   end
 
