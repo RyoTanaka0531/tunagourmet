@@ -41,6 +41,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop-airbnb'
   gem 'rspec-rails', '~> 3.6'
+  gem 'spring-commands-rspec'
 end
 
 group :development do
@@ -75,6 +76,9 @@ gem 'ransack'
 gem 'pry-rails'
 gem 'enum_help'
 gem 'dotenv-rails'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
 group :production do
   gem 'mysql2'
 end
