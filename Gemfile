@@ -76,9 +76,7 @@ gem 'ransack'
 gem 'pry-rails'
 gem 'enum_help'
 gem 'dotenv-rails'
-gem 'omniauth-facebook'
 gem 'omniauth-twitter'
-gem 'omniauth-google-oauth2'
 group :production do
   gem 'mysql2'
 end
