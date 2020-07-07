@@ -1,7 +1,6 @@
 class ChatsController < ApplicationController
   before_action :require_signed_in
 
-
   def index
     if producer_signed_in?
       @chats = current_producer.chats.page(params[:page]).per(10)
@@ -11,9 +10,9 @@ class ChatsController < ApplicationController
   end
 
   def show
-    @chat = Chat.find(params[:id]) #チャット情報の取得
-    @message = Message.new #新規メッセージ投稿
-    @messages = @chat.messages #チャット内のメッセージを全て取得
+    @chat = Chat.find(params[:id]) # チャット情報の取得
+    @message = Message.new # 新規メッセージ投稿
+    @messages = @chat.messages # チャット内のメッセージを全て取得
     if producer_signed_in?
       if @chat.producer.id == current_producer.id
         @buyer = @chat.buyer
@@ -33,7 +32,7 @@ class ChatsController < ApplicationController
 
   def create
     if producer_signed_in?
-      #producerがログインしてたらproducer_idを、buyerがログインしてたらbuyer_idを@chatに入れる
+      # producerがログインしてたらproducer_idを、buyerがログインしてたらbuyer_idを@chatに入れる
       @chat = Chat.new(chat_buyer_params)
       @chat.producer_id = current_producer.id
     elsif buyer_signed_in?
@@ -50,6 +49,7 @@ class ChatsController < ApplicationController
   end
 
   private
+
   def chat_buyer_params
     params.require(:chat).permit(:buyer_id)
   end
@@ -65,4 +65,3 @@ class ChatsController < ApplicationController
     end
   end
 end
-

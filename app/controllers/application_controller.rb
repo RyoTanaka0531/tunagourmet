@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
 
     private
-    #ログイン後のリダイレクト先
+
+    # ログイン後のリダイレクト先
     def after_sign_in_path_for(resource_or_scope)
         if resource_or_scope == :admin
             root_path
@@ -11,7 +12,7 @@ class ApplicationController < ActionController::Base
         end
     end
 
-    #ログアウト後のリダイレクト先
+    # ログアウト後のリダイレクト先
     def after_sign_out_path_for(resource_or_scope)
         if resource_or_scope == :admin
             new_admin_session_path

@@ -16,7 +16,7 @@ class LikesController < ApplicationController
       @post.create_notification_by(current_buyer)
     end
     respond_to do |format|
-      format.html {redirect_to request.referrer}
+      format.html { redirect_to request.referrer }
       format.js
     end
   end
@@ -32,6 +32,7 @@ class LikesController < ApplicationController
   end
 
   private
+
   def require_signed_in
     unless signed_in?
       flash[:error] = "新規登録またはログインをしてください"

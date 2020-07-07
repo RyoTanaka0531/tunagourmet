@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
-  before_action :require_signed_in, except:[:index, :show]
+  before_action :require_signed_in, except: [:index, :show]
   def create
     if producer_signed_in?
-      #producerがログインしてたらproducer_idを、buyerがログインしてたらbuyer_idを@postに入れる
+      # producerがログインしてたらproducer_idを、buyerがログインしてたらbuyer_idを@postに入れる
       @post = Post.new(post_producer_params)
       @post.producer_id = current_producer.id
     elsif buyer_signed_in?
@@ -37,6 +37,7 @@ class PostsController < ApplicationController
   end
 
   private
+
   def post_buyer_params
     params.require(:post).permit(:buyer_id, :heading, :content, :image)
   end
@@ -52,4 +53,3 @@ class PostsController < ApplicationController
     end
   end
 end
-

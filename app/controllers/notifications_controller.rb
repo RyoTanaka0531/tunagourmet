@@ -11,7 +11,9 @@ class NotificationsController < ApplicationController
             notification.update_attributes(checked: true)
         end
     end
+
     private
+
     def require_signed_in
         unless signed_in?
         flash[:error] = "新規登録またはログインをしてください"

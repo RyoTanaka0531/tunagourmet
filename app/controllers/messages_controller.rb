@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
     def create
         @chat = Chat.find(params[:chat_id])
         @message = Message.new(message_params)
-        #メッセージがproduerに夜ものだったらis_producer=true,buyerによるものだったらis_producer=false
+        # メッセージがproduerに夜ものだったらis_producer=true,buyerによるものだったらis_producer=false
         if producer_signed_in?
             @message.is_producer = true
         elsif buyer_signed_in?
@@ -13,9 +13,6 @@ class MessagesController < ApplicationController
 
         @message.chat_id = @chat.id
         if @message.save
-            # redirect_to chat_url(@chat)
-            # format.html { redirect_to "chat_url(@chat)" }
-            # format.json
             render :index
         else
             redirect_to chat_url(@chat)
@@ -23,6 +20,7 @@ class MessagesController < ApplicationController
     end
 
     private
+
     def message_params
         params.require(:message).permit(:content)
     end

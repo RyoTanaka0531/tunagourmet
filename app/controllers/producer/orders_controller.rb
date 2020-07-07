@@ -2,9 +2,9 @@ class Producer::OrdersController < ApplicationController
   before_action :authenticate_producer!
   def index
     @producer = current_producer
-    @orders = Order.where(producer_id:@producer.id).order(id: "DESC").page(params[:page]).per(10)
+    @orders = Order.where(producer_id: @producer.id).order(id: "DESC").page(params[:page]).per(10)
     if @orders.present?
-      @product = Order.find_by(producer_id:@producer.id).product
+      @product = Order.find_by(producer_id: @producer.id).product
     else
       flash[:alert] = '受注履歴はありません。'
       redirect_to products_path
@@ -27,9 +27,8 @@ class Producer::OrdersController < ApplicationController
   end
 
   private
+
   def order_params
     params.require(:order).permit(:order_status)
   end
 end
-
-

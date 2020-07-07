@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :require_signed_in, except:[:index, :show]
-  before_action :correct_producer, only:[:edit, :update, :destroy]
+  before_action :require_signed_in, except: [:index, :show]
+  before_action :correct_producer, only: [:edit, :update, :destroy]
 
   def new
     @product = Product.new
@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
       redirect_to product_path(@product)
     else
       flash[:notice] = '入力に不備があります。正しく入力してください。'
-        redirect_to request.referrer
+      redirect_to request.referrer
     end
   end
 
@@ -34,7 +34,6 @@ class ProductsController < ApplicationController
   def edit
     @product = Product.find(params[:id])
   end
-
 
   def update
     @product = Product.find(params[:id])
@@ -73,9 +72,11 @@ class ProductsController < ApplicationController
   end
 
   private
+
   def product_params
     params.require(:product).permit(:name, :price, :description, :timing, :category_id, :producer_id, :product_image)
   end
+
   def require_signed_in
     unless signed_in?
       flash[:error] = "新規登録またはログインをしてください"

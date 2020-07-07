@@ -6,10 +6,10 @@ class Buyer::OrdersController < ApplicationController
     if @order.save
       redirect_to completed_order_path
     else
-      #confirmingがnilだったらこっちに進む
+      # confirmingがnilだったらこっちに進む
       @product = Product.find(@order.product_id)
       @producer = Producer.find(@product.producer_id)
-      #入力フォームに値が入力されなかったときの分岐
+      # 入力フォームに値が入力されなかったときの分岐
       if @order.count.present? && @order.payment.present?
         render 'confirm'
       else
@@ -24,13 +24,12 @@ class Buyer::OrdersController < ApplicationController
     @order = Order.new
   end
 
-
   def index
     @buyer = current_buyer
-    @orders = Order.where(buyer_id:[current_buyer.id]).order(id: "DESC").page(params[:page]).per(10)
+    @orders = Order.where(buyer_id: [current_buyer.id]).order(id: "DESC").page(params[:page]).per(10)
     if @orders.present?
       # 発注に紐づいた品目の生産者を定義したい。今のままでは定義できない↓
-      @product = Order.find_by(buyer_id:@buyer.id).product
+      @product = Order.find_by(buyer_id: @buyer.id).product
     else
       flash[:alert] = '発注履歴はありません。'
       redirect_to products_path
@@ -50,7 +49,9 @@ class Buyer::OrdersController < ApplicationController
   end
 
   private
+
   def order_params
-    params.require(:order).permit(:remark, :buyer_id, :product_id, :delivery, :count, :payment, :confirming, :producer_id, :order_status)
+    params.require(:order).permit(:remark, :buyer_id, :product_id, :delivery, :count, :payment,
+                                  :confirming, :producer_id, :order_status)
   end
 end
