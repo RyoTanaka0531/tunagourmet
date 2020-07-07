@@ -11,7 +11,7 @@
                         <%= attachment_image_tag comment.producer, :profile_image, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
                         <%=  link_to comment.producer.company_name, producer_path(comment.producer) %></p>
                     <% elsif comment.buyer %>
-                        <% if comment.producer == current_producer %>
+                        <% if comment.buyer == current_buyer %>
                             <p><%= link_to "削除", post_comment_path(comment.post_id, comment.id), method: :delete, remote: true %></p>
                         <% end %>
                         <%= attachment_image_tag comment.buyer, :profile_image, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg"%>
