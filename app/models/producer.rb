@@ -14,6 +14,8 @@ class Producer < ApplicationRecord
   attachment :profile_image
   validates :company_name, presence: :ture
   validates :kana_company_name, presence: :ture
+  validates :description, length: {maximum: 120}
+
 
   def liked_by?(producer)
     likes.where(producer_id: producer.id).exists?

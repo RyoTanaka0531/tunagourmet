@@ -33,11 +33,11 @@
     </tr>
     <tr>
         <th><%= f.label "担当者名" %></th>
-        <td><%= f.text_field :name, class: "form-control" %></td>
+        <td><%= f.text_field :name, class: "form-control", placeholder: "15字以内で入力してください" %></td>
     </tr>
     <tr>
         <th><%= f.label "担当者名(フリガナ)" %></th>
-        <td><%= f.text_field :kana_name, class: "form-control" %></td>
+        <td><%= f.text_field :kana_name, class: "form-control", placeholder: "15字以内で入力してください(カタカナ)" %></td>
     </tr>
     <tr>
         <th><%= f.label "メールアドレス" %></th>
@@ -45,11 +45,11 @@
     </tr>
     <tr>
         <th><%= f.label "電話番号" %></th>
-        <td><%= f.text_field :phone_number, class: "form-control" %></td>
+        <td><%= f.text_field :phone_number, class: "form-control", placeholder: "ハイフン不要" %></td>
     </tr>
     <tr>
         <th><%= f.label "郵便番号" %></th>
-        <td><%= f.text_field :postcode, class: "form-control" %></td>
+        <td><%= f.text_field :postcode, class: "form-control", placeholder: "ハイフン不要" %></td>
     </tr>
     <tr>
         <th><%= f.label :prefecture_id, "都道府県" %></th>
@@ -57,15 +57,15 @@
     </tr>
     <tr>
         <th><%= f.label "住所(市区町村・番地・建物)" %></th>
-        <td><%= f.text_field :address, class: "form-control" %></td>
+        <td><%= f.text_field :address, class: "form-control", placeholder: "県名以下を入力" %></td>
     </tr>
     <tr>
         <th><%= f.label "ホームページ" %></th>
-        <td><%= f.text_field :hp, class: "form-control" %></td>
+        <td><%= f.text_field :hp, class: "form-control", placeholder: "任意" %></td>
     </tr>
     <tr>
         <th><%= f.label "プロフィール"%></th>
-        <td><%= f.text_area :description, class: "form-control" %></td>
+        <td><%= f.text_area :description, class: "form-control", placeholder: "最大120文字まで" %></td>
     </tr>
     </table>
     <div class="button">

@@ -18,8 +18,8 @@ http://tunagourmet.net/
 生産者：取引を行う品目（野菜や果物、肉類、魚介類）を出品し、バイヤーにアピール。地元の直売場などだけでなく全国に販路拡大したい時。
 バイヤー：元々取引している仕入れ先が品目を出荷できない場合や、飲食店開店する際など素早く仕入れ先を見つけたい時
 
-## 設計書
-
+## ER図
+https://app.diagrams.net/#G162S6ZP_eWrBRMwpdKn1HRr6qk8VGr0L0
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1UanXhv-j7q4LIrWdksWZveTqx1pGXkyo8zjmXj5ZB-Q/edit?usp=sharing

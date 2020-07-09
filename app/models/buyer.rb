@@ -18,6 +18,7 @@ class Buyer < ApplicationRecord
   belongs_to :prefecture, optional: true
   validates :company_name, presence: :ture
   validates :kana_company_name, presence: :ture
+  validates :description, length: { maximum: 120 }
 
   # すでにいいねしているかどうか
   def liked_by_buyer?(buyer)
