@@ -17,7 +17,7 @@ module NotificationsHelper
             @comment_producer = Comment.find_by(id: @visiter_producer_comment)&.content
             if @visiter
                 tag.a(@visiter.company_name, href: buyer_path(@visiter), style: "font-weight: bold;")+"が"+tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;")+"にコメントしました"
-            elsif @visiter_producercd
+            elsif @visiter_producer
                 tag.a(@visiter_producer.company_name, href: producer_path(@visiter_producer), style: "font-weight: bold;")+"が"+tag.a('あなたの投稿', href: post_path(notification.post_id), style: "font-weight: bold;")+"にコメントしました"
             end
         end

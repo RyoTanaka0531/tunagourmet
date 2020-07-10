@@ -33,6 +33,7 @@ class Post < ApplicationRecord
             notification.save if notification.valid?
         end
     end
+
     def create_notification_by(current_buyer)
         temp = Notification.where(["visiter_id = ? and visited_id || visited_producer_id = ? and post_id = ? and action = ? ", current_buyer.id, buyer_id || producer_id, id, 'like'])
         if temp.blank?
@@ -50,17 +51,18 @@ class Post < ApplicationRecord
             notification.save if notification.valid?
         end
     end
+
     def create_notification_comment!(current_buyer, comment_id)
         # 自分以外にコメントしている人を全て取得し、全員に通知を送る
         temp_ids = Comment.select(:buyer_id).where(post_id: id).where.not(buyer_id: current_buyer.id).distinct
         temp_ids.each do |temp_id|
-            save_notification_comment!(current_buyer, comment_id, temp_id['buyer_id', 'producer_id'])
+            save_notification_comment!(current_buyer, comment_id, temp_id['buyer_id'])
         end
         # まだ誰もコメントしていない場合は、投稿者に通知を送る
-        save_notification_comment!(current_buyer, comment_id, buyer_id, producer_id) if temp_ids.blank?
+        save_notification_comment!(current_buyer, comment_id, buyer_id) if temp_ids.blank?
     end
 
-    def save_notification_comment!(current_buyer, comment_id, buyer_id, producer_id)
+    def save_notification_comment!(current_buyer, comment_id, buyer_id)
         # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
         notification = current_buyer.active_notifications.new(
             post_id: id,
@@ -80,13 +82,13 @@ class Post < ApplicationRecord
         # 自分以外にコメントしている人を全て取得し、全員に通知を送る
         temp_ids = Comment.select(:producer_id).where(post_id: id).where.not(producer_id: current_producer.id).distinct
         temp_ids.each do |temp_id|
-            save_notification_producer_comment!(current_producer, comment_id, temp_id['buyer_id', 'producer_id'])
+            save_notification_producer_comment!(current_producer, comment_id, temp_id['producer_id'])
         end
         # まだ誰もコメントしていない場合は、投稿者に通知を送る
-        save_notification_producer_comment!(current_producer, comment_id, buyer_id, producer_id) if temp_ids.blank?
+        save_notification_producer_comment!(current_producer, comment_id, producer_id) if temp_ids.blank?
     end
 
-    def save_notification_producer_comment!(current_producer, comment_id, buyer_id, producer_id)
+    def save_notification_producer_comment!(current_producer, comment_id, producer_id)
         # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
         notification = current_producer.active_notifications.new(
             post_id: id,
