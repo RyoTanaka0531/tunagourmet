@@ -543,6 +543,12 @@ li{
     }
 }
 
+.edit-product-area{
+    th{
+        padding-bottom: 20px;
+    }
+}
+
 // producer周辺
 .producer-info{
     margin-bottom: 20px;
@@ -567,6 +573,9 @@ li{
 .producer-product-index{
     border-bottom: solid 1px gray;
     margin-bottom: 30px;
+    .product-name{
+        text-align: center;
+    }
     img{
         width: 150px;
         height: 150px;
@@ -727,6 +736,11 @@ li{
     }
 }
 
+.producer-order-show{
+    th{
+        padding-bottom: 10px;
+    }
+}
 //ログイン
 .buyer-session, .producer-session, .admin-session, .buyer-registration, .producer-registration{
     text-align: center;

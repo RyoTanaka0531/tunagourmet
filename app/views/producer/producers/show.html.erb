@@ -135,7 +135,9 @@
                             <% end %>
                         </div>
                         <div class="col-lg-offset-3">
-                            <li><%= link_to product.name, product_path(product) %></li>
+                            <div class="product-name">
+                                <li><%= link_to product.name, product_path(product) %></li>
+                            </div>
                             <li><span>売価:　　　　</span><%= product.price %>円/kg</li>
                             <li><span>出荷時期:　　</span><%= product.timing %></li>
                             <li><span>カテゴリー:　</span><%= product.category.name %></li>
