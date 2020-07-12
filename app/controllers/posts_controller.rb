@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :require_signed_in, except: [:index, :show]
+  impressionist unique: [:session_hash]
+
   def create
     if producer_signed_in?
       # producerがログインしてたらproducer_idを、buyerがログインしてたらbuyer_idを@postに入れる
@@ -28,6 +30,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.order(created_at: :desc)
+    impressionist(@post, nil, unique: [:session_hash])
   end
 
   def destroy

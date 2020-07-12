@@ -5,6 +5,7 @@ class Post < ApplicationRecord
     belongs_to :producer, optional: true
     belongs_to :buyer, optional: true
     attachment :image
+    is_impressionable
     #最新の投稿が上に表示されるようにする
     default_scope -> { order(created_at: :desc) }
     validates :heading, presence: true, length: {maximum: 20}

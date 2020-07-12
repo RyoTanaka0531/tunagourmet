@@ -77,6 +77,7 @@ gem 'pry-rails'
 gem 'enum_help'
 gem 'dotenv-rails'
 gem 'omniauth-twitter'
+gem 'impressionist'
 group :production do
   gem 'mysql2'
 end
