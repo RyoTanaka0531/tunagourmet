@@ -8,7 +8,7 @@ class Post < ApplicationRecord
     is_impressionable
     #最新の投稿が上に表示されるようにする
     default_scope -> { order(created_at: :desc) }
-    validates :heading, presence: true, length: {maximum: 20}
+    validates :heading, presence: true, length: { maximum: 20 }
     validates :content, presence: true
     def liked_by?(producer)
         likes.where(producer_id: producer.id).exists?

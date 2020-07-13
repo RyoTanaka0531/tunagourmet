@@ -75,7 +75,8 @@ ActiveRecord::Schema.define(version: 2020_07_12_163730) do
   create_table "impressions", force: :cascade do |t|
     t.string "impressionable_type"
     t.integer "impressionable_id"
-    t.integer "user_id"
+    t.integer "producer_id"
+    t.integer "buyer_id"
     t.string "controller_name"
     t.string "action_name"
     t.string "view_name"
@@ -87,6 +88,7 @@ ActiveRecord::Schema.define(version: 2020_07_12_163730) do
     t.text "params"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_impressions_on_buyer_id"
     t.index ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index"
     t.index ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index"
     t.index ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index"
@@ -95,7 +97,7 @@ ActiveRecord::Schema.define(version: 2020_07_12_163730) do
     t.index ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index"
     t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
     t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
-    t.index ["user_id"], name: "index_impressions_on_user_id"
+    t.index ["producer_id"], name: "index_impressions_on_producer_id"
   end
 
   create_table "industories", force: :cascade do |t|
