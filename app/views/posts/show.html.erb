@@ -26,7 +26,6 @@
             <% elsif buyer_signed_in? && @post.buyer == current_buyer %>
                 <%= link_to "削除する", post_path(@post), method: :delete %>
             <% end %>
-            <%= @post.impressionist_count %>
         </div>
             <div class="comment-area">
                 <h3>コメント</h3>
