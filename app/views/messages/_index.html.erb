@@ -1,5 +1,5 @@
     <% if producer_signed_in? %>
-        <h3><%= buyer.company_name %>さんとのチャットルーム</h3>
+        <h3><%= link_to buyer.company_name, buyer_path(@buyer) %>さんとのチャットルーム</h3>
         <div class="chat-field">
             <% messages.each do |msg| %>
                 <!-- メッセージがproducerによるものだったら -->
@@ -35,7 +35,7 @@
             <% end %>
         </div>
     <% elsif buyer_signed_in? %>
-        <h3><%= producer.company_name%>さんとのチャットルーム</h3>
+        <h3><%= link_to producer.company_name, producer_path(@producer) %>さんとのチャットルーム</h3>
         <div class="chat-field">
             <% messages.each do |msg| %>
                 <!-- メッセージがproducerによるものだったら -->
