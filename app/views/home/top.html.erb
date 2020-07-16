@@ -42,130 +42,46 @@
     <div class="top-index">
         <% if producer_signed_in? %>
             <div class="row">
-            <h2>バイヤー一覧</h2>
-                <% @buyers.each do |buyer| %>
-                    <div class="index">
-                        <dl>
-                            <dt></dt>
-                            <dd>
-                                <%= link_to buyer_path(buyer) do %>
-                                <%= attachment_image_tag(buyer, :profile_image, class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
-                                <% end %>
-                            </dd>
-                            <dt></dt>
-                                <dd>
-                                <% if buyer.company_name.blank? %>
-                                    <%= link_to "未登録", buyer_path(buyer) %>
-                                <% else %>
-                                    <%= link_to buyer.company_name, buyer_path(buyer) %>
-                                <% end %>
-                                </dd>
-                            <dt></dt>
-                                <dd style="width: 10em;"><%= buyer.description %></dd>
-                        </dl>
-                    </div>
-                <% end %>
+                <h2>バイヤー一覧</h2>
+                <%= render 'buyers', buyers: @buyers %>
             </div>
         <% elsif buyer_signed_in? %>
-            <h2>生産者一覧</h2>
             <div class="row">
-                <% @producers.each do |producer| %>
-                    <div class="index">
-                        <dl>
-                            <dt></dt>
-                            <dd>
-                                <%= link_to producer_path(producer) do %>
-                                <%= attachment_image_tag(producer, :profile_image, class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
-                                <% end %>
-                            </dd>
-                            <dt></dt>
-                                <dd>
-                                <% if producer.company_name.blank? %>
-                                    <%= link_to "未登録", buyer_path(producer) %>
-                                <% else %>
-                                    <%= link_to producer.company_name, producer_path(producer) %>
-                                <% end %>
-                                </dd>
-                            <dt></dt>
-                                <dd style="width: 10em;"><%= producer.description %></dd>
-                        </dl>
-                    </div>
-                <% end %>
+                <h2>生産者一覧</h2>
+                <%= render 'producers', producers: @producers%>
             </div>
         <% else %>
             <div class="row">
             <h2>品目一覧</h2>
                 <% @products.each do |product| %>
                     <div class="index">
-                    <dl>
-                        <dt></dt>
-                        <dd>
-                            <%= link_to product_path(product) do %>
-                            <%= attachment_image_tag(product, :product_image, class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
-                            <% end %>
-                        </dd>
-                        <dt></dt>
+                        <dl>
+                            <dt></dt>
+                            <dd>
+                                <%= link_to product_path(product) do %>
+                                    <%= attachment_image_tag(product, :product_image, class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
+                                <% end %>
+                            </dd>
+                            <dt></dt>
                             <dd><%= link_to product.name, product_path(product) %></dd>
-                        <dt>売価</dt>
+                            <dt>売価</dt>
                             <dd><%= product.price %>円/kg</dd>
-                        <dt>出荷時期</dt>
+                            <dt>出荷時期</dt>
                             <dd><%= product.timing %></dd>
-                        <% if product.producer == current_producer %>
-                            <%= link_to "編集する", edit_product_path(product) %></>
-                        <% end %>
-                    </dl>
-                    </div>
-                <% end %>
-            </div>
-            <div class="row">
-            <h2>生産者一覧</h2>
-                <% @producers.each do |producer| %>
-                    <div class="index">
-                        <dl>
-                            <dt></dt>
-                            <dd>
-                                <%= link_to producer_path(producer) do %>
-                                <%= attachment_image_tag(producer, :profile_image, class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
-                                <% end %>
-                            </dd>
-                            <dt></dt>
-                                <dd>
-                                <% if producer.company_name.blank? %>
-                                    <%= link_to "未登録", buyer_path(producer) %>
-                                <% else %>
-                                    <%= link_to producer.company_name, producer_path(producer) %>
-                                <% end %>
-                                </dd>
-                            <dt></dt>
-                                <dd style="width: 10em;"><%= producer.description %></dd>
+                            <% if product.producer == current_producer %>
+                                <%= link_to "編集する", edit_product_path(product) %></>
+                            <% end %>
                         </dl>
                     </div>
                 <% end %>
             </div>
             <div class="row">
-            <h2>バイヤー一覧</h2>
-                <% @buyers.each do |buyer| %>
-                    <div class="index">
-                        <dl>
-                            <dt></dt>
-                            <dd>
-                                <%= link_to buyer_path(buyer) do %>
-                                <%= attachment_image_tag(buyer, :profile_image, class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
-                                <% end %>
-                            </dd>
-                            <dt></dt>
-                                <dd>
-                                <% if buyer.company_name.blank? %>
-                                    <%= link_to "未登録", buyer_path(buyer) %>
-                                <% else %>
-                                    <%= link_to buyer.company_name, buyer_path(buyer) %>
-                                <% end %>
-                            </dd>
-                            <dt></dt>
-                                <dd style="width: 10em;"><%= buyer.description %></dd>
-                        </dl>
-                    </div>
-                <% end %>
+                <h2>生産者一覧</h2>
+                <%= render 'producers', producers: @producers%>
+            </div>
+            <div class="row">
+                <h2>バイヤー一覧</h2>
+                <%= render 'buyers', buyers: @buyers %>
             </div>
         <% end%>
     </div>

@@ -1,0 +1,22 @@
+<% buyers.each do |buyer| %>
+    <div class="index">
+        <dl>
+            <dt></dt>
+            <dd>
+                <%= link_to buyer_path(buyer) do %>
+                    <%= attachment_image_tag(buyer, :profile_image, class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
+                <% end %>
+            </dd>
+            <dt></dt>
+            <dd>
+                <% if buyer.company_name.blank? %>
+                    <%= link_to "未登録", buyer_path(buyer) %>
+                <% else %>
+                    <%= link_to buyer.company_name, buyer_path(buyer) %>
+                <% end %>
+            </dd>
+            <dt></dt>
+            <dd style="width: 10em;"><%= buyer.description %></dd>
+        </dl>
+    </div>
+<% end %>

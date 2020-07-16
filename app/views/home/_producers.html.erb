@@ -1,0 +1,22 @@
+<% producers.each do |producer| %>
+    <div class="index">
+        <dl>
+            <dt></dt>
+            <dd>
+                <%= link_to producer_path(producer) do %>
+                    <%= attachment_image_tag(producer, :profile_image, class: "img-rounded pull-left profile-thumb", fallback: "no_image.jpg")%>
+                <% end %>
+            </dd>
+            <dt></dt>
+            <dd>
+                <% if producer.company_name.blank? %>
+                    <%= link_to "未登録", buyer_path(producer) %>
+                <% else %>
+                    <%= link_to producer.company_name, producer_path(producer) %>
+                <% end %>
+            </dd>
+            <dt></dt>
+            <dd style="width: 10em;"><%= producer.description %></dd>
+        </dl>
+    </div>
+<% end %>
