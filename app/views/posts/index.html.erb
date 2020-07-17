@@ -1,9 +1,6 @@
 <% provide(:title, "投稿一覧") %>
-<% if flash[:notice] %>
-    <div class="alert alert-danger text-center">
-        <%= flash[:notice] %>
-    </div>
-<% end %>
+<%= render 'layouts/flash_notice' %>
+
 <div class="container">
     <%= render 'form',post: @post %>
     <h3>投稿一覧</h3>

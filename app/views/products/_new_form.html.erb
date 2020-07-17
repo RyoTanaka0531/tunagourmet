@@ -1,0 +1,40 @@
+    <%= form_for(product) do |f| %>
+    <table style="margin-bottom: 30px;">
+    <tr style="margin-bottom: 5px;">
+        <th><%= f.label "写真" %></th>
+        <td>
+            <div class="post-image">
+                <div class="prev-contents">
+                    <% if product.product_image.present? %>
+                    <div class="prev-content">
+                        <%= attachment_image_tag product, :product_image, class: "prev-image"%>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+            <%= f.attachment_field :product_image ,class: "hidden_file"%>
+        </td>
+    </tr>
+    <tr>
+        <th><%= f.label "品目名" %></th>
+        <td><%= f.text_field :name, class:"form-control", placeholder: "15字以内で入力してください" %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "カテゴリー" %></th>
+        <td><%= f.collection_select :category_id, Category.all, :id, :name, class:"form-control" %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "売価" %></th>
+        <td><%= f.text_field :price, class:"form-control", placeholder: "半角数字のみ" %>円/kg</td>
+    </tr>
+    <tr>
+        <th><%= f.label "出荷時期" %></th>
+        <td><%= f.text_field :timing, class:"form-control", placeholder: "例) 9月中旬〜12月下旬" %></td>
+    </tr>
+    <tr>
+        <th><%= f.label "品目説明" %></th>
+        <td><%= f.text_area :description, class:"form-control", placeholder: "例) 無農薬で育てました。" %></td>
+    </tr>
+    </table>
+    <%= f.submit "登録する", class: "btn btn-success"%>
+    <% end %>

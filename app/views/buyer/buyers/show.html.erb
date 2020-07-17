@@ -1,11 +1,7 @@
 <% if @buyer == current_buyer %>
     <% provide(:title, "マイページ") %>
 <% end %>
-<% if flash[:notice] %>
-    <div class="alert alert-success text-center">
-        <%= flash[:notice] %>
-    </div>
-<% end %>
+<%= render 'layouts/flash_notice' %>
 <div class="container">
         <% if @buyer == current_buyer %>
             <h1>マイページ</h1>

@@ -1,9 +1,5 @@
 <% provide(:title, "品目編集") %>
-<% if flash[:notice]%>
-    <div class="alert alert-danger text-center">
-        <%= flash[:notice] %>
-    </div>
-<% end %>
+<%= render 'layouts/flash_notice' %>
 <div class="container">
     <h2>品目編集</h2>
     <%= form_for(@product) do |f| %>

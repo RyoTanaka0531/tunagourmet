@@ -1,8 +1,4 @@
-<% if flash[:notice] %>
-    <div class="alert alert-success text-center">
-        <%= flash[:notice] %>
-    </div>
-<% end %>
+<%= render 'layouts/flash_notice' %>
 <div class="container">
     <div class="product-show">
         <h1>品目情報</h1>

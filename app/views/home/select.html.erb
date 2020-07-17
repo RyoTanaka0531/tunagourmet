@@ -1,8 +1,4 @@
-    <% if flash[:error] %>
-    <div class="alert alert-danger text-center">
-        <%= flash[:error] %>
-    </div>
-    <% end %>
+<%= render 'layouts/flash_error' %>
 <div class="container">
     <div class="select_registration">
     <h3>アカウント登録</h3>
