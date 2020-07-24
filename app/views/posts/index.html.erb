@@ -2,7 +2,7 @@
 <%= render 'layouts/flash_notice' %>
 
 <div class="container">
-    <%= render 'form',post: @post %>
+    <%= render 'form', post: @post %>
     <h3>投稿一覧</h3>
     <ul>
         <% @posts.each do |post| %>
@@ -27,11 +27,11 @@
                     </div><br>
                     <%= post.created_at.strftime("%Y/%m/%d %H:%M") %>
                     <div class="right-link">
-                    <% if producer_signed_in? && post.producer == current_producer %>
-                        <%= link_to "削除する", post_path(post), method: :delete %>
-                    <% elsif buyer_signed_in? && post.buyer == current_buyer %>
-                        <%= link_to "削除する", post_path(post), method: :delete %>
-                    <% end %>
+                        <% if producer_signed_in? && post.producer == current_producer %>
+                            <%= link_to "削除する", post_path(post), method: :delete %>
+                        <% elsif buyer_signed_in? && post.buyer == current_buyer %>
+                            <%= link_to "削除する", post_path(post), method: :delete %>
+                        <% end %>
                     </div>
                 </li>
             </div>
