@@ -124,14 +124,11 @@ header{
     background-image: image-url("vegetable.png");
     background-size: cover;
 }
-// home.scssから移動
 
 // footer
 footer{
     width: 100%;
     background-color: #c8d627;
-    // position: absolute;/*←絶対位置*/
-    // bottom: 0; /*下に固定*/
     margin-top: auto;
     p{
         display: inline-block;
@@ -149,6 +146,7 @@ footer{
         }
     }
 }
+
 // home-top
 .top-index{
     img{
@@ -185,6 +183,7 @@ footer{
 
     }
 }
+
 // home-select
 .select_registration{
     text-align: center;
@@ -221,6 +220,7 @@ footer{
         float: left;
     }
 }
+
 // producer
 .producer-index, .buyer-index{
     padding-bottom: 60px;
@@ -247,8 +247,8 @@ footer{
         display: inline-block;
         vertical-align: top;
     }
-
 }
+
 .btn-primary{
     padding: 10px 30px;
     background-color:#c8d627;
@@ -328,9 +328,6 @@ footer{
     .glyphicon-comment{
         color: green;
     }
-    // .like-buttons{
-        // text-align: right;
-    // }
 }
 .post-content{
     margin: 10px 20px;
@@ -786,7 +783,6 @@ li{
 
 .slicks{
     background-color: #c8d627;
-
     .slick-head{
         text-align: center;
         h2{
