@@ -43,7 +43,6 @@ class Producer::ProducersController < ApplicationController
     end
   end
 
-  # 退会ページへ遷移
   def quit
     @producer = Producer.find(params[:id])
     @producer.update(is_deleted: true)

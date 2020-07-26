@@ -10,9 +10,9 @@ class ChatsController < ApplicationController
   end
 
   def show
-    @chat = Chat.find(params[:id]) # チャット情報の取得
-    @message = Message.new # 新規メッセージ投稿
-    @messages = @chat.messages # チャット内のメッセージを全て取得
+    @chat = Chat.find(params[:id])
+    @message = Message.new
+    @messages = @chat.messages
     if producer_signed_in?
       if @chat.producer.id == current_producer.id
         @buyer = @chat.buyer

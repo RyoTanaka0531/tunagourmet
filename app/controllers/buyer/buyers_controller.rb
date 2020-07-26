@@ -42,7 +42,6 @@ class Buyer::BuyersController < ApplicationController
     end
   end
 
-  # 退会ページへ遷移
   def quit
     @buyer = Buyer.find(params[:id])
     @buyer.update(is_deleted: true)
