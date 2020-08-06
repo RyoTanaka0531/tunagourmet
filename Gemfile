@@ -42,6 +42,9 @@ group :development, :test do
   gem 'rubocop-airbnb'
   gem 'rspec-rails', '~> 3.6'
   gem 'spring-commands-rspec'
+  gem 'factory_bot_rails'
+  gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
+  gem 'forgery_ja'
 end
 
 group :development do
