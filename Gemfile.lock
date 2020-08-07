@@ -379,7 +379,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   enum_help
-  factory_bot_rails
+  factory_bot_rails (~> 4.10.0)
   faker!
   font-awesome-sass (~> 5.4.1)
   forgery_ja
