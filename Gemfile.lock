@@ -7,14 +7,6 @@ GIT
       rest-client (~> 2)
       sinatra (~> 2.0.0.beta2)
 
-GIT
-  remote: https://github.com/stympy/faker.git
-  revision: f094e2bfe437700335a6ec8f9d7340968283f350
-  branch: master
-  specs:
-    faker (2.13.0)
-      i18n (>= 1.6, < 2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -123,10 +115,6 @@ GEM
     ffi (1.13.1)
     font-awesome-sass (5.4.1)
       sassc (>= 1.11)
-    forgery (0.3.12)
-      nokogiri (~> 1.4)
-    forgery_ja (0.2.2)
-      forgery (~> 0.3.8)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (4.1.0)
@@ -264,23 +252,23 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rspec-core (3.9.2)
-      rspec-support (~> 3.9.3)
-    rspec-expectations (3.9.2)
+    rspec-core (3.6.0)
+      rspec-support (~> 3.6.0)
+    rspec-expectations (3.6.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
-    rspec-mocks (3.9.1)
+      rspec-support (~> 3.6.0)
+    rspec-mocks (3.6.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
-    rspec-rails (3.9.1)
+      rspec-support (~> 3.6.0)
+    rspec-rails (3.6.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec-core (~> 3.9.0)
-      rspec-expectations (~> 3.9.0)
-      rspec-mocks (~> 3.9.0)
-      rspec-support (~> 3.9.0)
-    rspec-support (3.9.3)
+      rspec-core (~> 3.6.0)
+      rspec-expectations (~> 3.6.0)
+      rspec-mocks (~> 3.6.0)
+      rspec-support (~> 3.6.0)
+    rspec-support (3.6.0)
     rubocop (0.76.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -380,9 +368,7 @@ DEPENDENCIES
   dotenv-rails
   enum_help
   factory_bot_rails (~> 4.10.0)
-  faker!
   font-awesome-sass (~> 5.4.1)
-  forgery_ja
   impressionist (~> 1.6.1)
   jbuilder (~> 2.5)
   jp_prefecture
@@ -398,7 +384,7 @@ DEPENDENCIES
   ransack
   refile!
   refile-mini_magick
-  rspec-rails (~> 3.6)
+  rspec-rails (~> 3.6.0)
   rubocop-airbnb
   sass-rails (~> 5.0)
   selenium-webdriver

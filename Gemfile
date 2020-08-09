@@ -40,11 +40,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop-airbnb'
-  gem 'rspec-rails', '~> 3.6'
+  gem 'rspec-rails', '~> 3.6.0'
+  gem 'factory_bot_rails', "~> 4.10.0"
   gem 'spring-commands-rspec'
-  gem 'factory_bot_rails', '~> 4.10.0'
-  gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
-  gem 'forgery_ja'
 end
 
 group :development do
