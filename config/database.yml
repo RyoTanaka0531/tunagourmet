@@ -4,15 +4,18 @@ default: &default
   charset: utf8mb4
   collation: utf8mb4_general_ci
   pool: 5
-  username: user
-  password: password
+  username: root
+  password:
   host: db
   timeout: 5000
 
 development:
   <<: *default
-  host: db
-  database: tunagurume_development
+  database: tunagurume_development #sample_appの部分は、アプリ名に応じて修正
+
+test:
+  <<: *default
+  database: tunagurume_test
 
 production:
   <<: *default
