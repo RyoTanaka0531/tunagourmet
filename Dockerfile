@@ -1,17 +1,19 @@
 FROM ruby:2.5.7
 
-RUN apt-get update -qq && \
-    apt-get install -y build-essential \ 
-                       libpq-dev \        
-                       nodejs           
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    nodejs \
+    mariadb-client \
+    build-essential \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /app_name
-ENV APP_ROOT /app_name
-WORKDIR $APP_ROOT
+WORKDIR /myproject
 
-ADD ./Gemfile $APP_ROOT/Gemfile
-ADD ./Gemfile.lock $APP_ROOT/Gemfile.lock
+COPY Gemfile /myproject/Gemfile
+COPY Gemfile.lock /myproject/Gemfile.lock
 
 RUN gem install bundler
 RUN bundle install
-ADD . $APP_ROOT
+
+COPY . /myproject

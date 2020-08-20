@@ -2,18 +2,21 @@ version: '3'
 services:
   db:
     image: mysql:5.7
+    ports:
+      - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: root
-      MYSQL_ALLOW_EMPTY_PASSWORD: 1
-    ports:
-      - "3305:3306"
+      MYSQL_DATABASE: tunagurume_development
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+
   web:
     build:
       context: .
       dockerfile: Dockerfile
-    command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
     tty: true
     stdin_open: true
     depends_on:
@@ -21,7 +24,4 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - .:/app_name
-      - ~/.ssh:/root/.ssh
-volumes:
-  mysql_data:
+      - .:/myproject

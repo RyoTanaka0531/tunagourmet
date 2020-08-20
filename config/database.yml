@@ -4,18 +4,15 @@ default: &default
   charset: utf8mb4
   collation: utf8mb4_general_ci
   pool: 5
-  username: root
-  password:
+  username: user
+  password: password
   host: db
   timeout: 5000
 
 development:
   <<: *default
+  host: db
   database: tunagurume_development
-
-test:
-  <<: *default
-  database: tunagurume_test
 
 production:
   <<: *default
