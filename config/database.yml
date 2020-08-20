@@ -11,7 +11,7 @@ default: &default
 
 development:
   <<: *default
-  database: tunagurume_development #sample_appの部分は、アプリ名に応じて修正
+  database: tunagurume_development
 
 test:
   <<: *default
