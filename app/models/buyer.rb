@@ -19,6 +19,9 @@ class Buyer < ApplicationRecord
   validates :company_name, presence: :ture
   validates :kana_company_name, presence: :ture
   validates :description, length: { maximum: 120 }
+  validates :password, presence: true
+  validates :email, presence: true
+  validates :email, uniqueness: true
 
   # すでにいいねしているかどうか
   def liked_by_buyer?(buyer)
