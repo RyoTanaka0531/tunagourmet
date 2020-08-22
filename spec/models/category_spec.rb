@@ -11,7 +11,7 @@ RSpec.describe Category, type: :model do
     is_expected.not_to be_valid
   end
 
-  it "カテゴリー名が10文字以上なら無効" do
+  it "カテゴリー名が11文字以上なら無効" do
     @category = build(:category, name: "a"*11)
     is_expected.to be_invalid
   end

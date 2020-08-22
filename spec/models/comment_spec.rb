@@ -15,7 +15,7 @@ RSpec.describe Comment, type: :model do
     is_expected.to be_invalid
   end
 
-  it "コメントが100字以上だったら無効" do
+  it "コメントが101字以上だったら無効" do
     @comment = build(:comment, content: "a"*101)
     is_expected.to be_invalid
   end
