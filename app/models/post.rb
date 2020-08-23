@@ -17,8 +17,11 @@ class Post < ApplicationRecord
     def liked_by_buyer?(buyer)
         likes.where(buyer_id: buyer.id).exists?
     end
+
     def create_notification_by_producer(current_producer)
-        temp = Notification.where(["visiter_id = ? and visited_id || visited_producer_id = ? and post_id = ? and action = ? ", current_producer.id, buyer_id || producer_id, id, 'like'])
+        # すでにいいねされているか調べる
+        temp = Notification.where(["visiter_id = ? and visited_id = ? || visited_producer_id = ? and post_id = ? and action = ? ", current_producer.id, buyer_id || producer_id, id, 'like'])
+        # いいねされていない場合のみ、通知レコード作成する
         if temp.blank?
             notification = current_producer.active_notifications.new(
                 post_id: id,
@@ -36,7 +39,7 @@ class Post < ApplicationRecord
     end
 
     def create_notification_by(current_buyer)
-        temp = Notification.where(["visiter_id = ? and visited_id || visited_producer_id = ? and post_id = ? and action = ? ", current_buyer.id, buyer_id || producer_id, id, 'like'])
+        temp = Notification.where(["visiter_id = ? and visited_id = ? || visited_producer_id = ? and post_id = ? and action = ? ", current_buyer.id, buyer_id || producer_id, id, 'like'])
         if temp.blank?
             notification = current_buyer.active_notifications.new(
                 post_id: id,
