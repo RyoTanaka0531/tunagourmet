@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', function(){
     // productの単価
+    // DOM操作を行う
     var value = JSON.parse(document.getElementById('product_price').dataset.json);
     // 入力対象のinputタグID名
     var tagInput = $('#order_count');

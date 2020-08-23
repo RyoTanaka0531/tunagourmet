@@ -54,3 +54,4 @@ class Buyer::OrdersController < ApplicationController
                                   :confirming, :producer_id, :order_status)
   end
 end
+
