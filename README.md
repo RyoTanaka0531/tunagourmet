@@ -24,4 +24,27 @@ https://app.diagrams.net/#G162S6ZP_eWrBRMwpdKn1HRr6qk8VGr0L0
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1UanXhv-j7q4LIrWdksWZveTqx1pGXkyo8zjmXj5ZB-Q/edit?usp=sharing
 
+### 開発環境
+- OS
+Linux(CentOS)
 
+- 言語
+HTML,CSS,JavaScript,Ruby,SQL
+
+- フレームワーク
+Ruby on Rails
+
+- Railsライブラリ
+
+- JSライブラリ
+jQuery
+
+- インフラ
+AWS(EC2,RDS,EIP)
+
+- テストフレームワーク
+RSpec
+
+- その他ツールなど
+Vagrant,VirtualBox,
+Docker(開発環境)
